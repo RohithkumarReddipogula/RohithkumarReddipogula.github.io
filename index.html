@@ -3,427 +3,1037 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohith Kumar Reddipogula — AI & NLP Engineer</title>
+<title>Rohith Kumar Reddipogula | Junior Machine Learning Engineer | NLP & LLMs | Berlin</title>
+<meta name="description" content="Junior Machine Learning Engineer in Germany. NLP, LLMs, RAG, Python, ML systems. MSc Data Science. Available immediately. EU Blue Card eligible.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-  :root{
-    --paper:#FAFAF8;--paper2:#F1EFE9;--ink:#13150F;--ink-soft:#4B4D45;
-    --moss:#3D5A3D;--moss-soft:#E6ECE3;--bronze:#8B7355;--bronze-soft:#F0E9DD;
-    --rust:#C9491F;--line:#DEDAD0;--mono:'IBM Plex Mono',monospace;
-    --serif:'Fraunces',serif;--sans:'Inter',sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(250,250,248,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
-  .topbar .name{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .topbar .status{display:flex;align-items:center;gap:8px;flex-shrink:0;font-family:var(--mono);font-size:12px;color:var(--moss);white-space:nowrap;}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 0 3px var(--moss-soft);}
-  .topnav{display:flex;gap:28px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
-  .topnav a:hover{color:var(--rust);}
-  .hero{padding:88px 0 64px;}
-  .query-line{display:flex;align-items:baseline;gap:10px;font-family:var(--mono);font-size:14px;color:var(--ink-soft);margin-bottom:28px;flex-wrap:wrap;}
-  .query-line .prompt-char{color:var(--rust);}
-  .query-text{border-bottom:1px solid var(--ink);padding-bottom:2px;color:var(--ink);}
-  .cursor{display:inline-block;width:8px;height:16px;background:var(--rust);animation:blink 1.1s steps(1) infinite;vertical-align:-2px;}
-  @keyframes blink{50%{opacity:0;}}
-  h1.headline{font-family:var(--serif);font-weight:480;font-size:clamp(40px,6vw,76px);line-height:1.03;letter-spacing:-0.01em;max-width:920px;}
-  h1.headline em{font-style:italic;font-weight:380;color:var(--moss);}
-  .sub{margin-top:24px;max-width:620px;font-size:17px;color:var(--ink-soft);}
-  .sub b{color:var(--ink);font-weight:600;}
-  .hero-meta{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;}
-  .pill{font-family:var(--mono);font-size:12px;padding:7px 14px;border:1px solid var(--line);border-radius:100px;color:var(--ink-soft);background:var(--paper);}
-  .pill.live{border-color:var(--moss);color:var(--moss);background:var(--moss-soft);}
-  .hero-links{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{font-family:var(--mono);font-size:13px;font-weight:500;padding:13px 22px;border-radius:6px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease, box-shadow .15s ease;}
-  .btn-primary{background:var(--ink);color:var(--paper);}
-  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,0.18);}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--ink);}
-  .score-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper2);}
-  .score-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);}
-  .score-cell{padding:26px 28px;border-right:1px solid var(--line);}
-  .score-cell:last-child{border-right:none;}
-  .score-label{font-family:var(--mono);font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
-  .score-value{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--ink);display:flex;align-items:baseline;gap:6px;}
-  .score-value small{font-family:var(--mono);font-size:14px;color:var(--bronze);font-weight:500;}
-  .score-note{font-size:12.5px;color:var(--ink-soft);margin-top:6px;}
-  section{padding:80px 0;}
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;border-bottom:1px solid var(--line);padding-bottom:18px;}
-  .section-head h2{font-family:var(--serif);font-size:32px;font-weight:500;}
-  .section-head .tag{font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
-  .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;}
-  .about-grid p{font-size:16px;color:var(--ink-soft);margin-bottom:16px;}
-  .about-grid p b{color:var(--ink);font-weight:600;}
-  .stack-col .stack-group{margin-bottom:22px;}
-  .stack-title{font-family:var(--mono);font-size:11px;color:var(--bronze);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
-  .stack-tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .tag-chip{font-family:var(--mono);font-size:12px;padding:5px 10px;background:var(--paper2);border-radius:4px;color:var(--ink);}
-  .results-meta{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-bottom:28px;}
-  .result{border-bottom:1px solid var(--line);padding:28px 0;display:grid;grid-template-columns:64px 1fr 110px;gap:24px;align-items:start;}
-  .result:first-child{border-top:1px solid var(--line);}
-  .result-rank{font-family:var(--mono);font-size:13px;color:var(--ink-soft);padding-top:4px;}
-  .result-rank .num{font-size:20px;color:var(--ink);display:block;}
-  .result-title{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-  .result-title a:hover{color:var(--rust);}
-  .badge-tiny{font-family:var(--mono);font-size:10px;padding:3px 7px;border-radius:3px;background:var(--moss-soft);color:var(--moss);text-transform:uppercase;letter-spacing:.04em;}
-  .badge-new{background:var(--bronze-soft);color:var(--bronze);}
-  .result-desc{font-size:14.5px;color:var(--ink-soft);max-width:580px;margin-bottom:12px;}
-  .result-metric{font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--bronze-soft);display:inline-block;padding:4px 10px;border-radius:4px;margin-bottom:12px;}
-  .result-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-  .result-links{display:flex;gap:16px;flex-wrap:wrap;}
-  .result-links a{font-family:var(--mono);font-size:12px;color:var(--ink-soft);border-bottom:1px solid transparent;}
-  .result-links a:hover{color:var(--rust);border-color:var(--rust);}
-  .result-score{text-align:right;padding-top:4px;}
-  .relevance{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--rust);}
-  .relevance-label{font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;}
-  .fusion{background:var(--ink);color:var(--paper);border-radius:14px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
-  .fusion-left .tag{color:#A9C2A9;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
-  .fusion h3{font-family:var(--serif);font-size:28px;font-weight:500;line-height:1.2;margin-bottom:16px;}
-  .fusion p{color:#C9C7BC;font-size:14.5px;line-height:1.65;}
-  .fusion p b{color:#fff;}
-  .fusion-eq{font-family:var(--mono);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:28px;}
-  .fusion-eq .line{display:flex;justify-content:space-between;font-size:13px;color:#C9C7BC;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .fusion-eq .line:last-child{border-bottom:none;}
-  .fusion-eq .line b{color:#fff;font-weight:500;}
-  .fusion-eq .line.highlight b{color:var(--rust);font-size:16px;}
-  .tl-item{display:grid;grid-template-columns:160px 1fr;gap:28px;padding:24px 0;border-bottom:1px solid var(--line);}
-  .tl-item:first-child{border-top:1px solid var(--line);}
-  .tl-date{font-family:var(--mono);font-size:12px;color:var(--bronze);padding-top:3px;}
-  .tl-role{font-family:var(--serif);font-size:19px;font-weight:500;margin-bottom:4px;}
-  .tl-org{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
-  .tl-desc{font-size:14.5px;color:var(--ink-soft);max-width:600px;}
-  .contact{background:var(--moss);color:#fff;border-radius:14px;padding:56px;text-align:center;}
-  .contact .tag{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#CFE0CF;margin-bottom:18px;}
-  .contact h2{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:500;margin-bottom:18px;line-height:1.15;}
-  .contact h2 em{font-style:italic;color:#fff;}
-  .contact p{color:#E3EBE3;font-size:15px;max-width:520px;margin:0 auto 32px;}
-  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-  .contact .btn-primary{background:#fff;color:var(--moss);}
-  .contact .btn-ghost{border-color:rgba(255,255,255,0.4);color:#fff;}
-  .contact .btn-ghost:hover{border-color:#fff;}
-  footer{padding:36px 0;border-top:1px solid var(--line);}
-  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-  footer .fam{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);}
-  @media (max-width:760px){
-    .about-grid{grid-template-columns:1fr;}
-    .score-strip .wrap{grid-template-columns:repeat(2,1fr);}
-    .score-cell{border-bottom:1px solid var(--line);}
-    .result{grid-template-columns:1fr;gap:8px;}
-    .result-score{text-align:left;}
-    .fusion{grid-template-columns:1fr;padding:32px;}
-    .tl-item{grid-template-columns:1fr;gap:6px;}
-    .topnav{display:none;}
-    .contact{padding:36px 24px;}
-  }
+:root {
+  --paper: #FAFAF7;
+  --paper2: #F3F1EB;
+  --paper3: #ECEAE2;
+  --ink: #16181A;
+  --ink-soft: #4A5166;
+  --ink-muted: #9AA0B4;
+  --border: #E0DDD5;
+  --border-dark: #C8C4BA;
+  --blue: #1D4ED8;
+  --blue-light: #EEF2FF;
+  --blue-mid: #3B82F6;
+  --indigo: #4338CA;
+  --violet: #7C3AED;
+  --emerald: #059669;
+  --emerald-light: #ECFDF5;
+  --amber: #B45309;
+  --amber-light: #FFFBEB;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Fraunces', serif;
+  --sans: 'Inter', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: #DBEAFE; color: var(--blue); }
+
+/* CANVAS — light-mode 3D */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,250,247,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+}
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--emerald);
+  padding: 5px 12px;
+  border: 1px solid rgba(5,150,105,0.2);
+  border-radius: 100px;
+  background: var(--emerald-light);
+}
+.live-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--emerald);
+  animation: livepulse 2.2s infinite;
+}
+@keyframes livepulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.35); }
+  50% { box-shadow: 0 0 0 5px rgba(5,150,105,0); }
+}
+
+/* WRAP */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+
+/* HERO */
+.hero {
+  padding: 96px 0 80px;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--blue);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 74px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.hero h1 .name-first { color: var(--ink); display: block; }
+.hero h1 .name-last {
+  display: block;
+  color: transparent;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 60%, var(--indigo) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero-role {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.hero-role strong { color: var(--ink); }
+.hero-desc {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 580px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.hero-desc strong { color: var(--ink); font-weight: 600; }
+
+/* STATS ROW */
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
+}
+.hstat-val {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.hstat-val em {
+  font-style: normal;
+  font-size: 16px;
+  color: var(--blue-mid);
+}
+.hstat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+
+/* CTAS */
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 11px 20px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.18s;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover { background: #2d3039; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(22,24,26,0.18); }
+.btn-ghost {
+  border: 1px solid var(--border-dark);
+  color: var(--ink-soft);
+  background: var(--paper);
+}
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+/* PHOTO */
+.hero-photo-col { position: relative; display: flex; align-items: center; justify-content: center; }
+.photo-frame {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+.photo-ring-outer {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1px dashed var(--border-dark);
+  animation: spin-slow 18s linear infinite;
+}
+.photo-ring-outer::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--blue);
+}
+.photo-ring-inner {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.photo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--border), 0 20px 60px rgba(22,24,26,0.12);
+  filter: contrast(1.02) saturate(0.95);
+}
+.photo-glow {
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.photo-badge {
+  position: absolute;
+  bottom: 10px;
+  right: -10px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 16px rgba(22,24,26,0.1);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink);
+}
+.photo-badge .badge-val { font-size: 18px; font-weight: 700; color: var(--blue); line-height: 1; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
+  position: relative;
+  z-index: 1;
+}
+
+/* SECTIONS */
+section { padding: 88px 0; position: relative; z-index: 1; }
+.sec-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-eyebrow::before { content: '//'; color: var(--ink-muted); }
+h2.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 44px;
+  color: var(--ink);
+}
+
+/* SNAPSHOT */
+.snap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.snap-cell {
+  background: var(--paper);
+  padding: 18px 22px;
+  display: flex;
+  gap: 14px;
+  transition: background 0.15s;
+}
+.snap-cell:hover { background: var(--paper2); }
+.s-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  min-width: 96px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.s-val { font-size: 13px; color: var(--ink); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.tag-sm {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  background: var(--blue-light);
+  border: 1px solid rgba(29,78,216,0.15);
+  border-radius: 3px;
+  color: var(--blue);
+}
+
+/* PROJECTS */
+.proj-list { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.proj-item {
+  display: grid;
+  grid-template-columns: 56px 1fr 96px;
+  gap: 20px;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: background 0.15s;
+  background: var(--paper);
+}
+.proj-item:last-child { border-bottom: none; }
+.proj-item:hover { background: var(--paper2); }
+.p-rank {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+.p-rank strong { display: block; font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 3px; }
+.p-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.p-title a:hover { color: var(--blue); }
+.badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.b-live { background: var(--emerald-light); color: var(--emerald); border: 1px solid rgba(5,150,105,0.2); }
+.b-new { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(180,83,9,0.2); }
+.p-desc { font-size: 14px; color: var(--ink-soft); margin-bottom: 10px; line-height: 1.65; max-width: 580px; }
+.p-metric {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--blue);
+  background: var(--blue-light);
+  border: 1px solid rgba(29,78,216,0.12);
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.p-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.p-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  background: var(--paper3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ink-soft);
+}
+.p-links { display: flex; gap: 14px; flex-wrap: wrap; }
+.p-links a { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); transition: color 0.15s; }
+.p-links a:hover { color: var(--blue); }
+.p-score { text-align: right; }
+.s-num { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--blue); line-height: 1; }
+.s-lbl { font-family: var(--mono); font-size: 9px; color: var(--ink-muted); letter-spacing: 0.05em; }
+
+/* WORKFLOW */
+.wf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.wf-step {
+  background: var(--paper);
+  padding: 26px;
+  transition: background 0.15s;
+}
+.wf-step:hover { background: var(--paper2); }
+.wf-num { font-family: var(--mono); font-size: 10px; color: var(--blue); letter-spacing: 0.08em; margin-bottom: 10px; }
+.wf-title { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
+.wf-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
+
+/* SKILLS */
+.sk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sk-group {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: border-color 0.2s;
+}
+.sk-group:hover { border-color: var(--border-dark); }
+.sk-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  margin-bottom: 13px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.sk-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  background: var(--paper2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ink-soft);
+  transition: all 0.15s;
+  cursor: default;
+}
+.chip:hover { background: var(--blue-light); border-color: rgba(29,78,216,0.2); color: var(--blue); }
+
+/* EXPERIMENTS */
+.exp-box {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.exp-top {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--paper2);
+}
+.exp-tit { font-size: 17px; font-weight: 600; margin-bottom: 7px; }
+.exp-sub { font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
+.em-grid { display: flex; flex-direction: column; gap: 7px; }
+.em-row { display: flex; justify-content: space-between; font-size: 13px; }
+.em-lbl { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
+.em-val { font-family: var(--mono); font-size: 11px; color: var(--ink); }
+table.etable { width: 100%; border-collapse: collapse; }
+.etable th {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.07em;
+  padding: 11px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  background: var(--paper2);
+}
+.etable td {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 9px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+.etable tr:last-child td { border-bottom: none; }
+.etable tr.best td {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-weight: 500;
+}
+
+/* ARCH */
+.arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.arch-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.arch-card:hover { border-color: var(--border-dark); }
+.arch-title { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+.arch-flow { display: flex; flex-direction: column; }
+.arch-node {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: var(--paper2);
+  border: 1px solid var(--border);
+  padding: 7px 13px;
+  border-radius: 5px;
+  text-align: center;
+}
+.arch-node.hl {
+  background: var(--blue-light);
+  border-color: rgba(29,78,216,0.2);
+  color: var(--blue);
+  font-weight: 500;
+}
+.arch-arr { text-align: center; color: var(--ink-muted); font-size: 13px; padding: 2px; }
+
+/* RESEARCH */
+.research-box {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 18px;
+  padding: 52px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.research-box::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(99,130,220,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.r-eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; margin-bottom: 14px; }
+.research-box h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; line-height: 1.3; margin-bottom: 16px; }
+.research-box p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.75; }
+.r-table { display: flex; flex-direction: column; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+.r-row { display: flex; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+.r-row:last-child { border-bottom: none; }
+.r-row.best { background: rgba(99,130,220,0.15); }
+.r-row span { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.4); }
+.r-row strong { font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.85); }
+
+/* TIMELINE */
+.timeline { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 26px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--paper);
+  transition: background 0.15s;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item:hover { background: var(--paper2); }
+.tl-date { font-family: var(--mono); font-size: 11px; color: var(--blue); padding-top: 3px; }
+.tl-role { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+.tl-org { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-bottom: 9px; }
+.tl-desc { font-size: 14px; color: var(--ink-soft); max-width: 580px; line-height: 1.65; }
+
+/* CONTACT */
+.contact-box {
+  background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 50%, #EEF2FF 100%);
+  border: 1px solid rgba(99,130,220,0.2);
+  border-radius: 20px;
+  padding: 60px;
+  text-align: center;
+}
+.contact-box h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 42px); font-weight: 500; margin-bottom: 14px; letter-spacing: -0.01em; }
+.contact-box p { color: var(--ink-soft); font-size: 15px; max-width: 500px; margin: 0 auto 32px; line-height: 1.7; }
+
+/* FOOTER */
+footer { padding: 32px 0; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.foot-txt { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .photo-frame { width: 220px; height: 220px; }
+  .hero-photo-col { order: -1; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .snap-grid { grid-template-columns: 1fr; }
+  .proj-item { grid-template-columns: 1fr; gap: 8px; }
+  .p-score { text-align: left; }
+  .wf-grid { grid-template-columns: 1fr; }
+  .sk-grid { grid-template-columns: 1fr 1fr; }
+  .arch-grid { grid-template-columns: 1fr; }
+  .research-box { grid-template-columns: 1fr; padding: 32px; }
+  .tl-item { grid-template-columns: 1fr; gap: 6px; }
+  .exp-top { grid-template-columns: 1fr; }
+  .wrap { padding: 0 20px; }
+  .contact-box { padding: 36px 24px; }
+  section { padding: 64px 0; }
+}
+@media (max-width: 480px) {
+  .sk-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; display: grid; }
+}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div class="wrap">
-    <div class="name">ROHITH&nbsp;KUMAR&nbsp;REDDIPOGULA</div>
-    <nav class="topnav">
-      <a href="#work">Work</a>
-      <a href="#research">Research</a>
-      <a href="#background">Background</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="status"><span class="dot"></span>OPEN TO WORK &mdash; GERMANY</div>
-  </div>
-</div>
-<header class="hero">
-  <div class="wrap">
-    <div class="query-line">
-      <span class="prompt-char">&gt;</span>
-      <span class="query-text">retrieve candidate WHERE role = "AI/NLP Engineer" AND location = "Germany"</span>
-      <span class="cursor"></span>
-    </div>
-    <h1 class="headline">I build systems that<br>find the <em>right answer</em><br>among millions.</h1>
-    <p class="sub">MSc Data Science, University of Europe for Applied Sciences, Potsdam. My thesis discovered the optimal fusion weight for hybrid retrieval &mdash; <b>alpha = 0.70</b>, not the commonly assumed 50/50 split &mdash; validated against 8.84M passages. Since then I have shipped ten production AI systems, alone, end to end.</p>
-    <div class="hero-meta">
-      <span class="pill live">7 systems live right now</span>
-      <span class="pill">Job Seeker Visa</span>
-      <span class="pill">EU Blue Card eligible</span>
-      <span class="pill">Available immediately</span>
-    </div>
-    <div class="hero-links">
-      <a class="btn btn-primary" href="#work">View live systems &rarr;</a>
-      <a class="btn btn-ghost" href="mailto:rohithkumar336699@gmail.com">rohithkumar336699@gmail.com</a>
-    </div>
-  </div>
-</header>
-<div class="score-strip">
-  <div class="wrap">
-    <div class="score-cell">
-      <div class="score-label">Recall@10</div>
-      <div class="score-value">93<small>%</small></div>
-      <div class="score-note">on 8.84M MS MARCO passages</div>
-    </div>
-    <div class="score-cell">
-      <div class="score-label">Significance</div>
-      <div class="score-value">p<small>=</small>0.002</div>
-      <div class="score-note">paired t-test, alpha=0.70</div>
-    </div>
-    <div class="score-cell">
-      <div class="score-label">Fine-tuning</div>
-      <div class="score-value">0.089<small>%</small></div>
-      <div class="score-note">params trained, loss 2.47&rarr;0.89</div>
-    </div>
-    <div class="score-cell">
-      <div class="score-label">Faithfulness</div>
-      <div class="score-value">0.909</div>
-      <div class="score-note">RAGAS, Gemini-as-judge</div>
-    </div>
-  </div>
-</div>
-<section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="results-meta">// ABOUT</div>
-      <p><b>I research how retrieval actually works, then ship it.</b> Most hybrid RAG tutorials assume sparse and dense retrieval should be weighted 50/50. My thesis tested that assumption directly &mdash; eleven tracked experiments later, the real optimum was alpha=0.70, validated with a paired t-test (p=0.002). That single number improved Recall@10 by 11.4% over the naive baseline.</p>
-      <p>After graduating I kept building: fine-tuning LLMs with QLoRA on a free Colab GPU, orchestrating four-agent LangGraph pipelines, deploying to AWS EC2 with systemd, running Kubernetes with zero-downtime rollouts, tracking every experiment publicly on MLflow, and shipping a full multi-tenant SaaS product from scratch in 7 days.</p>
-      <p>I am now looking for an <b>ML Engineer, NLP Engineer, or AI Engineer</b> role in Germany. Job Seeker Visa holder, EU Blue Card eligible, available immediately.</p>
-    </div>
-    <div class="stack-col">
-      <div class="stack-group">
-        <div class="stack-title">Core ML &amp; NLP</div>
-        <div class="stack-tags">
-          <span class="tag-chip">Python</span><span class="tag-chip">PyTorch</span><span class="tag-chip">HuggingFace</span><span class="tag-chip">RAG</span><span class="tag-chip">FAISS</span><span class="tag-chip">BM25</span><span class="tag-chip">E5-base-v2</span>
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-title">LLM stack</div>
-        <div class="stack-tags">
-          <span class="tag-chip">LangChain</span><span class="tag-chip">LangGraph</span><span class="tag-chip">QLoRA</span><span class="tag-chip">RAGAS</span><span class="tag-chip">Gemini</span><span class="tag-chip">Groq</span><span class="tag-chip">Unsloth</span>
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-title">Infrastructure</div>
-        <div class="stack-tags">
-          <span class="tag-chip">Docker</span><span class="tag-chip">Kubernetes</span><span class="tag-chip">AWS EC2</span><span class="tag-chip">FastAPI</span><span class="tag-chip">PostgreSQL</span><span class="tag-chip">Redis</span>
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-title">Frontend &amp; MLOps</div>
-        <div class="stack-tags">
-          <span class="tag-chip">React</span><span class="tag-chip">MLflow</span><span class="tag-chip">DagsHub</span><span class="tag-chip">HF Spaces</span><span class="tag-chip">Git</span><span class="tag-chip">Railway</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Live systems</h2>
-      <div class="tag">10 results, sorted by relevance</div>
-    </div>
-    <div class="results-meta">// query: "production-grade AI systems built solo" &mdash; 0.04s</div>
-    <div class="result">
-      <div class="result-rank"><span class="num">01</span>thesis</div>
-      <div>
-        <div class="result-title"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Hybrid RAG System</a><span class="badge-tiny">live</span></div>
-        <div class="result-desc">BM25 sparse search fused with Microsoft E5 dense embeddings across 8.84M MS MARCO passages. The fusion weight (alpha=0.70) was discovered through eleven tracked experiments, not assumed.</div>
-        <div class="result-metric">93% Recall@10 &middot; +11.4% vs baseline &middot; MRR=1.0</div>
-        <div class="result-stack"><span class="tag-chip">FAISS</span><span class="tag-chip">BM25</span><span class="tag-chip">E5</span><span class="tag-chip">FastAPI</span><span class="tag-chip">Docker</span></div>
-        <div class="result-links">
-          <a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Demo &rarr;</a>
-          <a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/Hybrid-RAG-API" target="_blank">API &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.98</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">02</span>saas</div>
-      <div>
-        <div class="result-title"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">AI Customer Support Platform</a><span class="badge-tiny">live</span><span class="badge-tiny badge-new">new</span></div>
-        <div class="result-desc">Multi-tenant SaaS where businesses upload their support docs and get an AI chatbot embeddable on any website with one script tag. Built solo in 7 days: FastAPI backend, PostgreSQL with pgvector, JWT auth, React dashboard, ChatGPT-like streaming responses, and a standalone JS widget.</div>
-        <div class="result-metric">Multi-tenant isolation &middot; SSE streaming &middot; 12 pytest tests &middot; Railway.app</div>
-        <div class="result-stack"><span class="tag-chip">FastAPI</span><span class="tag-chip">PostgreSQL</span><span class="tag-chip">pgvector</span><span class="tag-chip">React</span><span class="tag-chip">Docker</span><span class="tag-chip">Railway</span><span class="tag-chip">JWT</span></div>
-        <div class="result-links">
-          <a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">Demo &rarr;</a>
-          <a href="https://ai-support-platform-production-07ac.up.railway.app/docs" target="_blank">API &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/ai-support-platform" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.97</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">03</span>agent</div>
-      <div>
-        <div class="result-title"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Multi-Agent Research Pipeline</a><span class="badge-tiny">live</span></div>
-        <div class="result-desc">Four specialised LangGraph agents &mdash; Search (DuckDuckGo), Summarise (temp 0.3), Fact-Check (temp 0.1), Writer (temp 0.4) &mdash; each tuned for one job in the pipeline.</div>
-        <div class="result-metric">4 agents &middot; stateful LangGraph &middot; 3 distinct temperatures</div>
-        <div class="result-stack"><span class="tag-chip">LangGraph</span><span class="tag-chip">Gemini</span><span class="tag-chip">DuckDuckGo</span><span class="tag-chip">Docker</span></div>
-        <div class="result-links">
-          <a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Demo &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.95</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">04</span>agent</div>
-      <div>
-        <div class="result-title"><a href="https://huggingface.co/spaces/Rohith2026/ai-agent-react" target="_blank">ReAct AI Agent</a><span class="badge-tiny">live</span></div>
-        <div class="result-desc">A LangGraph ReAct agent holding three tools &mdash; web search, calculator, RAG retrieval &mdash; and reasoning about which one a given question actually needs.</div>
-        <div class="result-metric">3 tools &middot; autonomous tool selection</div>
-        <div class="result-stack"><span class="tag-chip">LangGraph</span><span class="tag-chip">Gemini</span><span class="tag-chip">Streamlit</span></div>
-        <div class="result-links">
-          <a href="https://huggingface.co/spaces/Rohith2026/ai-agent-react" target="_blank">Demo &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.93</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">05</span>tuning</div>
-      <div>
-        <div class="result-title"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">QLoRA Fine-Tuning &mdash; TinyLlama 1.1B</a><span class="badge-tiny">live</span></div>
-        <div class="result-desc">4-bit quantisation with LoRA adapters on a free Colab T4 GPU. Trained on NLP domain knowledge, published openly on HuggingFace Hub.</div>
-        <div class="result-metric">0.089% of params trained &middot; loss 2.47 &rarr; 0.89</div>
-        <div class="result-stack"><span class="tag-chip">QLoRA</span><span class="tag-chip">Unsloth</span><span class="tag-chip">TinyLlama</span></div>
-        <div class="result-links">
-          <a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">Model &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.91</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">06</span>eval</div>
-      <div>
-        <div class="result-title"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">LLM Evaluation Dashboard</a><span class="badge-tiny">live</span></div>
-        <div class="result-desc">RAGAS metrics with Gemini-as-judge across ten NLP test questions, rendered on a live radar chart.</div>
-        <div class="result-metric">Faithfulness 0.909 &middot; overall RAGAS 0.877</div>
-        <div class="result-stack"><span class="tag-chip">RAGAS</span><span class="tag-chip">Gemini</span><span class="tag-chip">Plotly</span><span class="tag-chip">Streamlit</span></div>
-        <div class="result-links">
-          <a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">Dashboard &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/llm-evaluation-project" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.89</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">07</span>infra</div>
-      <div>
-        <div class="result-title"><a href="https://github.com/RohithkumarReddipogula" target="_blank">AWS EC2 Deployment</a></div>
-        <div class="result-desc">FastAPI RAG inference API on a t3.micro instance, Frankfurt region, with systemd auto-restart on crash or reboot and SSH key auth.</div>
-        <div class="result-metric">eu-central-1 &middot; 3 REST endpoints &middot; OpenAPI spec</div>
-        <div class="result-stack"><span class="tag-chip">AWS EC2</span><span class="tag-chip">Ubuntu</span><span class="tag-chip">systemd</span><span class="tag-chip">FastAPI</span></div>
-        <div class="result-links">
-          <a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/Hybrid-RAG-API" target="_blank">Live API &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.86</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">08</span>infra</div>
-      <div>
-        <div class="result-title"><a href="https://github.com/RohithkumarReddipogula" target="_blank">Kubernetes Orchestration</a></div>
-        <div class="result-desc">The same RAG API running with two replicas under a RollingUpdate strategy &mdash; liveness and readiness probes, resource limits, zero-downtime deploys.</div>
-        <div class="result-metric">2 replicas &middot; RollingUpdate &middot; health probes</div>
-        <div class="result-stack"><span class="tag-chip">Kubernetes</span><span class="tag-chip">Docker</span><span class="tag-chip">kubectl</span></div>
-        <div class="result-links"><a href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub &rarr;</a></div>
-      </div>
-      <div class="result-score"><div class="relevance">0.83</div><div class="relevance-label">relevance</div></div>
-    </div>
-    <div class="result">
-      <div class="result-rank"><span class="num">09</span>mlops</div>
-      <div>
-        <div class="result-title"><a href="https://dagshub.com" target="_blank">MLflow Experiment Tracking</a></div>
-        <div class="result-desc">Three tracked experiment families &mdash; the RAG alpha search (11 runs), the QLoRA loss curve (16 steps), and the RAGAS evaluation sweep &mdash; all on a public dashboard.</div>
-        <div class="result-metric">11 alpha runs &middot; public DagsHub dashboard</div>
-        <div class="result-stack"><span class="tag-chip">MLflow</span><span class="tag-chip">DagsHub</span><span class="tag-chip">Python</span></div>
-        <div class="result-links">
-          <a href="https://dagshub.com" target="_blank">Dashboard &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="result-score"><div class="relevance">0.81</div><div class="relevance-label">relevance</div></div>
-    </div>
 
-    <div class="result">
-      <div class="result-rank"><span class="num">10</span>map</div>
+<!-- 3D CANVAS — light mode particles -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">ROHITH KUMAR REDDIPOGULA</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#workflow">Engineering</a>
+    <a href="#experiments">Experiments</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-badge"><span class="live-dot"></span>Open to work · Germany</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:80px;">
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <div class="result-title"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">BauW&auml;chter &mdash; Germany Construction Radar</a><span class="badge-tiny">live</span><span class="badge-tiny badge-new">new</span></div>
-        <div class="result-desc">A live map of every roadwork and construction disruption across Germany. 3,197 active sites tracked in real time from the official German government Autobahn API. Click any marker to get an AI-generated plain English summary of what is happening, how it affects drivers, and when it ends. Loads in under 5 seconds via parallel async fetching.</div>
-        <div class="result-metric">3,197 live roadworks &middot; parallel async fetch &middot; AI summaries &middot; Vercel + Railway</div>
-        <div class="result-stack"><span class="tag-chip">FastAPI</span><span class="tag-chip">React</span><span class="tag-chip">Leaflet</span><span class="tag-chip">Groq</span><span class="tag-chip">Railway</span><span class="tag-chip">Vercel</span><span class="tag-chip">OpenStreetMap</span></div>
-        <div class="result-links">
-          <a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">Live Map &rarr;</a>
-          <a href="https://bauwatcher-production.up.railway.app/docs" target="_blank">API &rarr;</a>
-          <a href="https://github.com/RohithkumarReddipogula/bauwatcher" target="_blank">GitHub &rarr;</a>
+        <div class="hero-eyebrow">JUNIOR MACHINE LEARNING ENGINEER · BERLIN, GERMANY</div>
+        <h1>
+          <span class="name-first">Rohith Kumar</span>
+          <span class="name-last">Reddipogula</span>
+        </h1>
+        <p class="hero-role"><strong>NLP · LLMs · RAG · Python · ML Systems · MLOps</strong></p>
+        <p class="hero-desc">
+          I build, evaluate and deploy practical ML systems — from data preparation and experimentation to APIs, cloud deployment and monitoring.
+          <br><br>
+          <strong>MSc Data Science, Potsdam (2026).</strong> My thesis found the optimal hybrid retrieval fusion weight at alpha=0.70, validated against 8.84M passages (p=0.002). Ten ML/AI projects deployed independently.
+        </p>
+        <div class="hero-stats">
+          <div>
+            <div class="hstat-val">93<em>%</em></div>
+            <div class="hstat-label">Recall@10</div>
+          </div>
+          <div>
+            <div class="hstat-val">8.84<em>M</em></div>
+            <div class="hstat-label">passages evaluated</div>
+          </div>
+          <div>
+            <div class="hstat-val">0.909</div>
+            <div class="hstat-label">RAGAS Faithfulness</div>
+          </div>
+          <div>
+            <div class="hstat-val">12</div>
+            <div class="hstat-label">regression tests</div>
+          </div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#projects">View Projects →</a>
+          <a class="btn btn-ghost" href="mailto:rohithkumar336699@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
         </div>
       </div>
-      <div class="result-score"><div class="relevance">0.96</div><div class="relevance-label">relevance</div></div>
-    </div>
 
+      <div class="hero-photo-col">
+        <div class="photo-frame">
+          <div class="photo-glow"></div>
+          <div class="photo-ring-outer"></div>
+          <div class="photo-ring-inner"></div>
+          <img
+            class="photo-img"
+            src="https://github.com/RohithkumarReddipogula.png"
+            alt="Rohith Kumar Reddipogula"
+            onerror="this.style.display='none'"
+          />
+          <div class="photo-badge">
+            <div class="badge-val">93%</div>
+            Recall@10
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="research">
+<div class="divider"></div>
+
+<!-- SNAPSHOT -->
+<section id="snapshot" style="padding:72px 0;">
   <div class="wrap">
-    <div class="section-head">
-      <h2>The fusion weight</h2>
-      <div class="tag">why alpha=0.70 matters</div>
+    <div class="sec-eyebrow">RECRUITER SNAPSHOT</div>
+    <h2 class="sec-title">30-second summary</h2>
+    <div class="snap-grid">
+      <div class="snap-cell"><div class="s-label">TARGET ROLE</div><div class="s-val">Junior Machine Learning Engineer</div></div>
+      <div class="snap-cell"><div class="s-label">LOCATION</div><div class="s-val">Berlin, Germany · Open to relocate across Germany</div></div>
+      <div class="snap-cell"><div class="s-label">EDUCATION</div><div class="s-val">MSc Data Science, Potsdam (2026) · B.Tech CS, GITAM (2023)</div></div>
+      <div class="snap-cell"><div class="s-label">WORK AUTH</div><div class="s-val">Job Seeker Visa · EU Blue Card eligible · No sponsorship needed</div></div>
+      <div class="snap-cell"><div class="s-label">FOCUS</div><div class="s-val"><div class="tag-row"><span class="tag-sm">ML</span><span class="tag-sm">NLP</span><span class="tag-sm">LLMs</span><span class="tag-sm">RAG</span><span class="tag-sm">MLOps</span></div></div></div>
+      <div class="snap-cell"><div class="s-label">LANGUAGES</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Python</span><span class="tag-sm">SQL</span></div></div></div>
+      <div class="snap-cell"><div class="s-label">DEPLOYMENT</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Docker</span><span class="tag-sm">AWS EC2</span><span class="tag-sm">Kubernetes</span></div></div></div>
+      <div class="snap-cell"><div class="s-label">TRACKING</div><div class="s-val"><div class="tag-row"><span class="tag-sm">MLflow</span><span class="tag-sm">DagsHub</span><span class="tag-sm">RAGAS</span></div></div></div>
     </div>
-    <div class="fusion">
-      <div class="fusion-left">
-        <div class="tag">MSc thesis finding</div>
-        <h3>Sparse and dense retrieval are not equal partners &mdash; and assuming they are costs you accuracy.</h3>
-        <p>Most hybrid RAG implementations split sparse (BM25) and dense (embedding) retrieval 50/50 by default. I ran eleven systematic experiments across the fusion weight and found the true optimum sits at <b>alpha=0.70</b> in favour of dense retrieval &mdash; confirmed with a paired t-test, <b>p=0.002</b>. That one calibration choice is worth +11.4% Recall@10 over the naive split, on a corpus of 8.84M passages.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding:72px 0; background: var(--paper2);">
+  <div class="wrap">
+    <div class="sec-eyebrow">PROJECTS</div>
+    <h2 class="sec-title">10 deployed ML/AI projects</h2>
+    <div class="proj-list">
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>01</strong>thesis</div>
+        <div>
+          <div class="p-title"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Hybrid RAG System</a><span class="badge b-live">LIVE</span></div>
+          <div class="p-desc">BM25 sparse search fused with Microsoft E5-base-v2 dense embeddings across 8.84M MS MARCO passages. The fusion weight (alpha=0.70) was discovered through 11 tracked MLflow experiments and validated with a paired t-test — not assumed.</div>
+          <div class="p-metric">93% Recall@10 · +11.4% vs baseline · MRR=1.0 · 710ms latency · p=0.002</div>
+          <div class="p-stack"><span class="p-tag">FAISS</span><span class="p-tag">BM25</span><span class="p-tag">E5-base-v2</span><span class="p-tag">FastAPI</span><span class="p-tag">Docker</span><span class="p-tag">AWS EC2</span><span class="p-tag">MLflow</span></div>
+          <div class="p-links"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub →</a><a href="https://dagshub.com" target="_blank">MLflow →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.98</div><div class="s-lbl">relevance</div></div>
       </div>
-      <div class="fusion-eq">
-        <div class="line"><span>Corpus size</span><b>8.84M passages</b></div>
-        <div class="line"><span>Dense model</span><b>Microsoft E5-base-v2</b></div>
-        <div class="line"><span>Sparse method</span><b>BM25</b></div>
-        <div class="line"><span>Experiments run</span><b>11 tracked (MLflow)</b></div>
-        <div class="line"><span>Statistical test</span><b>paired t-test</b></div>
-        <div class="line highlight"><span>Optimal alpha</span><b>0.70 (p=0.002)</b></div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>02</strong>saas</div>
+        <div>
+          <div class="p-title"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">AI Customer Support Platform</a><span class="badge b-live">LIVE</span><span class="badge b-new">NEW</span></div>
+          <div class="p-desc">Multi-tenant SaaS built solo in 7 days. Document ingestion pipeline, pgvector semantic search, JWT auth, React dashboard, ChatGPT-like SSE streaming, embeddable JS widget. 12 pytest regression tests. Prometheus /metrics and /health endpoints.</div>
+          <div class="p-metric">12 pytest tests · Prometheus monitoring · Docker · GitHub Actions CI/CD</div>
+          <div class="p-stack"><span class="p-tag">FastAPI</span><span class="p-tag">PostgreSQL</span><span class="p-tag">pgvector</span><span class="p-tag">React</span><span class="p-tag">Docker</span><span class="p-tag">JWT</span><span class="p-tag">pytest</span></div>
+          <div class="p-links"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">Demo →</a><a href="https://ai-support-platform-production-07ac.up.railway.app/docs" target="_blank">API →</a><a href="https://github.com/RohithkumarReddipogula/ai-support-platform" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.97</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>03</strong>map</div>
+        <div>
+          <div class="p-title"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">BauWatcher — Germany Construction Radar</a><span class="badge b-live">LIVE</span><span class="badge b-new">NEW</span></div>
+          <div class="p-desc">Live map of all roadworks across Germany. Parallel async pipeline fetches 3,197 live sites from the official German government Autobahn API in under 5 seconds. Groq LLM generates plain-English impact summaries per site automatically.</div>
+          <div class="p-metric">3,197 live roadworks · 5 second load · LLM summaries · Railway + Vercel</div>
+          <div class="p-stack"><span class="p-tag">FastAPI</span><span class="p-tag">React</span><span class="p-tag">Leaflet</span><span class="p-tag">Groq LLM</span><span class="p-tag">asyncio</span><span class="p-tag">Vercel</span></div>
+          <div class="p-links"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">Live Map →</a><a href="https://github.com/RohithkumarReddipogula/bauwatcher" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.96</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>04</strong>tuning</div>
+        <div>
+          <div class="p-title"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">QLoRA Fine-Tuning — TinyLlama 1.1B</a><span class="badge b-live">LIVE</span></div>
+          <div class="p-desc">4-bit quantisation with PEFT LoRA adapters on a free Colab T4 GPU. Trained 0.089% of parameters. Evaluated with RAGAS using Gemini-as-judge. Published on HuggingFace Hub.</div>
+          <div class="p-metric">Loss 2.47 → 0.89 · 64% reduction · RAGAS Faithfulness 0.909</div>
+          <div class="p-stack"><span class="p-tag">PyTorch</span><span class="p-tag">QLoRA</span><span class="p-tag">PEFT</span><span class="p-tag">HuggingFace</span><span class="p-tag">RAGAS</span></div>
+          <div class="p-links"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">Model →</a><a href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.91</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>05</strong>agent</div>
+        <div>
+          <div class="p-title"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Multi-Agent Research Pipeline</a><span class="badge b-live">LIVE</span></div>
+          <div class="p-desc">Four specialised LangGraph agents — Search (DuckDuckGo), Summarise (temp 0.3), Fact-Check (temp 0.1), Writer (temp 0.4) — each tuned for one job in the pipeline with stateful graph orchestration.</div>
+          <div class="p-metric">4 agents · stateful LangGraph · 3 distinct temperatures</div>
+          <div class="p-stack"><span class="p-tag">LangGraph</span><span class="p-tag">Gemini</span><span class="p-tag">DuckDuckGo</span><span class="p-tag">Docker</span></div>
+          <div class="p-links"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Demo →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.95</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>06</strong>eval</div>
+        <div>
+          <div class="p-title"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">LLM Evaluation Dashboard</a><span class="badge b-live">LIVE</span></div>
+          <div class="p-desc">End-to-end RAGAS evaluation pipeline with Gemini-as-judge tracking Faithfulness, Answer Relevance, and Context Precision across ten NLP test questions. Live radar chart on HuggingFace Spaces.</div>
+          <div class="p-metric">Faithfulness 0.909 · Answer Relevance 0.882 · overall RAGAS 0.877</div>
+          <div class="p-stack"><span class="p-tag">RAGAS</span><span class="p-tag">Gemini</span><span class="p-tag">Plotly</span><span class="p-tag">Streamlit</span></div>
+          <div class="p-links"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">Dashboard →</a><a href="https://github.com/RohithkumarReddipogula/llm-evaluation-project" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.89</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORKFLOW -->
+<section id="workflow" style="padding:72px 0;">
+  <div class="wrap">
+    <div class="sec-eyebrow">HOW I ENGINEER ML SYSTEMS</div>
+    <h2 class="sec-title">From problem to production</h2>
+    <div class="wf-grid">
+      <div class="wf-step"><div class="wf-num">01 — UNDERSTAND</div><div class="wf-title">Define the problem</div><div class="wf-desc">Translate the product or business problem into a concrete ML problem with measurable success criteria.</div></div>
+      <div class="wf-step"><div class="wf-num">02 — EVALUATE</div><div class="wf-title">Choose metrics first</div><div class="wf-desc">Define Recall@10, MRR, RAGAS Faithfulness before optimising — metrics chosen for the problem, not retrofitted.</div></div>
+      <div class="wf-step"><div class="wf-num">03 — BASELINE</div><div class="wf-title">Establish a baseline</div><div class="wf-desc">Understand whether the new approach improves anything. The naive alpha=0.50 was the baseline alpha=0.70 beat by +11.4%.</div></div>
+      <div class="wf-step"><div class="wf-num">04 — DATA</div><div class="wf-title">Prepare and validate</div><div class="wf-desc">Check data quality, distribution, edge cases, and leakage before training. Real-world document formats handled properly.</div></div>
+      <div class="wf-step"><div class="wf-num">05 — EXPERIMENT</div><div class="wf-title">Track systematically</div><div class="wf-desc">Every experiment tracked in MLflow: hyperparameters, metrics, artifacts. 11 runs to find alpha=0.70, paired t-test validated.</div></div>
+      <div class="wf-step"><div class="wf-num">06 — TRADE-OFFS</div><div class="wf-title">Analyze trade-offs</div><div class="wf-desc">Accuracy vs latency. The 710ms of hybrid retrieval must be justified by the +11.4% Recall@10 gain.</div></div>
+      <div class="wf-step"><div class="wf-num">07 — DEPLOY</div><div class="wf-title">Package reproducibly</div><div class="wf-desc">Docker, Kubernetes, systemd. Services that restart on crash, roll out with zero downtime, behave identically in dev and prod.</div></div>
+      <div class="wf-step"><div class="wf-num">08 — TEST & MONITOR</div><div class="wf-title">Test and monitor</div><div class="wf-desc">12 pytest regression tests. Prometheus /metrics and /health. GitHub Actions CI/CD that fails the build on regression.</div></div>
+      <div class="wf-step"><div class="wf-num">09 — ITERATE</div><div class="wf-title">Improve from evidence</div><div class="wf-desc">Use observed failures and evaluation results to drive the next experiment. Evidence from production, not intuition.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" style="padding:72px 0; background: var(--paper2);">
+  <div class="wrap">
+    <div class="sec-eyebrow">TECHNICAL SKILLS</div>
+    <h2 class="sec-title">By category</h2>
+    <div class="sk-grid">
+      <div class="sk-group"><div class="sk-title">MACHINE LEARNING</div><div class="sk-chips"><span class="chip">Python 3.11</span><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">Model evaluation</span><span class="chip">Experimentation</span><span class="chip">Error analysis</span></div></div>
+      <div class="sk-group"><div class="sk-title">NLP & LLM</div><div class="sk-chips"><span class="chip">RAG</span><span class="chip">Hybrid retrieval</span><span class="chip">BM25</span><span class="chip">Dense embeddings</span><span class="chip">E5-base-v2</span><span class="chip">FAISS</span><span class="chip">LLM APIs</span><span class="chip">QLoRA</span><span class="chip">PEFT</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAGAS</span><span class="chip">Prompt engineering</span></div></div>
+      <div class="sk-group"><div class="sk-title">DATA</div><div class="sk-chips"><span class="chip">SQL</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">Document ingestion</span><span class="chip">Data validation</span></div></div>
+      <div class="sk-group"><div class="sk-title">BACKEND ENGINEERING</div><div class="sk-chips"><span class="chip">FastAPI</span><span class="chip">asyncio</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">JWT auth</span><span class="chip">SSE streaming</span><span class="chip">React</span></div></div>
+      <div class="sk-group"><div class="sk-title">MLOPS & CLOUD</div><div class="sk-chips"><span class="chip">MLflow</span><span class="chip">DagsHub</span><span class="chip">AWS EC2</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">Prometheus</span><span class="chip">CI/CD</span><span class="chip">systemd</span></div></div>
+      <div class="sk-group"><div class="sk-title">TOOLS & PLATFORMS</div><div class="sk-chips"><span class="chip">Git</span><span class="chip">Linux/CLI</span><span class="chip">HuggingFace Spaces</span><span class="chip">Railway</span><span class="chip">Vercel</span><span class="chip">Gemini</span><span class="chip">Groq</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIMENTS -->
+<section id="experiments" style="padding:72px 0;">
+  <div class="wrap">
+    <div class="sec-eyebrow">EXPERIMENTS</div>
+    <h2 class="sec-title">Evidence-driven ML research</h2>
+    <div class="exp-box">
+      <div class="exp-top">
+        <div>
+          <div class="exp-tit">Hybrid Retrieval Fusion Weight Search</div>
+          <div class="exp-sub">11 systematic experiments to find the optimal BM25-to-dense weighting on 8.84M MS MARCO passages. The common assumption of alpha=0.50 was tested directly and found to be suboptimal.</div>
+        </div>
+        <div class="em-grid">
+          <div class="em-row"><span class="em-lbl">Dataset</span><span class="em-val">MS MARCO 8.84M passages</span></div>
+          <div class="em-row"><span class="em-lbl">Experiments</span><span class="em-val">11 runs (MLflow tracked)</span></div>
+          <div class="em-row"><span class="em-lbl">Variable</span><span class="em-val">Fusion weight alpha (0.0 to 1.0)</span></div>
+          <div class="em-row"><span class="em-lbl">Statistical test</span><span class="em-val">Paired t-test, p=0.002</span></div>
+          <div class="em-row"><span class="em-lbl">Result</span><span class="em-val">alpha=0.70 gives 93% Recall@10</span></div>
+        </div>
+      </div>
+      <table class="etable">
+        <thead><tr><th>Alpha</th><th>Recall@10</th><th>MRR</th><th>Latency</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>0.0 (BM25 only)</td><td>81.6%</td><td>0.82</td><td>~180ms</td><td>Sparse baseline</td></tr>
+          <tr><td>0.20</td><td>85.2%</td><td>0.88</td><td>~480ms</td><td></td></tr>
+          <tr><td>0.40</td><td>89.0%</td><td>0.94</td><td>~560ms</td><td></td></tr>
+          <tr><td>0.50 (naive 50/50)</td><td>90.1%</td><td>0.96</td><td>~620ms</td><td>Common assumption</td></tr>
+          <tr><td>0.60</td><td>91.5%</td><td>0.98</td><td>~660ms</td><td></td></tr>
+          <tr class="best"><td>0.70 — OPTIMAL</td><td>93.0%</td><td>1.0</td><td>710ms</td><td>Best configuration</td></tr>
+          <tr><td>0.80</td><td>92.1%</td><td>0.99</td><td>~720ms</td><td>Performance drops</td></tr>
+          <tr><td>1.0 (dense only)</td><td>88.7%</td><td>0.93</td><td>~740ms</td><td>Dense baseline</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ARCHITECTURE -->
+<section id="architecture" style="padding:72px 0; background: var(--paper2);">
+  <div class="wrap">
+    <div class="sec-eyebrow">SYSTEM ARCHITECTURE</div>
+    <h2 class="sec-title">From data to deployment</h2>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-title">Hybrid RAG System</div>
+        <div class="arch-flow">
+          <div class="arch-node">MS MARCO 8.84M passages</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Preprocessing + chunking</div><div class="arch-arr">↓</div>
+          <div class="arch-node">BM25 index + E5-base-v2 FAISS</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">Score fusion (alpha=0.70)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">FastAPI inference API</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Docker → AWS EC2 + HF Spaces</div><div class="arch-arr">↓</div>
+          <div class="arch-node">MLflow tracking on DagsHub</div>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-title">AI Customer Support Platform</div>
+        <div class="arch-flow">
+          <div class="arch-node">Document upload (PDF, TXT, DOCX)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Ingestion + chunking pipeline</div><div class="arch-arr">↓</div>
+          <div class="arch-node">PostgreSQL + pgvector embeddings</div><div class="arch-arr">↓</div>
+          <div class="arch-node">RAG retrieval + LLM response</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">SSE streaming → JS widget</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Docker Compose → Railway</div><div class="arch-arr">↓</div>
+          <div class="arch-node">12 pytest + Prometheus + CI/CD</div>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-title">QLoRA Fine-Tuning</div>
+        <div class="arch-flow">
+          <div class="arch-node">TinyLlama 1.1B base model</div><div class="arch-arr">↓</div>
+          <div class="arch-node">4-bit quantisation (bitsandbytes)</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">PEFT LoRA adapters (0.089% params)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Training on Colab T4 GPU</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Loss 2.47 → 0.89 (64% reduction)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">RAGAS evaluation (Faithfulness 0.909)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Published on HuggingFace Hub</div>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-title">BauWatcher</div>
+        <div class="arch-flow">
+          <div class="arch-node">German Autobahn API (100+ endpoints)</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">Parallel async fetch (asyncio)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">3,197 roadworks in 5 seconds</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Groq LLM impact summaries</div><div class="arch-arr">↓</div>
+          <div class="arch-node">FastAPI → Railway backend</div><div class="arch-arr">↓</div>
+          <div class="arch-node">React + Leaflet → Vercel frontend</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<section id="background">
+
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<section id="research" style="padding:72px 0;">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Background</h2>
-      <div class="tag">education &amp; experience</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2026 &mdash; Present</div>
+    <div class="sec-eyebrow">MSC THESIS FINDING</div>
+    <h2 class="sec-title">The fusion weight</h2>
+    <div class="research-box">
       <div>
-        <div class="tl-role">Independent AI Engineer</div>
-        <div class="tl-org">Berlin, Germany &mdash; Job Seeker Visa</div>
-        <div class="tl-desc">Built and deployed ten production AI systems covering RAG, LLM fine-tuning, multi-agent architectures, LLM evaluation, SaaS product development, AWS EC2, Kubernetes, and MLflow tracking &mdash; all public and documented on GitHub. Most recent: a full multi-tenant AI Customer Support SaaS platform built solo in 7 days and deployed to Railway.app.</div>
+        <div class="r-eyebrow">University of Europe for Applied Sciences · Potsdam · 2026</div>
+        <h3>Sparse and dense retrieval are not equal partners — assuming they are costs you accuracy.</h3>
+        <p style="margin-top:14px;">Most hybrid RAG implementations split BM25 and dense embedding retrieval 50/50 by default. I ran eleven systematic experiments and found the true optimum at alpha=0.70 — confirmed with a paired t-test (p=0.002). That calibration choice is worth +11.4% Recall@10 over the naive split, on 8.84M passages.</p>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">Mar 2024 &mdash; Mar 2026</div>
-      <div>
-        <div class="tl-role">MSc Data Science</div>
-        <div class="tl-org">University of Europe for Applied Sciences &mdash; Potsdam, Germany</div>
-        <div class="tl-desc">Thesis: hybrid RAG combining BM25 sparse retrieval with Microsoft E5-base-v2 dense embeddings. 93% Recall@10 on 8.84M MS MARCO passages. Optimal fusion weight alpha=0.70, validated with a paired t-test, p=0.002. Research informed by, and consistent with, published findings on hybrid fusion weighting in the retrieval-augmented generation literature.</div>
+      <div class="r-table">
+        <div class="r-row"><span>Corpus size</span><strong>8.84M passages</strong></div>
+        <div class="r-row"><span>Dense model</span><strong>Microsoft E5-base-v2</strong></div>
+        <div class="r-row"><span>Sparse method</span><strong>BM25</strong></div>
+        <div class="r-row"><span>Experiments</span><strong>11 tracked (MLflow)</strong></div>
+        <div class="r-row"><span>Statistical test</span><strong>Paired t-test</strong></div>
+        <div class="r-row"><span>MRR</span><strong>1.0</strong></div>
+        <div class="r-row"><span>Latency</span><strong>710ms</strong></div>
+        <div class="r-row best"><span>Optimal alpha</span><strong>0.70 (p=0.002)</strong></div>
       </div>
     </div>
   </div>
 </section>
-<section id="contact">
+
+<div class="divider"></div>
+
+<!-- BACKGROUND -->
+<section id="background" style="padding:72px 0; background: var(--paper2);">
   <div class="wrap">
-    <div class="contact">
-      <div class="tag">currently available &mdash; Germany</div>
-      <h2>Let's build something<br><em>worth retrieving.</em></h2>
-      <p>Actively seeking ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, EU Blue Card eligible. Ten deployed systems and a habit of shipping production ML infrastructure that actually works.</p>
-      <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:rohithkumar336699@gmail.com">Email me &rarr;</a>
+    <div class="sec-eyebrow">BACKGROUND</div>
+    <h2 class="sec-title">Education and experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2026 — Present</div>
+        <div>
+          <div class="tl-role">Independent ML Engineer</div>
+          <div class="tl-org">Berlin, Germany — Job Seeker Visa</div>
+          <div class="tl-desc">Built and deployed ten production AI/ML projects covering hybrid RAG retrieval, LLM fine-tuning with QLoRA, multi-agent LangGraph pipelines, LLM evaluation, multi-tenant SaaS development, AWS EC2, Kubernetes, and MLflow experiment tracking. All projects public on GitHub.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2024 — Mar 2026</div>
+        <div>
+          <div class="tl-role">MSc Data Science</div>
+          <div class="tl-org">University of Europe for Applied Sciences — Potsdam, Germany</div>
+          <div class="tl-desc">Thesis: hybrid RAG combining BM25 sparse retrieval with Microsoft E5-base-v2 dense embeddings. 11 MLflow experiments. 93% Recall@10 on 8.84M MS MARCO passages. Optimal fusion weight alpha=0.70, validated with a paired t-test, p=0.002. RAGAS: Faithfulness 0.909, overall 0.877.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2019 — Aug 2023</div>
+        <div>
+          <div class="tl-role">B.Tech Computer Science and Engineering — First Class</div>
+          <div class="tl-org">GITAM University (Deemed) — Visakhapatnam, Andhra Pradesh, India</div>
+          <div class="tl-desc">CGPA: 6.51. Key modules: Machine Learning, Artificial Intelligence, Data Structures, Database Management Systems, Web Application Development, Computer Networks, Operating Systems.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:72px 0;">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="sec-eyebrow" style="justify-content:center;">AVAILABLE NOW — OPEN TO WORK ACROSS GERMANY</div>
+      <h2>Let's build something worth measuring.</h2>
+      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, EU Blue Card eligible. Ten deployed projects and a systematic approach to building ML systems that actually work.</p>
+      <div class="ctas" style="justify-content:center;">
+        <a class="btn btn-primary" href="mailto:rohithkumar336699@gmail.com">Email me →</a>
         <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
         <a class="btn btn-ghost" href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub</a>
         <a class="btn btn-ghost" href="https://huggingface.co/Rohith2026" target="_blank">HuggingFace</a>
@@ -431,11 +1041,105 @@
     </div>
   </div>
 </section>
+
 <footer>
   <div class="wrap">
-    <div class="fam">Rohith Kumar Reddipogula &middot; MSc Data Science &middot; Germany 2026</div>
-    <div class="fam">+49 17665131866 &middot; rohithkumar336699@gmail.com</div>
+    <div class="foot-txt">Rohith Kumar Reddipogula · Junior ML Engineer · Germany 2026</div>
+    <div class="foot-txt">+49 17665131866 · rohithkumar336699@gmail.com</div>
   </div>
 </footer>
+
+<!-- THREE.JS — LIGHT MODE PARTICLES -->
+<script>
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 6;
+
+  const count = 1400;
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+
+  // Light-mode particles: deep indigo, slate blue, violet
+  const palettes = [
+    new THREE.Color(0x1D4ED8), // deep blue
+    new THREE.Color(0x4338CA), // indigo
+    new THREE.Color(0x7C3AED), // violet
+    new THREE.Color(0x0284C7), // sky
+    new THREE.Color(0x059669), // emerald (rare)
+  ];
+
+  for (let i = 0; i < count; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 22;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 22;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    const c = palettes[Math.floor(Math.random() * palettes.length)];
+    colors[i * 3]     = c.r;
+    colors[i * 3 + 1] = c.g;
+    colors[i * 3 + 2] = c.b;
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
+
+  const mat = new THREE.PointsMaterial({
+    size: 0.028,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.45,
+    sizeAttenuation: true,
+  });
+
+  const particles = new THREE.Points(geo, mat);
+  scene.add(particles);
+
+  // Soft connection lines
+  const lc = 60;
+  const lp = new Float32Array(lc * 6);
+  for (let i = 0; i < lc; i++) {
+    const ax = (Math.random() - 0.5) * 18;
+    const ay = (Math.random() - 0.5) * 18;
+    const az = (Math.random() - 0.5) * 6;
+    lp[i*6]   = ax; lp[i*6+1] = ay; lp[i*6+2] = az;
+    lp[i*6+3] = ax+(Math.random()-0.5)*3;
+    lp[i*6+4] = ay+(Math.random()-0.5)*3;
+    lp[i*6+5] = az;
+  }
+  const lg = new THREE.BufferGeometry();
+  lg.setAttribute('position', new THREE.BufferAttribute(lp, 3));
+  const lm = new THREE.LineBasicMaterial({ color: 0x4338CA, transparent: true, opacity: 0.055 });
+  scene.add(new THREE.LineSegments(lg, lm));
+
+  let mx = 0, my = 0, scrollY = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 0.25;
+    my = (e.clientY / window.innerHeight - 0.5) * 0.25;
+  });
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.00025;
+    particles.rotation.y = t * 0.25 + mx * 0.4;
+    particles.rotation.x = t * 0.08 + my * 0.25;
+    camera.position.y = -scrollY * 0.0006;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
 </body>
 </html>
