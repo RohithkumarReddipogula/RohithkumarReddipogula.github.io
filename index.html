@@ -671,7 +671,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
         <p class="hero-desc">
           I build, evaluate and deploy practical ML systems — from data preparation and experimentation to APIs, cloud deployment and monitoring.
           <br><br>
-          <strong>MSc Data Science, Potsdam (2026).</strong> My thesis found the optimal hybrid retrieval fusion weight at alpha=0.70, validated against 8.84M passages (p=0.002). Ten ML/AI projects deployed independently.
+          <strong>MSc Data Science, Potsdam (2026).</strong> My thesis found the optimal hybrid retrieval fusion weight at alpha=0.70, validated against 8.84M passages (p=0.002). Twelve ML/AI projects built independently, now including an open-source n8n node and an AI workflow on n8n Cloud.
         </p>
         <div class="hero-stats">
           <div>
@@ -746,7 +746,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 <section id="projects" style="padding:72px 0; background: var(--paper2);">
   <div class="wrap">
     <div class="sec-eyebrow">PROJECTS</div>
-    <h2 class="sec-title">10 deployed ML/AI projects</h2>
+    <h2 class="sec-title">12 ML/AI projects, including 2 new n8n automation projects</h2>
     <div class="proj-list">
 
       <div class="proj-item">
@@ -981,6 +981,28 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
           <div class="arch-node">React + Leaflet → Vercel frontend</div>
         </div>
       </div>
+      <div class="arch-card">
+        <div class="arch-title">n8n Community Node: Autobahn</div>
+        <div class="arch-flow">
+          <div class="arch-node">n8n workflow or AI Agent calls the node</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Several roads requested in one call</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Autobahn API (6 event types)</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">Clean, typed items (Simplify)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Filters: blocked only, skip future events</div><div class="arch-arr">↓</div>
+          <div class="arch-node">10 unit tests + n8n linter in GitHub Actions CI</div>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-title">AI Support Ticket Triage (n8n Cloud)</div>
+        <div class="arch-flow">
+          <div class="arch-node">Webhook receives support ticket</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Normalise fields</div><div class="arch-arr">↓</div>
+          <div class="arch-node hl">Gemini structured extraction (category, priority, sentiment)</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Switch routes: Slack, email, RAG API, queue</div><div class="arch-arr">↓</div>
+          <div class="arch-node">Retries on model overload, fallback reply</div><div class="arch-arr">↓</div>
+          <div class="arch-node">JSON reply to the caller</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1025,7 +1047,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
         <div>
           <div class="tl-role">Independent ML Engineer</div>
           <div class="tl-org">Berlin, Germany — Job Seeker Visa</div>
-          <div class="tl-desc">Built and deployed ten production AI/ML projects covering hybrid RAG retrieval, LLM fine-tuning with QLoRA, multi-agent LangGraph pipelines, LLM evaluation, multi-tenant SaaS development, AWS EC2, Kubernetes, and MLflow experiment tracking. All projects public on GitHub.</div>
+          <div class="tl-desc">Built twelve AI/ML projects covering hybrid RAG retrieval, LLM fine-tuning with QLoRA, multi-agent LangGraph pipelines, LLM evaluation, multi-tenant SaaS development, AWS EC2, Kubernetes, and MLflow experiment tracking. Latest work: an open-source n8n community node in TypeScript (10 unit tests, CI) and an AI support ticket triage workflow on n8n Cloud with Gemini structured extraction, routing, retries and fallbacks.</div>
         </div>
       </div>
       <div class="tl-item">
@@ -1056,7 +1078,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
     <div class="contact-box">
       <div class="sec-eyebrow" style="justify-content:center;">AVAILABLE NOW — OPEN TO WORK ACROSS GERMANY</div>
       <h2>Let's build something worth measuring.</h2>
-      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, no sponsorship needed. Ten deployed projects and a systematic approach to building ML systems that actually work.</p>
+      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, no sponsorship needed. Twelve projects, including new n8n and AI workflow automation work, and a systematic approach to building ML systems that actually work.</p>
       <div class="ctas" style="justify-content:center;">
         <a class="btn btn-primary" href="mailto:rohithkumar336699@gmail.com">Email me →</a>
         <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
