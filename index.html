@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rohith Kumar Reddipogula | Junior Machine Learning Engineer | NLP & LLMs | Berlin</title>
-<meta name="description" content="Junior Machine Learning Engineer in Germany. NLP, LLMs, RAG, Python, ML systems. MSc Data Science. Available immediately. EU Blue Card eligible.">
+<meta name="description" content="Junior Machine Learning Engineer in Germany. NLP, LLMs, RAG, Python, ML systems. MSc Data Science. Available immediately. No sponsorship needed.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -388,6 +388,7 @@ h2.sec-title {
 }
 .b-live { background: var(--emerald-light); color: var(--emerald); border: 1px solid rgba(5,150,105,0.2); }
 .b-new { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(180,83,9,0.2); }
+.b-oss { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(29,78,216,0.2); }
 .p-desc { font-size: 14px; color: var(--ink-soft); margin-bottom: 10px; line-height: 1.65; max-width: 580px; }
 .p-metric {
   font-family: var(--mono);
@@ -730,9 +731,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
       <div class="snap-cell"><div class="s-label">TARGET ROLE</div><div class="s-val">Junior Machine Learning Engineer</div></div>
       <div class="snap-cell"><div class="s-label">LOCATION</div><div class="s-val">Berlin, Germany · Open to relocate across Germany</div></div>
       <div class="snap-cell"><div class="s-label">EDUCATION</div><div class="s-val">MSc Data Science, Potsdam (2026) · B.Tech CS, GITAM (2023)</div></div>
-      <div class="snap-cell"><div class="s-label">WORK AUTH</div><div class="s-val">Job Seeker Visa · EU Blue Card eligible · No sponsorship needed</div></div>
+      <div class="snap-cell"><div class="s-label">WORK AUTH</div><div class="s-val">Job Seeker Visa · Active German work authorization · No sponsorship needed</div></div>
       <div class="snap-cell"><div class="s-label">FOCUS</div><div class="s-val"><div class="tag-row"><span class="tag-sm">ML</span><span class="tag-sm">NLP</span><span class="tag-sm">LLMs</span><span class="tag-sm">RAG</span><span class="tag-sm">MLOps</span></div></div></div>
-      <div class="snap-cell"><div class="s-label">LANGUAGES</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Python</span><span class="tag-sm">SQL</span></div></div></div>
+      <div class="snap-cell"><div class="s-label">LANGUAGES</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Python</span><span class="tag-sm">SQL</span><span class="tag-sm">TypeScript</span></div></div></div>
       <div class="snap-cell"><div class="s-label">DEPLOYMENT</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Docker</span><span class="tag-sm">AWS EC2</span><span class="tag-sm">Kubernetes</span></div></div></div>
       <div class="snap-cell"><div class="s-label">TRACKING</div><div class="s-val"><div class="tag-row"><span class="tag-sm">MLflow</span><span class="tag-sm">DagsHub</span><span class="tag-sm">RAGAS</span></div></div></div>
     </div>
@@ -785,7 +786,31 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
       </div>
 
       <div class="proj-item">
-        <div class="p-rank"><strong>04</strong>tuning</div>
+        <div class="p-rank"><strong>04</strong>n8n</div>
+        <div>
+          <div class="p-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank">n8n Community Node: Autobahn</a><span class="badge b-oss">OPEN SOURCE</span><span class="badge b-new">NEW</span></div>
+          <div class="p-desc">Custom n8n node in TypeScript that brings live German Autobahn data (roadworks, warnings, closures, EV charging, lorry parking, webcams) into any workflow. It queries many roads in one call and turns a messy API (booleans as strings, text arrays, a different key per event type) into clean, typed items. Works as a tool for the n8n AI Agent, and the compact output saves tokens.</div>
+          <div class="p-metric">612 live roadworks in one request · 10 unit tests · official n8n linter passing · CI on every push</div>
+          <div class="p-stack"><span class="p-tag">TypeScript</span><span class="p-tag">Node.js</span><span class="p-tag">n8n</span><span class="p-tag">REST API</span><span class="p-tag">AI agent tool</span><span class="p-tag">GitHub Actions</span></div>
+          <div class="p-links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn/blob/main/examples/autobahn-daily-briefing.json" target="_blank">Example workflow →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.95</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>05</strong>workflow</div>
+        <div>
+          <div class="p-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank">AI Support Ticket Triage (n8n + Gemini)</a><span class="badge b-new">NEW</span></div>
+          <div class="p-desc">Workflow running on n8n Cloud. A webhook receives a ticket, Gemini extracts category, priority, sentiment, a summary and a draft reply as structured fields, and a Switch node routes it to Slack, email, my own RAG API or a queue. The model classifies, plain logic routes. Retries handle model overload, and if the knowledge base is down the reply falls back to the AI draft.</div>
+          <div class="p-metric">Structured extraction · deterministic routing · lockout rated urgent, priority 5/5 · retries</div>
+          <div class="p-stack"><span class="p-tag">n8n</span><span class="p-tag">Gemini</span><span class="p-tag">Webhooks</span><span class="p-tag">Slack</span><span class="p-tag">Gmail</span><span class="p-tag">RAG API</span></div>
+          <div class="p-links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank">Screenshots →</a></div>
+        </div>
+        <div class="p-score"><div class="s-num">0.94</div><div class="s-lbl">relevance</div></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="p-rank"><strong>06</strong>tuning</div>
         <div>
           <div class="p-title"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">QLoRA Fine-Tuning — TinyLlama 1.1B</a><span class="badge b-live">LIVE</span></div>
           <div class="p-desc">4-bit quantisation with PEFT LoRA adapters on a free Colab T4 GPU. Trained 0.089% of parameters. Evaluated with RAGAS using Gemini-as-judge. Published on HuggingFace Hub.</div>
@@ -797,7 +822,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
       </div>
 
       <div class="proj-item">
-        <div class="p-rank"><strong>05</strong>agent</div>
+        <div class="p-rank"><strong>07</strong>agent</div>
         <div>
           <div class="p-title"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Multi-Agent Research Pipeline</a><span class="badge b-live">LIVE</span></div>
           <div class="p-desc">Four specialised LangGraph agents — Search (DuckDuckGo), Summarise (temp 0.3), Fact-Check (temp 0.1), Writer (temp 0.4) — each tuned for one job in the pipeline with stateful graph orchestration.</div>
@@ -809,7 +834,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
       </div>
 
       <div class="proj-item">
-        <div class="p-rank"><strong>06</strong>eval</div>
+        <div class="p-rank"><strong>08</strong>eval</div>
         <div>
           <div class="p-title"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">LLM Evaluation Dashboard</a><span class="badge b-live">LIVE</span></div>
           <div class="p-desc">End-to-end RAGAS evaluation pipeline with Gemini-as-judge tracking Faithfulness, Answer Relevance, and Context Precision across ten NLP test questions. Live radar chart on HuggingFace Spaces.</div>
@@ -856,9 +881,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
       <div class="sk-group"><div class="sk-title">MACHINE LEARNING</div><div class="sk-chips"><span class="chip">Python 3.11</span><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">Model evaluation</span><span class="chip">Experimentation</span><span class="chip">Error analysis</span></div></div>
       <div class="sk-group"><div class="sk-title">NLP & LLM</div><div class="sk-chips"><span class="chip">RAG</span><span class="chip">Hybrid retrieval</span><span class="chip">BM25</span><span class="chip">Dense embeddings</span><span class="chip">E5-base-v2</span><span class="chip">FAISS</span><span class="chip">LLM APIs</span><span class="chip">QLoRA</span><span class="chip">PEFT</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAGAS</span><span class="chip">Prompt engineering</span></div></div>
       <div class="sk-group"><div class="sk-title">DATA</div><div class="sk-chips"><span class="chip">SQL</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">Document ingestion</span><span class="chip">Data validation</span></div></div>
-      <div class="sk-group"><div class="sk-title">BACKEND ENGINEERING</div><div class="sk-chips"><span class="chip">FastAPI</span><span class="chip">asyncio</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">JWT auth</span><span class="chip">SSE streaming</span><span class="chip">React</span></div></div>
+      <div class="sk-group"><div class="sk-title">BACKEND ENGINEERING</div><div class="sk-chips"><span class="chip">FastAPI</span><span class="chip">asyncio</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">JWT auth</span><span class="chip">SSE streaming</span><span class="chip">Webhooks</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">React</span></div></div>
       <div class="sk-group"><div class="sk-title">MLOPS & CLOUD</div><div class="sk-chips"><span class="chip">MLflow</span><span class="chip">DagsHub</span><span class="chip">AWS EC2</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">Prometheus</span><span class="chip">CI/CD</span><span class="chip">systemd</span></div></div>
-      <div class="sk-group"><div class="sk-title">TOOLS & PLATFORMS</div><div class="sk-chips"><span class="chip">Git</span><span class="chip">Linux/CLI</span><span class="chip">HuggingFace Spaces</span><span class="chip">Railway</span><span class="chip">Vercel</span><span class="chip">Gemini</span><span class="chip">Groq</span></div></div>
+      <div class="sk-group"><div class="sk-title">TOOLS & PLATFORMS</div><div class="sk-chips"><span class="chip">n8n</span><span class="chip">Workflow automation</span><span class="chip">Git</span><span class="chip">Linux/CLI</span><span class="chip">HuggingFace Spaces</span><span class="chip">Railway</span><span class="chip">Vercel</span><span class="chip">Gemini</span><span class="chip">Groq</span></div></div>
     </div>
   </div>
 </section>
@@ -1031,7 +1056,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
     <div class="contact-box">
       <div class="sec-eyebrow" style="justify-content:center;">AVAILABLE NOW — OPEN TO WORK ACROSS GERMANY</div>
       <h2>Let's build something worth measuring.</h2>
-      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, EU Blue Card eligible. Ten deployed projects and a systematic approach to building ML systems that actually work.</p>
+      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, no sponsorship needed. Ten deployed projects and a systematic approach to building ML systems that actually work.</p>
       <div class="ctas" style="justify-content:center;">
         <a class="btn btn-primary" href="mailto:rohithkumar336699@gmail.com">Email me →</a>
         <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
