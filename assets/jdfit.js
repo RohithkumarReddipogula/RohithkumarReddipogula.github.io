@@ -28,7 +28,7 @@
     { label: 'LangGraph', aliases: ['langgraph'], proof: [{ card: 'p-multiagent', fact: '4 agents' }] },
     { label: 'Tool use', aliases: ['tool use', 'tool calling', 'tool-calling', 'tool-use'], proof: [{ card: 'p-react', fact: 'web search, calculator and RAG retrieval' }, { card: 'p-n8n', fact: 'Works as a tool for the n8n AI Agent' }] },
     { label: 'Structured output and extraction', aliases: ['structured output', 'information extraction', 'entity extraction', 'relation extraction', 'json schema', 'data extraction', 'document extraction'], proof: [{ card: 'p-graphrag', fact: 'strict JSON schema output' }, { card: 'p-shipment', fact: '175 tests' }] },
-    { label: 'Prompt engineering', aliases: ['prompt engineering', 'prompting', 'prompt design'], proof: [{ card: 'p-graphrag', fact: 'extraction recall 0.75, precision 0.89' }] },
+    { label: 'Prompt engineering', aliases: ['prompt engineering', 'prompting', 'prompt design'], proof: [{ card: 'p-graphrag', fact: 'extraction recall 0.75, slot precision 0.89' }] },
     { label: 'Guardrails and human review', aliases: ['guardrail', 'prompt injection', 'human-in-the-loop', 'human in the loop', 'human review', 'ai safety'], proof: [{ card: 'p-shipment', fact: 'dangerous goods always go to a human' }] },
     { label: 'LLM evaluation', aliases: ['evaluation', 'evals', 'llm evaluation', 'model evaluation', 'benchmarking', 'benchmark'], proof: [{ card: 'p-llmeval', fact: 'Faithfulness 0.909 on 10 test questions' }, { card: 'p-graphrag', fact: '95% CI 9 to 31' }] },
     { label: 'RAGAS', aliases: ['ragas'], proof: [{ card: 'p-llmeval', fact: 'Faithfulness 0.909 on 10 test questions' }] },
@@ -283,7 +283,7 @@
     if (phd && !master) out.push({ label: 'Degree', status: 'gap', text: 'The post asks for a PhD. Rohith has an MSc in Data Science.' });
     else if (phd || master) out.push({ label: 'Degree', status: 'ok', text: 'MSc Data Science, University of Europe for Applied Sciences, Potsdam; B.Tech Computer Science and Engineering, GITAM University.' });
     if (/(work permit|work authori[sz]ation|visa|sponsorship|right to work|arbeitserlaubnis|eligible to work|eu citizen)/i.test(jd))
-      out.push({ label: 'Work authorization', status: 'ok', text: 'Job Seeker Visa with active German work authorization. No sponsorship needed.' });
+      out.push({ label: 'Work authorization', status: 'ok', text: 'Job Seeker Visa. No employer sponsorship needed.' });
     return out;
   }
 
