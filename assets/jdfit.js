@@ -81,7 +81,6 @@
     { label: 'LangChain', aliases: ['langchain'], evidence: 'LangChain' },
     { label: 'Redis', aliases: ['redis'], evidence: 'Redis' },
     { label: 'SQLAlchemy', aliases: ['sqlalchemy'], evidence: 'SQLAlchemy' },
-    { label: 'MLflow', aliases: ['mlflow', 'experiment tracking'], evidence: 'MLflow' },
     { label: 'Data science', aliases: ['data science', 'data scientist'], evidence: 'MSc Data Science' },
     { label: 'Error analysis', aliases: ['error analysis'], evidence: 'Error analysis' },
     { label: 'Vercel and Railway', aliases: ['vercel', 'railway'], evidence: 'Vercel' }
@@ -111,6 +110,7 @@
     { label: 'MongoDB', aliases: ['mongodb', 'mongo'], related: 'PostgreSQL' },
     { label: 'LLM observability (Langfuse, LangSmith, W&B)', aliases: ['langfuse', 'langsmith', 'weights & biases', 'weights and biases', 'wandb', 'arize'], related: 'Prometheus' },
     { label: 'Model serving (vLLM, TGI, Triton, ONNX)', aliases: ['vllm', 'tgi', 'triton', 'onnx', 'tensorrt', 'model serving', 'inference optimization'], related: 'FastAPI' },
+    { label: 'MLflow or experiment tracking', aliases: ['mlflow', 'experiment tracking'], related: '' },
     { label: 'Kubeflow or Ray', aliases: ['kubeflow', '=Ray'], related: 'Kubernetes' },
     { label: 'Terraform or infrastructure as code', aliases: ['terraform', 'infrastructure as code', 'pulumi', 'ansible', 'cloudformation'], related: 'Docker' },
     { label: 'Spark or Databricks', aliases: ['=Spark', 'pyspark', 'apache spark', 'databricks'], related: '' },
