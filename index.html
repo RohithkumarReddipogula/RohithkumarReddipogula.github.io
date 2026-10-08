@@ -3,1188 +3,1297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohith Kumar Reddipogula | Junior Machine Learning Engineer | NLP & LLMs | Berlin</title>
-<meta name="description" content="Junior Machine Learning Engineer in Germany. NLP, LLMs, RAG, Python, ML systems. MSc Data Science. Available immediately. No sponsorship needed.">
+<title>Rohith Kumar Reddipogula | AI Engineer | RAG, LLM Agents, Knowledge Graphs</title>
+<meta name="description" content="AI Engineer in Berlin, Germany. RAG, LLM agents, knowledge graphs and honest evaluation. MSc Data Science. Available immediately. No sponsorship needed.">
+<meta name="theme-color" content="#0B1020">
+<meta property="og:title" content="Rohith Kumar Reddipogula | AI Engineer">
+<meta property="og:description" content="RAG, LLM Agents, Knowledge Graphs. 93% Recall@10 on 8.84M passages.">
+<meta property="og:image" content="https://github.com/RohithkumarReddipogula.png?size=400">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <style>
 :root {
-  --paper: #FAFAF7;
-  --paper2: #F3F1EB;
-  --paper3: #ECEAE2;
-  --ink: #16181A;
-  --ink-soft: #4A5166;
-  --ink-muted: #9AA0B4;
-  --border: #E0DDD5;
-  --border-dark: #C8C4BA;
-  --blue: #1D4ED8;
-  --blue-light: #EEF2FF;
-  --blue-mid: #3B82F6;
-  --indigo: #4338CA;
-  --violet: #7C3AED;
-  --emerald: #059669;
-  --emerald-light: #ECFDF5;
-  --amber: #B45309;
-  --amber-light: #FFFBEB;
-  --mono: 'JetBrains Mono', monospace;
-  --serif: 'Fraunces', serif;
-  --sans: 'Inter', sans-serif;
+  color-scheme: dark;
+  --bg: #0B1020;
+  --bg2: #0E1428;
+  --card: #121A33;
+  --card-hover: #162040;
+  --border: rgba(167,139,250,0.14);
+  --border-strong: rgba(167,139,250,0.32);
+  --text: #E8EAF6;
+  --muted: #A6ACC9;
+  --dim: #767DA0;
+  --indigo: #4F46E5;
+  --violet: #8B5CF6;
+  --lavender: #A78BFA;
+  --green: #34D399;
+  --amber: #FBBF24;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--sans);
+  font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
-::selection { background: #DBEAFE; color: var(--blue); }
-
-/* CANVAS — light-mode 3D */
-#bg-canvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.55;
-}
+::selection { background: rgba(139,92,246,0.35); color: #fff; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--lavender); outline-offset: 3px; border-radius: 4px; }
+[tabindex="-1"]:focus { outline: none; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
 
 /* NAV */
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(250,250,247,0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11,16,32,0.82);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
-.nav-name {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink);
-  letter-spacing: 0.03em;
-}
-.nav-links { display: flex; gap: 28px; }
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-soft);
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--blue); }
-.nav-badge {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--emerald);
-  padding: 5px 12px;
-  border: 1px solid rgba(5,150,105,0.2);
-  border-radius: 100px;
-  background: var(--emerald-light);
-}
-.live-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--emerald);
-  animation: livepulse 2.2s infinite;
-}
-@keyframes livepulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.35); }
-  50% { box-shadow: 0 0 0 5px rgba(5,150,105,0); }
-}
+.nav-inner { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nav-name { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; }
+.nav-links { display: flex; gap: 26px; }
+.nav-links a { font-family: var(--mono); font-size: 12px; color: var(--muted); transition: color 0.15s; }
+.nav-links a:hover { color: var(--lavender); }
 
-/* WRAP */
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+.nav-actions { display: flex; gap: 8px; align-items: center; }
+.term-btn { gap: 8px; }
+.term-btn span:first-child { color: var(--lavender); }
+
+[hidden] { display: none !important; }
+
+/* BUTTONS */
+.btn {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  padding: 11px 20px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 7px;
+  border: 1px solid var(--border-strong); color: var(--text);
+  background: rgba(167,139,250,0.04);
+  transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+  white-space: nowrap; cursor: pointer;
+}
+.btn:hover { border-color: var(--lavender); background: rgba(167,139,250,0.1); transform: translateY(-1px); }
+.btn-primary { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.btn-primary:hover { background: #5B53F0; border-color: #5B53F0; box-shadow: 0 8px 24px rgba(79,70,229,0.35); }
+.btn-sm { padding: 7px 14px; font-size: 12px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* HERO */
-.hero {
-  padding: 96px 0 80px;
-  position: relative;
-}
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 60px;
-  align-items: center;
-}
-.hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--blue);
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 28px; height: 1px;
-  background: var(--blue);
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(44px, 6vw, 74px);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.hero h1 .name-first { color: var(--ink); display: block; }
-.hero h1 .name-last {
-  display: block;
-  color: transparent;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 60%, var(--indigo) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-.hero-role {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin-bottom: 28px;
-}
-.hero-role strong { color: var(--ink); }
-.hero-desc {
-  font-size: 16px;
-  color: var(--ink-soft);
-  max-width: 580px;
-  line-height: 1.75;
-  margin-bottom: 36px;
-}
-.hero-desc strong { color: var(--ink); font-weight: 600; }
-
-/* STATS ROW */
-.hero-stats {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 40px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--border);
-}
-.hstat-val {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 3px;
-}
-.hstat-val em {
-  font-style: normal;
-  font-size: 16px;
-  color: var(--blue-mid);
-}
-.hstat-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink-muted);
-  letter-spacing: 0.04em;
-}
-
-/* CTAS */
-.ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-.btn {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 11px 20px;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  transition: all 0.18s;
-  cursor: pointer;
-  border: none;
-  white-space: nowrap;
-}
-.btn-primary {
-  background: var(--ink);
-  color: var(--paper);
-}
-.btn-primary:hover { background: #2d3039; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(22,24,26,0.18); }
-.btn-ghost {
-  border: 1px solid var(--border-dark);
-  color: var(--ink-soft);
-  background: var(--paper);
-}
-.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
-
-/* PHOTO */
-.hero-photo-col { position: relative; display: flex; align-items: center; justify-content: center; }
-.photo-frame {
-  width: 300px;
-  height: 300px;
-  position: relative;
-}
-.photo-ring-outer {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 1px dashed var(--border-dark);
-  animation: spin-slow 18s linear infinite;
-}
-.photo-ring-outer::after {
-  content: '';
-  position: absolute;
-  top: -4px; left: 50%;
-  width: 8px; height: 8px;
-  background: var(--blue);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--blue);
-}
-.photo-ring-inner {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-}
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-.photo-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--paper);
-  box-shadow: 0 0 0 1px var(--border), 0 20px 60px rgba(22,24,26,0.12);
-  filter: contrast(1.02) saturate(0.95);
-}
-.photo-glow {
-  position: absolute;
-  inset: -50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 65%);
+.hero { position: relative; padding: 96px 0 72px; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: -220px; left: 50%;
+  width: 900px; height: 600px; transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(79,70,229,0.22) 0%, rgba(139,92,246,0.08) 40%, transparent 70%);
   pointer-events: none;
 }
-.photo-badge {
-  position: absolute;
-  bottom: 10px;
-  right: -10px;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-shadow: 0 4px 16px rgba(22,24,26,0.1);
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink);
+.hero-grid { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
+.status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 12px; color: var(--green);
+  padding: 5px 12px; border-radius: 100px;
+  border: 1px solid rgba(52,211,153,0.25); background: rgba(52,211,153,0.07);
+  margin-bottom: 28px;
 }
-.photo-badge .badge-val { font-size: 18px; font-weight: 700; color: var(--blue); line-height: 1; }
-
-/* DIVIDER */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
-  position: relative;
-  z-index: 1;
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 18px; }
+.hero h1 span {
+  background: linear-gradient(120deg, #C4B5FD 0%, var(--lavender) 35%, var(--violet) 70%, var(--indigo) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-role { font-family: var(--mono); font-size: clamp(14px, 1.8vw, 17px); color: var(--lavender); margin-bottom: 20px; }
+.hero-line { font-size: clamp(16px, 1.9vw, 19px); color: var(--muted); max-width: 600px; margin-bottom: 34px; }
+.avatar {
+  width: 240px; height: 240px; border-radius: 50%; object-fit: cover; display: block;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 0 0 8px rgba(139,92,246,0.06), 0 30px 80px rgba(79,70,229,0.25);
+  background: var(--card);
 }
 
 /* SECTIONS */
-section { padding: 88px 0; position: relative; z-index: 1; }
-.sec-eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--blue);
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sec-eyebrow::before { content: '//'; color: var(--ink-muted); }
-h2.sec-title {
-  font-family: var(--serif);
-  font-size: clamp(26px, 3.5vw, 38px);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  margin-bottom: 44px;
-  color: var(--ink);
-}
+section { padding: 80px 0; }
+.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.eyebrow { font-family: var(--mono); font-size: 11px; color: var(--lavender); letter-spacing: 0.12em; margin-bottom: 10px; }
+h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; }
+.lead { color: var(--muted); max-width: 640px; margin-bottom: 40px; }
 
-/* SNAPSHOT */
-.snap-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--border);
+/* ASK */
+.ask-box {
+  background: linear-gradient(180deg, rgba(79,70,229,0.09), rgba(139,92,246,0.03));
+  border: 1px solid var(--border-strong); border-radius: 18px; padding: 32px;
 }
-.snap-cell {
-  background: var(--paper);
-  padding: 18px 22px;
-  display: flex;
-  gap: 14px;
+.ask-form { display: flex; gap: 10px; }
+.ask-input {
+  flex: 1; min-width: 0;
+  font-family: var(--sans); font-size: 16px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border-strong); border-radius: 10px;
+  padding: 13px 16px; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.ask-input::placeholder { color: var(--dim); }
+.ask-input:focus { outline: none; border-color: var(--lavender); box-shadow: 0 0 0 3px rgba(167,139,250,0.18); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip-q {
+  font-family: var(--mono); font-size: 12px; color: var(--muted);
+  background: transparent; border: 1px solid var(--border); border-radius: 100px;
+  padding: 6px 12px; cursor: pointer; transition: color 0.15s, border-color 0.15s;
+}
+.chip-q:hover { color: var(--lavender); border-color: var(--border-strong); }
+.answer {
+  margin-top: 22px; padding: 20px 22px; border-radius: 12px;
+  background: var(--card); border: 1px solid var(--border);
+}
+.answer[hidden] { display: none; }
+.answer-q { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-bottom: 8px; }
+.answer-text { color: var(--text); }
+.answer-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.answer-links a {
+  font-family: var(--mono); font-size: 12px; color: var(--lavender);
+  border: 1px solid var(--border-strong); border-radius: 6px; padding: 5px 10px;
   transition: background 0.15s;
 }
-.snap-cell:hover { background: var(--paper2); }
-.s-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink-muted);
-  letter-spacing: 0.06em;
-  min-width: 96px;
-  padding-top: 2px;
-  flex-shrink: 0;
-}
-.s-val { font-size: 13px; color: var(--ink); }
-.tag-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-.tag-sm {
-  font-family: var(--mono);
-  font-size: 10px;
-  padding: 2px 8px;
-  background: var(--blue-light);
-  border: 1px solid rgba(29,78,216,0.15);
-  border-radius: 3px;
-  color: var(--blue);
-}
+.answer-links a:hover { background: rgba(167,139,250,0.1); }
+.ask-note { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 16px; }
 
-/* PROJECTS */
-.proj-list { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-.proj-item {
-  display: grid;
-  grid-template-columns: 56px 1fr 96px;
-  gap: 20px;
-  padding: 28px 32px;
-  border-bottom: 1px solid var(--border);
-  align-items: start;
-  transition: background 0.15s;
-  background: var(--paper);
+/* TABS */
+.tabs { display: flex; gap: 6px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+.tab {
+  font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: none;
+  padding: 10px 14px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
 }
-.proj-item:last-child { border-bottom: none; }
-.proj-item:hover { background: var(--paper2); }
-.p-rank {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-muted);
-}
-.p-rank strong { display: block; font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 3px; }
-.p-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.p-title a:hover { color: var(--blue); }
-.badge {
-  font-family: var(--mono);
-  font-size: 9px;
-  padding: 2px 7px;
-  border-radius: 3px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-.b-live { background: var(--emerald-light); color: var(--emerald); border: 1px solid rgba(5,150,105,0.2); }
-.b-new { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(180,83,9,0.2); }
-.b-oss { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(29,78,216,0.2); }
-.p-desc { font-size: 14px; color: var(--ink-soft); margin-bottom: 10px; line-height: 1.65; max-width: 580px; }
-.p-metric {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--blue);
-  background: var(--blue-light);
-  border: 1px solid rgba(29,78,216,0.12);
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-.p-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.p-tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  padding: 3px 8px;
-  background: var(--paper3);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--ink-soft);
-}
-.p-links { display: flex; gap: 14px; flex-wrap: wrap; }
-.p-links a { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); transition: color 0.15s; }
-.p-links a:hover { color: var(--blue); }
-.p-score { text-align: right; }
-.s-num { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--blue); line-height: 1; }
-.s-lbl { font-family: var(--mono); font-size: 9px; color: var(--ink-muted); letter-spacing: 0.05em; }
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--lavender); }
+.tab-panel[hidden] { display: none; }
+.jd-label { display: block; color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+.jd-input { width: 100%; resize: vertical; min-height: 160px; line-height: 1.5; font-size: 15px; }
+.jd-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.jd-out:empty { display: none; }
+.jd-out { margin-top: 22px; }
+.fit-summary { background: var(--card); border: 1px solid var(--border-strong); border-radius: 12px; padding: 16px 18px; font-weight: 500; margin-bottom: 18px; }
+.fit-group { margin-bottom: 18px; }
+.fit-group h4 { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--lavender); margin-bottom: 10px; text-transform: uppercase; }
+.fit-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.fit-item { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--border-strong); border-radius: 8px; padding: 10px 14px; font-size: 14px; }
+.fit-item.ok { border-left-color: var(--green); }
+.fit-item.listed, .fit-item.info { border-left-color: var(--lavender); }
+.fit-item.gap { border-left-color: var(--amber); }
+.fit-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.fit-head strong { font-weight: 600; }
+.fit-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.fit-tag.must { color: #DDD6FE; background: rgba(139,92,246,0.15); }
+.fit-tag.nice { color: var(--muted); background: rgba(255,255,255,0.05); }
+.fit-proof { display: flex; flex-direction: column; gap: 3px; }
+.fit-p { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 13px; }
+.fit-p a { font-family: var(--mono); font-size: 12px; color: var(--lavender); }
+.fit-p a:hover { color: #fff; }
+.fit-fact { color: var(--muted); }
+.fit-note { color: var(--muted); font-size: 13px; }
+.fit-foot { font-size: 12px; color: var(--dim); margin-top: 6px; }
 
-/* WORKFLOW */
-.wf-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--border);
+/* RESULTS */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
-.wf-step {
-  background: var(--paper);
-  padding: 26px;
-  transition: background 0.15s;
+.tile:hover { border-color: var(--border-strong); background: var(--card-hover); transform: translateY(-2px); }
+.tile-val {
+  font-size: 38px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
+  background: linear-gradient(120deg, #C4B5FD, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.wf-step:hover { background: var(--paper2); }
-.wf-num { font-family: var(--mono); font-size: 10px; color: var(--blue); letter-spacing: 0.08em; margin-bottom: 10px; }
-.wf-title { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
-.wf-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
+.tile-lbl { font-size: 15px; color: var(--text); font-weight: 500; }
+.tile-src { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-top: auto; padding-top: 8px; }
+
+/* PROJECT CARDS */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card {
+  display: flex; flex-direction: column;
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+.card.wide { grid-column: 1 / -1; }
+.card.flash { border-color: var(--lavender); box-shadow: 0 0 0 3px rgba(167,139,250,0.25); }
+.card-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.card-title { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.card-title a:hover { color: var(--lavender); }
+.badge { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 4px; }
+.b-live { color: var(--green); background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); }
+.b-wip { color: var(--amber); background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); }
+.b-oss { color: var(--lavender); background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.28); }
+.desc { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+.metric {
+  font-family: var(--mono); font-size: 12.5px; color: #DDD6FE;
+  background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.25);
+  border-radius: 8px; padding: 8px 12px; margin-bottom: 14px; align-self: flex-start;
+}
+.stack { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.stack li {
+  font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 5px; padding: 3px 8px;
+}
+.how { margin-bottom: 16px; }
+.how summary {
+  font-family: var(--mono); font-size: 12px; color: var(--muted); cursor: pointer;
+  list-style: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.how summary::-webkit-details-marker { display: none; }
+.how summary::before { content: '+'; color: var(--lavender); width: 10px; }
+.how[open] summary::before { content: '-'; }
+.how summary:hover { color: var(--lavender); }
+.flow { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.flow li {
+  font-family: var(--mono); font-size: 12px; color: var(--muted);
+  padding: 6px 12px; border-left: 2px solid var(--border-strong); background: rgba(255,255,255,0.02);
+}
+.flow li.hl { border-left-color: var(--lavender); color: #DDD6FE; }
+.links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; }
+.links a { font-family: var(--mono); font-size: 12.5px; color: var(--lavender); transition: color 0.15s; }
+.links a:hover { color: #fff; }
+.more-title { font-size: 20px; font-weight: 600; margin: 56px 0 18px; }
+.cards-sm { grid-template-columns: repeat(3, 1fr); }
+.cards-sm .card { padding: 22px; }
+.cards-sm .card-title { font-size: 16px; }
+.cards-sm .desc { font-size: 14px; }
+
+/* THESIS */
+.thesis { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 32px; }
+.thesis h3 { font-size: 22px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; }
+.thesis p { color: var(--muted); margin-bottom: 12px; }
+.facts { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 18px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.facts div:last-child { border-bottom: none; }
+.facts span { font-family: var(--mono); color: var(--dim); font-size: 12px; }
+.facts strong { font-family: var(--mono); font-weight: 500; font-size: 12.5px; text-align: right; }
+.facts .best { background: rgba(139,92,246,0.12); }
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { font-family: var(--mono); font-size: 12.5px; text-align: left; padding: 10px 18px; border-bottom: 1px solid var(--border); }
+th { color: var(--dim); font-weight: 500; font-size: 11px; letter-spacing: 0.06em; background: rgba(255,255,255,0.02); }
+td { color: var(--muted); }
+tr:last-child td { border-bottom: none; }
+tr.best td { background: rgba(139,92,246,0.14); color: #EDE9FE; font-weight: 500; }
+
+/* REPLAY */
+.replay { margin-top: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.replay-head h3 { font-size: 19px; font-weight: 600; margin-bottom: 4px; }
+.replay-head p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+.replay-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+.js .replay-grid { grid-template-columns: 1fr 220px; }
+.chart { width: 100%; height: auto; display: block; }
+.chart .grid { stroke: var(--border); }
+.chart .ax { fill: var(--dim); font-family: var(--mono); font-size: 11px; }
+.chart .ref { stroke: var(--dim); stroke-dasharray: 4 4; }
+.chart .ref-lbl { fill: var(--dim); font-family: var(--mono); font-size: 11px; }
+.chart .line { fill: none; stroke: var(--lavender); stroke-width: 2.5; stroke-linejoin: round; }
+.chart .gap { stroke: var(--lavender); stroke-width: 1.5; stroke-dasharray: 3 5; opacity: 0.55; }
+.chart .pt { fill: var(--bg); stroke: var(--lavender); stroke-width: 2; }
+.chart .pt.best { fill: var(--violet); stroke: #DDD6FE; }
+.chart .best-lbl { fill: #DDD6FE; font-family: var(--mono); font-size: 12px; font-weight: 500; }
+.chart .cursor { display: none; transition: transform 0.25s ease; }
+.js .chart .cursor { display: inline; }
+.chart .cursor line { stroke: rgba(167,139,250,0.45); }
+.chart .cursor circle { fill: none; stroke: #fff; stroke-width: 2; transition: cy 0.25s ease; }
+.readout { display: none; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.js .readout { display: block; }
+.ro-alpha { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.ro-alpha strong { color: var(--text); font-weight: 500; }
+.ro-alpha span { color: var(--dim); }
+.ro-val { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-top: 6px;
+  background: linear-gradient(120deg, #C4B5FD, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ro-lbl { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.ro-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; padding: 5px 0; border-top: 1px solid var(--border); }
+.ro-row span { color: var(--dim); }
+.ro-note { font-size: 13px; color: #DDD6FE; margin-top: 10px; min-height: 2.4em; }
+.slider-row { display: none; align-items: center; gap: 14px; margin-top: 18px; }
+.js .slider-row { display: flex; }
+.slider-row label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.slider-row input { flex: 1; accent-color: var(--violet); height: 28px; cursor: pointer; }
+.replay-src { font-size: 12.5px; color: var(--dim); margin: 16px 0 12px; }
+.replay-src a { color: var(--lavender); }
+
+/* DIARY */
+.diary { list-style: none; position: relative; margin-left: 6px; border-left: 2px solid var(--border-strong); }
+.entry { position: relative; padding: 0 0 30px 28px; }
+.entry:last-child { padding-bottom: 0; }
+.entry::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--lavender); }
+.entry-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-family: var(--mono); font-size: 12px; color: var(--dim); margin-bottom: 6px; }
+.entry-proj { color: var(--muted); }
+.entry-kind { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; }
+.entry-kind.dec { color: var(--lavender); background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.28); }
+.entry-kind.fail { color: var(--amber); background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); }
+.entry-kind.fix { color: var(--green); background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); }
+.entry h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+.entry p { color: var(--muted); font-size: 15px; max-width: 760px; margin-bottom: 10px; }
+.entry:has(.fail)::before { border-color: var(--amber); }
+.entry:has(.fix)::before { border-color: var(--green); }
+
+/* ENGINEERING */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.step { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: border-color 0.2s; }
+.step:hover { border-color: var(--border-strong); }
+.step-num { font-family: var(--mono); font-size: 11px; color: var(--lavender); letter-spacing: 0.08em; margin-bottom: 8px; }
+.step h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.step p { font-size: 14px; color: var(--muted); }
 
 /* SKILLS */
-.sk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.sk-group {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 22px;
-  transition: border-color 0.2s;
-}
-.sk-group:hover { border-color: var(--border-dark); }
-.sk-title {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--blue);
-  letter-spacing: 0.06em;
-  margin-bottom: 13px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.sk-chips { display: flex; flex-wrap: wrap; gap: 5px; }
-.chip {
-  font-family: var(--mono);
-  font-size: 11px;
-  padding: 3px 9px;
-  background: var(--paper2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--ink-soft);
-  transition: all 0.15s;
-  cursor: default;
-}
-.chip:hover { background: var(--blue-light); border-color: rgba(29,78,216,0.2); color: var(--blue); }
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sk { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+.sk h3 { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--lavender); letter-spacing: 0.08em; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.sk ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.sk li { font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 5px; padding: 3px 9px; }
 
-/* EXPERIMENTS */
-.exp-box {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--paper);
-}
-.exp-top {
-  padding: 28px 32px;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: var(--paper2);
-}
-.exp-tit { font-size: 17px; font-weight: 600; margin-bottom: 7px; }
-.exp-sub { font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
-.em-grid { display: flex; flex-direction: column; gap: 7px; }
-.em-row { display: flex; justify-content: space-between; font-size: 13px; }
-.em-lbl { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
-.em-val { font-family: var(--mono); font-size: 11px; color: var(--ink); }
-table.etable { width: 100%; border-collapse: collapse; }
-.etable th {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink-muted);
-  letter-spacing: 0.07em;
-  padding: 11px 20px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  background: var(--paper2);
-}
-.etable td {
-  font-family: var(--mono);
-  font-size: 12px;
-  padding: 9px 20px;
-  border-bottom: 1px solid var(--border);
-  color: var(--ink-soft);
-}
-.etable tr:last-child td { border-bottom: none; }
-.etable tr.best td {
-  background: var(--blue-light);
-  color: var(--blue);
-  font-weight: 500;
-}
-
-/* ARCH */
-.arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.arch-card {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-  transition: border-color 0.2s;
-}
-.arch-card:hover { border-color: var(--border-dark); }
-.arch-title { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
-.arch-flow { display: flex; flex-direction: column; }
-.arch-node {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-soft);
-  background: var(--paper2);
-  border: 1px solid var(--border);
-  padding: 7px 13px;
-  border-radius: 5px;
-  text-align: center;
-}
-.arch-node.hl {
-  background: var(--blue-light);
-  border-color: rgba(29,78,216,0.2);
-  color: var(--blue);
-  font-weight: 500;
-}
-.arch-arr { text-align: center; color: var(--ink-muted); font-size: 13px; padding: 2px; }
-
-/* RESEARCH */
-.research-box {
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 18px;
-  padding: 52px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.research-box::before {
-  content: '';
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(99,130,220,0.15) 0%, transparent 65%);
-  pointer-events: none;
-}
-.r-eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; margin-bottom: 14px; }
-.research-box h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; line-height: 1.3; margin-bottom: 16px; }
-.research-box p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.75; }
-.r-table { display: flex; flex-direction: column; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-.r-row { display: flex; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
-.r-row:last-child { border-bottom: none; }
-.r-row.best { background: rgba(99,130,220,0.15); }
-.r-row span { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.4); }
-.r-row strong { font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.85); }
-
-/* TIMELINE */
+/* BACKGROUND */
+.glance { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 28px; }
+.glance div { background: var(--card); padding: 16px 20px; display: flex; gap: 16px; font-size: 14px; }
+.glance span { font-family: var(--mono); font-size: 11px; color: var(--dim); letter-spacing: 0.06em; min-width: 104px; padding-top: 2px; flex-shrink: 0; }
 .timeline { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-.tl-item {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 24px;
-  padding: 26px 32px;
-  border-bottom: 1px solid var(--border);
-  background: var(--paper);
-  transition: background 0.15s;
-}
-.tl-item:last-child { border-bottom: none; }
-.tl-item:hover { background: var(--paper2); }
-.tl-date { font-family: var(--mono); font-size: 11px; color: var(--blue); padding-top: 3px; }
-.tl-role { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-.tl-org { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-bottom: 9px; }
-.tl-desc { font-size: 14px; color: var(--ink-soft); max-width: 580px; line-height: 1.65; }
+.tl { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 24px 28px; background: var(--card); border-bottom: 1px solid var(--border); }
+.tl:last-child { border-bottom: none; }
+.tl-date { font-family: var(--mono); font-size: 12px; color: var(--lavender); padding-top: 3px; }
+.tl h3 { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+.tl-org { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-bottom: 10px; }
+.tl p, .tl li { font-size: 14px; color: var(--muted); }
+.tl ul { padding-left: 18px; margin-top: 6px; }
 
 /* CONTACT */
-.contact-box {
-  background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 50%, #EEF2FF 100%);
-  border: 1px solid rgba(99,130,220,0.2);
-  border-radius: 20px;
-  padding: 60px;
-  text-align: center;
+.contact {
+  text-align: center; border: 1px solid var(--border-strong); border-radius: 20px; padding: 56px 32px;
+  background: radial-gradient(ellipse at top, rgba(79,70,229,0.2), transparent 70%), var(--card);
 }
-.contact-box h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 42px); font-weight: 500; margin-bottom: 14px; letter-spacing: -0.01em; }
-.contact-box p { color: var(--ink-soft); font-size: 15px; max-width: 500px; margin: 0 auto 32px; line-height: 1.7; }
+.contact p { color: var(--muted); max-width: 560px; margin: 0 auto 30px; }
+.contact .ctas { justify-content: center; }
+footer { padding: 28px 0; border-top: 1px solid var(--border); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
 
-/* FOOTER */
-footer { padding: 32px 0; border-top: 1px solid var(--border); position: relative; z-index: 1; }
-footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.foot-txt { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
+/* MOTION */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .tile, .card, .chart .cursor, .chart .cursor circle { transition: none; }
+  .btn:hover, .tile:hover, .card:hover { transform: none; }
+}
 
-/* MOBILE */
-@media (max-width: 900px) {
-  nav { padding: 0 20px; }
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .tiles, .cards-sm, .skills, .steps { grid-template-columns: repeat(2, 1fr); }
+  .thesis { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
   .nav-links { display: none; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .photo-frame { width: 220px; height: 220px; }
-  .hero-photo-col { order: -1; }
-  .hero-stats { gap: 20px; flex-wrap: wrap; }
-  .snap-grid { grid-template-columns: 1fr; }
-  .proj-item { grid-template-columns: 1fr; gap: 8px; }
-  .p-score { text-align: left; }
-  .wf-grid { grid-template-columns: 1fr; }
-  .sk-grid { grid-template-columns: 1fr 1fr; }
-  .arch-grid { grid-template-columns: 1fr; }
-  .research-box { grid-template-columns: 1fr; padding: 32px; }
-  .tl-item { grid-template-columns: 1fr; gap: 6px; }
-  .exp-top { grid-template-columns: 1fr; }
-  .wrap { padding: 0 20px; }
-  .contact-box { padding: 36px 24px; }
-  section { padding: 64px 0; }
-}
-@media (max-width: 480px) {
-  .sk-grid { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr 1fr; display: grid; }
+  .term-lbl { display: none; }
+  .nav-name { font-size: 11px; }
+  .hero { padding: 56px 0 48px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .avatar { width: 112px; height: 112px; order: -1; }
+  .hero-grid > div:last-child { order: -1; }
+  section { padding: 56px 0; }
+  .ask-box { padding: 20px; }
+  .ask-form { flex-direction: column; }
+  .fit-list { grid-template-columns: 1fr; }
+  .tab { padding: 10px 8px; font-size: 12px; }
+  .tiles, .cards, .cards-sm, .skills, .steps, .glance { grid-template-columns: 1fr; }
+  .card { padding: 22px; }
+  .tl { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
+  .replay { padding: 18px; }
+  .js .replay-grid { grid-template-columns: 1fr; }
+  .chart .ax, .chart .ref-lbl { font-size: 19px; }
+  .chart .best-lbl { font-size: 21px; }
+  .chart .ax-title { display: none; }
+  .chart .pt { r: 6px; }
+  .chart .pt.best { r: 9px; }
+  .glance div { flex-direction: column; gap: 4px; }
+  .contact { padding: 40px 20px; }
 }
 </style>
 </head>
 <body>
 
-<!-- 3D CANVAS — light mode particles -->
-<canvas id="bg-canvas"></canvas>
-
-<!-- NAV -->
 <nav>
-  <div class="nav-name">ROHITH KUMAR REDDIPOGULA</div>
-  <div class="nav-links">
-    <a href="#projects">Projects</a>
-    <a href="#workflow">Engineering</a>
-    <a href="#experiments">Experiments</a>
-    <a href="#background">Background</a>
-    <a href="#contact">Contact</a>
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="#top">ROHITH KUMAR REDDIPOGULA</a>
+    <div class="nav-links">
+      <a href="#ask">Ask</a>
+      <a href="#results">Results</a>
+      <a href="#projects">Projects</a>
+      <a href="#diary">Diary</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-sm term-btn" id="term-btn" type="button" aria-keyshortcuts="~" aria-label="Open developer terminal (shortcut: ~)" title="Developer terminal (press ~)"><span aria-hidden="true">&gt;_</span><span class="term-lbl" aria-hidden="true">Terminal</span></button>
+      <a class="btn btn-sm" id="nav-resume" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank" rel="noopener" hidden>Resume</a>
+    </div>
   </div>
-  <div class="nav-badge"><span class="live-dot"></span>Open to work · Germany</div>
 </nav>
 
+<main id="top">
+
 <!-- HERO -->
-<section class="hero" style="padding-bottom:80px;">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">JUNIOR MACHINE LEARNING ENGINEER · BERLIN, GERMANY</div>
-        <h1>
-          <span class="name-first">Rohith Kumar</span>
-          <span class="name-last">Reddipogula</span>
-        </h1>
-        <p class="hero-role"><strong>NLP · LLMs · RAG · Python · ML Systems · MLOps</strong></p>
-        <p class="hero-desc">
-          I build, evaluate and deploy practical ML systems — from data preparation and experimentation to APIs, cloud deployment and monitoring.
-          <br><br>
-          <strong>MSc Data Science, Potsdam (2026).</strong> My thesis found the optimal hybrid retrieval fusion weight at alpha=0.70, validated against 8.84M passages (p=0.002). Twelve ML/AI projects built independently, now including an open-source n8n node and an AI workflow on n8n Cloud.
-        </p>
-        <div class="hero-stats">
-          <div>
-            <div class="hstat-val">93<em>%</em></div>
-            <div class="hstat-label">Recall@10</div>
-          </div>
-          <div>
-            <div class="hstat-val">8.84<em>M</em></div>
-            <div class="hstat-label">passages evaluated</div>
-          </div>
-          <div>
-            <div class="hstat-val">0.909</div>
-            <div class="hstat-label">RAGAS Faithfulness</div>
-          </div>
-          <div>
-            <div class="hstat-val">12</div>
-            <div class="hstat-label">regression tests</div>
-          </div>
-        </div>
-        <div class="ctas">
-          <a class="btn btn-primary" href="#projects">View Projects →</a>
-          <a class="btn btn-ghost" href="mailto:rohithkumar336699@gmail.com">Email me</a>
-          <a class="btn btn-ghost" href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub</a>
-          <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
-        </div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status"><span class="dot"></span>Open to work across Germany · Based in Berlin</div>
+      <h1>Rohith Kumar<br><span>Reddipogula</span></h1>
+      <p class="hero-role">AI Engineer | RAG, LLM Agents, Knowledge Graphs</p>
+      <p class="hero-line">I build production AI systems end to end: retrieval, LLM agents and the evaluation that proves they work.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank" rel="noopener" hidden>Resume →</a>
+        <a class="btn btn-primary" href="https://github.com/RohithkumarReddipogula" target="_blank" rel="noopener">GitHub →</a>
+        <a class="btn" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:rohithkumar336699@gmail.com">Email</a>
       </div>
+    </div>
+    <div>
+      <img class="avatar" src="https://github.com/RohithkumarReddipogula.png?size=480" alt="Rohith Kumar Reddipogula" width="240" height="240" decoding="async" onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
 
-      <div class="hero-photo-col">
-        <div class="photo-frame">
-          <div class="photo-glow"></div>
-          <div class="photo-ring-outer"></div>
-          <div class="photo-ring-inner"></div>
-          <img
-            class="photo-img"
-            src="https://github.com/RohithkumarReddipogula.png"
-            alt="Rohith Kumar Reddipogula"
-            onerror="this.style.display='none'"
-          />
-          <div class="photo-badge">
-            <div class="badge-val">93%</div>
-            Recall@10
-          </div>
+<!-- ASK -->
+<section id="ask">
+  <div class="wrap">
+    <div class="eyebrow">ASK MY PORTFOLIO</div>
+    <h2>Ask a question, or check a job post</h2>
+    <p class="lead">Answers come only from the projects and background on this page, with a link to the matching project.</p>
+    <div class="ask-box">
+      <div class="tabs" role="tablist" aria-label="Ask my portfolio">
+        <button class="tab" role="tab" id="tab-ask" aria-selected="true" aria-controls="panel-ask" type="button">Ask a question</button>
+        <button class="tab" role="tab" id="tab-jd" aria-selected="false" aria-controls="panel-jd" tabindex="-1" type="button">Paste a job description</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-ask" aria-labelledby="tab-ask">
+      <form class="ask-form" id="ask-form" role="search">
+        <label for="ask-input" class="sr-only">Ask a question about Rohith's work</label>
+        <input class="ask-input" id="ask-input" type="search" autocomplete="off" placeholder="e.g. Does he know RAG?" maxlength="200">
+        <button class="btn btn-primary" type="submit">Ask →</button>
+      </form>
+      <div class="chips">
+        <button class="chip-q" type="button">Does he know RAG?</button>
+        <button class="chip-q" type="button">What is his best project?</button>
+        <button class="chip-q" type="button">Has he worked with knowledge graphs?</button>
+        <button class="chip-q" type="button">Does he need visa sponsorship?</button>
+        <button class="chip-q" type="button">Has he built LLM agents?</button>
+      </div>
+      <div class="answer" id="answer" hidden aria-live="polite">
+        <div class="answer-q" id="answer-q"></div>
+        <p class="answer-text" id="answer-text"></p>
+        <div class="answer-links" id="answer-links"></div>
+      </div>
+      <p class="ask-note">Runs in your browser: BM25 search over this page. No API, no backend, no tracking.</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="panel-jd" aria-labelledby="tab-jd" hidden>
+        <label for="jd-input" class="jd-label">Paste a job post. Each requirement is matched against the projects on this page, with a proof link and a real number, and gaps are listed honestly.</label>
+        <textarea class="ask-input jd-input" id="jd-input" rows="8" maxlength="20000" placeholder="Paste the full job description here, including requirements and nice-to-haves"></textarea>
+        <div class="jd-actions">
+          <button class="btn btn-primary" id="jd-run" type="button">Check fit →</button>
+          <button class="btn" id="jd-clear" type="button">Clear</button>
         </div>
+        <div class="jd-out" id="jd-out" aria-live="polite"></div>
+        <p class="ask-note">Runs in your browser. The pasted text is not sent anywhere.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SNAPSHOT -->
-<section id="snapshot" style="padding:72px 0;">
+<!-- RESULTS -->
+<section id="results" class="alt">
   <div class="wrap">
-    <div class="sec-eyebrow">RECRUITER SNAPSHOT</div>
-    <h2 class="sec-title">30-second summary</h2>
-    <div class="snap-grid">
-      <div class="snap-cell"><div class="s-label">TARGET ROLE</div><div class="s-val">Junior Machine Learning Engineer</div></div>
-      <div class="snap-cell"><div class="s-label">LOCATION</div><div class="s-val">Berlin, Germany · Open to relocate across Germany</div></div>
-      <div class="snap-cell"><div class="s-label">EDUCATION</div><div class="s-val">MSc Data Science, Potsdam (2026) · B.Tech CS, GITAM (2023)</div></div>
-      <div class="snap-cell"><div class="s-label">WORK AUTH</div><div class="s-val">Job Seeker Visa · Active German work authorization · No sponsorship needed</div></div>
-      <div class="snap-cell"><div class="s-label">FOCUS</div><div class="s-val"><div class="tag-row"><span class="tag-sm">ML</span><span class="tag-sm">NLP</span><span class="tag-sm">LLMs</span><span class="tag-sm">RAG</span><span class="tag-sm">MLOps</span></div></div></div>
-      <div class="snap-cell"><div class="s-label">LANGUAGES</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Python</span><span class="tag-sm">SQL</span><span class="tag-sm">TypeScript</span></div></div></div>
-      <div class="snap-cell"><div class="s-label">DEPLOYMENT</div><div class="s-val"><div class="tag-row"><span class="tag-sm">Docker</span><span class="tag-sm">AWS EC2</span><span class="tag-sm">Kubernetes</span></div></div></div>
-      <div class="snap-cell"><div class="s-label">TRACKING</div><div class="s-val"><div class="tag-row"><span class="tag-sm">MLflow</span><span class="tag-sm">DagsHub</span><span class="tag-sm">RAGAS</span></div></div></div>
+    <div class="eyebrow">RESULTS</div>
+    <h2>Measured, not claimed</h2>
+    <p class="lead">Every number links to the project it comes from.</p>
+    <div class="tiles">
+      <a class="tile reveal" href="#p-hybrid" data-kb data-kb-target="p-hybrid">
+        <span class="tile-val">93%</span>
+        <span class="tile-lbl">Recall@10 on 8.84M passages</span>
+        <span class="tile-src">Hybrid RAG thesis · MS MARCO · p = 0.002 →</span>
+      </a>
+      <a class="tile reveal" href="#p-graphrag" data-kb data-kb-target="p-graphrag">
+        <span class="tile-val">+20 pts EM</span>
+        <span class="tile-lbl">retrieval vs model memory (95% CI 9 to 31)</span>
+        <span class="tile-src">GraphRAG Engine · in progress →</span>
+      </a>
+      <a class="tile reveal" href="#p-graphrag" data-kb data-kb-target="p-graphrag">
+        <span class="tile-val">12,547</span>
+        <span class="tile-lbl">relations from 2,049 documents</span>
+        <span class="tile-src">GraphRAG Engine · extracted for 0.35 USD →</span>
+      </a>
+      <a class="tile reveal" href="#p-shipment" data-kb data-kb-target="p-shipment">
+        <span class="tile-val">175 tests</span>
+        <span class="tile-lbl">LLM email intake with human review</span>
+        <span class="tile-src">shipment-intake-ai · pytest →</span>
+      </a>
+      <a class="tile reveal" href="#p-bauwatcher" data-kb data-kb-target="p-bauwatcher">
+        <span class="tile-val">3,197</span>
+        <span class="tile-lbl">live roadworks across Germany</span>
+        <span class="tile-src">BauWatcher · loads in under 5 seconds →</span>
+      </a>
+      <a class="tile reveal" href="#p-saas" data-kb data-kb-target="p-saas">
+        <span class="tile-val">7 days</span>
+        <span class="tile-lbl">multi-tenant AI SaaS, idea to production</span>
+        <span class="tile-src">AI Customer Support Platform →</span>
+      </a>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- PROJECTS -->
-<section id="projects" style="padding:72px 0; background: var(--paper2);">
+<section id="projects">
   <div class="wrap">
-    <div class="sec-eyebrow">PROJECTS</div>
-    <h2 class="sec-title">12 ML/AI projects, including 2 new n8n automation projects</h2>
-    <div class="proj-list">
+    <div class="eyebrow">PROJECTS</div>
+    <h2>Featured projects</h2>
+    <p class="lead">Retrieval, knowledge graphs, LLM pipelines with guardrails, and agents, each with its stack, key result and links.</p>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>01</strong>thesis</div>
-        <div>
-          <div class="p-title"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Hybrid RAG System</a><span class="badge b-live">LIVE</span></div>
-          <div class="p-desc">BM25 sparse search fused with Microsoft E5-base-v2 dense embeddings across 8.84M MS MARCO passages. The fusion weight (alpha=0.70) was discovered through 11 tracked MLflow experiments and validated with a paired t-test — not assumed.</div>
-          <div class="p-metric">93% Recall@10 · +11.4% vs baseline · MRR=1.0 · 710ms latency · p=0.002</div>
-          <div class="p-stack"><span class="p-tag">FAISS</span><span class="p-tag">BM25</span><span class="p-tag">E5-base-v2</span><span class="p-tag">FastAPI</span><span class="p-tag">Docker</span><span class="p-tag">AWS EC2</span><span class="p-tag">MLflow</span></div>
-          <div class="p-links"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank">GitHub →</a><a href="https://dagshub.com" target="_blank">MLflow →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.98</div><div class="s-lbl">relevance</div></div>
-      </div>
+    <div class="cards">
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>02</strong>saas</div>
-        <div>
-          <div class="p-title"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">AI Customer Support Platform</a><span class="badge b-live">LIVE</span><span class="badge b-new">NEW</span></div>
-          <div class="p-desc">Multi-tenant SaaS built solo in 7 days. Document ingestion pipeline, pgvector semantic search, JWT auth, React dashboard, ChatGPT-like SSE streaming, embeddable JS widget. 12 pytest regression tests. Prometheus /metrics and /health endpoints.</div>
-          <div class="p-metric">12 pytest tests · Prometheus monitoring · Docker · GitHub Actions CI/CD</div>
-          <div class="p-stack"><span class="p-tag">FastAPI</span><span class="p-tag">PostgreSQL</span><span class="p-tag">pgvector</span><span class="p-tag">React</span><span class="p-tag">Docker</span><span class="p-tag">JWT</span><span class="p-tag">pytest</span></div>
-          <div class="p-links"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank">Demo →</a><a href="https://ai-support-platform-production-07ac.up.railway.app/docs" target="_blank">API →</a><a href="https://github.com/RohithkumarReddipogula/ai-support-platform" target="_blank">GitHub →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.97</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card wide reveal" id="p-graphrag" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GraphRAG Engine</a></h3><span class="badge b-wip">IN PROGRESS</span></div>
+        <p class="desc">A GraphRAG system on Neo4j, benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA. The goal is a fair answer to one question: when does a knowledge graph actually help multi-hop question answering, and when does it not? It showed that hybrid retrieval never finds the bridge entities that multi-hop questions need, which is what the graph is built to fix.</p>
+        <div class="metric">+20 pts EM, retrieval vs model memory (95% CI 9 to 31) · 12,547 relations from 2,049 documents · extraction recall 0.75, precision 0.89</div>
+        <ul class="stack"><li>Python</li><li>Neo4j</li><li>Knowledge graph</li><li>E5</li><li>BM25</li><li>Cross-encoder reranker</li><li>gpt-oss-120b</li><li>Docker</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>2WikiMultiHopQA: 2,049 paragraphs, 500 questions in dev and test splits</li>
+            <li class="hl">LLM entity and relation extraction with strict JSON schema output: 12,547 relations for 0.35 USD</li>
+            <li>Entity resolution keeps same-name entities apart and records why every merge happened</li>
+            <li>Hybrid baseline: BM25 + E5 dense + bge reranker, the retriever from the MSc thesis</li>
+            <li>Short answers from gpt-oss-120b, pinned provider, every LLM call cached and logged with cost</li>
+            <li>EM and F1 with 95% bootstrap confidence intervals, quality bars fixed before results</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>03</strong>map</div>
-        <div>
-          <div class="p-title"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">BauWatcher — Germany Construction Radar</a><span class="badge b-live">LIVE</span><span class="badge b-new">NEW</span></div>
-          <div class="p-desc">Live map of all roadworks across Germany. Parallel async pipeline fetches 3,197 live sites from the official German government Autobahn API in under 5 seconds. Groq LLM generates plain-English impact summaries per site automatically.</div>
-          <div class="p-metric">3,197 live roadworks · 5 second load · LLM summaries · Railway + Vercel</div>
-          <div class="p-stack"><span class="p-tag">FastAPI</span><span class="p-tag">React</span><span class="p-tag">Leaflet</span><span class="p-tag">Groq LLM</span><span class="p-tag">asyncio</span><span class="p-tag">Vercel</span></div>
-          <div class="p-links"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank">Live Map →</a><a href="https://github.com/RohithkumarReddipogula/bauwatcher" target="_blank">GitHub →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.96</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card reveal" id="p-shipment" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai" target="_blank" rel="noopener">shipment-intake-ai</a></h3></div>
+        <p class="desc">A service that reads freight emails in German and English, extracts shipment details with an LLM and either auto-accepts them or routes them to a human review queue. The model extracts, plain rules decide, so the model never makes the business decision.</p>
+        <div class="metric">175 tests · retries with backoff · prompt injection defence · dangerous goods always go to a human</div>
+        <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite (WAL)</li><li>Gemini</li><li>Pydantic</li><li>pytest</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>POST /emails, idempotent deduplication by Message-ID and content hash</li>
+            <li>Job queue in SQLite, worker claims one due job atomically</li>
+            <li class="hl">Gemini extracts fields with per-field confidence, email wrapped in random delimiters</li>
+            <li>Deterministic validation rules decide: auto-accept or human review</li>
+            <li>Retries with backoff, attempts history, stuck-job recovery</li>
+            <li>Review queue to approve, correct or retry, plus a German and English eval set</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>04</strong>n8n</div>
-        <div>
-          <div class="p-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank">n8n Community Node: Autobahn</a><span class="badge b-oss">OPEN SOURCE</span><span class="badge b-new">NEW</span></div>
-          <div class="p-desc">Custom n8n node in TypeScript that brings live German Autobahn data (roadworks, warnings, closures, EV charging, lorry parking, webcams) into any workflow. It queries many roads in one call and turns a messy API (booleans as strings, text arrays, a different key per event type) into clean, typed items. Works as a tool for the n8n AI Agent, and the compact output saves tokens.</div>
-          <div class="p-metric">612 live roadworks in one request · 10 unit tests · official n8n linter passing · CI on every push</div>
-          <div class="p-stack"><span class="p-tag">TypeScript</span><span class="p-tag">Node.js</span><span class="p-tag">n8n</span><span class="p-tag">REST API</span><span class="p-tag">AI agent tool</span><span class="p-tag">GitHub Actions</span></div>
-          <div class="p-links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn/blob/main/examples/autobahn-daily-briefing.json" target="_blank">Example workflow →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.95</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card reveal" id="p-hybrid" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank" rel="noopener">Hybrid RAG System (MSc thesis)</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">BM25 sparse search fused with Microsoft E5-base-v2 dense embeddings across 8.84M MS MARCO passages. The fusion weight (alpha=0.70) was discovered through 11 experiments (results in <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System/blob/main/RESULTS.md" target="_blank" rel="noopener">RESULTS.md</a>) and validated with a paired t-test, not assumed.</p>
+        <div class="metric">93% Recall@10 · +2.9 pts vs alpha 0.5 (p = 0.002) · +11.4 pts vs BM25 only</div>
+        <ul class="stack"><li>FAISS</li><li>BM25</li><li>E5-base-v2</li><li>FastAPI</li><li>Docker</li><li>Kubernetes</li><li>AWS EC2</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>MS MARCO 8.84M passages</li>
+            <li>Preprocessing + chunking</li>
+            <li>BM25 index + E5-base-v2 FAISS</li>
+            <li class="hl">Score fusion (alpha=0.70)</li>
+            <li>FastAPI inference API</li>
+            <li>Docker → AWS EC2 + HF Spaces</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank" rel="noopener">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>05</strong>workflow</div>
-        <div>
-          <div class="p-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank">AI Support Ticket Triage (n8n + Gemini)</a><span class="badge b-new">NEW</span></div>
-          <div class="p-desc">Workflow running on n8n Cloud. A webhook receives a ticket, Gemini extracts category, priority, sentiment, a summary and a draft reply as structured fields, and a Switch node routes it to Slack, email, my own RAG API or a queue. The model classifies, plain logic routes. Retries handle model overload, and if the knowledge base is down the reply falls back to the AI draft.</div>
-          <div class="p-metric">Structured extraction · deterministic routing · lockout rated urgent, priority 5/5 · retries</div>
-          <div class="p-stack"><span class="p-tag">n8n</span><span class="p-tag">Gemini</span><span class="p-tag">Webhooks</span><span class="p-tag">Slack</span><span class="p-tag">Gmail</span><span class="p-tag">RAG API</span></div>
-          <div class="p-links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank">Screenshots →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.94</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card reveal" id="p-saas" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank" rel="noopener">AI Customer Support Platform</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">Multi-tenant SaaS built solo in 7 days. Document ingestion pipeline, pgvector semantic search, JWT auth with per-tenant data isolation, React dashboard, ChatGPT-like SSE streaming, embeddable JS widget. 12 pytest regression tests. Prometheus /metrics and /health endpoints.</p>
+        <div class="metric">Idea to production in 7 days · 12 pytest tests · Prometheus monitoring · GitHub Actions CI/CD</div>
+        <ul class="stack"><li>FastAPI</li><li>PostgreSQL</li><li>pgvector</li><li>React</li><li>Docker</li><li>JWT</li><li>pytest</li><li>Railway</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>Document upload (PDF, TXT, DOCX)</li>
+            <li>Ingestion + chunking pipeline</li>
+            <li>PostgreSQL + pgvector embeddings</li>
+            <li>RAG retrieval + LLM response</li>
+            <li class="hl">SSE streaming → JS widget</li>
+            <li>Docker Compose → Railway</li>
+            <li>12 pytest + Prometheus + CI/CD</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank" rel="noopener">Demo →</a><a href="https://ai-support-platform-production-07ac.up.railway.app/docs" target="_blank" rel="noopener">API →</a><a href="https://github.com/RohithkumarReddipogula/ai-support-platform" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>06</strong>tuning</div>
-        <div>
-          <div class="p-title"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">QLoRA Fine-Tuning — TinyLlama 1.1B</a><span class="badge b-live">LIVE</span></div>
-          <div class="p-desc">4-bit quantisation with PEFT LoRA adapters on a free Colab T4 GPU. Trained 0.089% of parameters. Evaluated with RAGAS using Gemini-as-judge. Published on HuggingFace Hub.</div>
-          <div class="p-metric">Loss 2.47 → 0.89 · 64% reduction · RAGAS Faithfulness 0.909</div>
-          <div class="p-stack"><span class="p-tag">PyTorch</span><span class="p-tag">QLoRA</span><span class="p-tag">PEFT</span><span class="p-tag">HuggingFace</span><span class="p-tag">RAGAS</span></div>
-          <div class="p-links"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank">Model →</a><a href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.91</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card reveal" id="p-bauwatcher" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank" rel="noopener">BauWatcher: Germany Construction Radar</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">Live map of all roadworks across Germany. Parallel async pipeline fetches 3,197 live sites from the official German government Autobahn API in under 5 seconds. Groq LLM generates plain-English impact summaries per site automatically. Built and deployed in 6 days.</p>
+        <div class="metric">3,197 live roadworks · 5 second load · LLM summaries · Railway + Vercel</div>
+        <ul class="stack"><li>FastAPI</li><li>React</li><li>Leaflet</li><li>Groq LLM</li><li>asyncio</li><li>Vercel</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>German Autobahn API (100+ endpoints)</li>
+            <li class="hl">Parallel async fetch (asyncio)</li>
+            <li>3,197 roadworks in 5 seconds</li>
+            <li>Groq LLM impact summaries</li>
+            <li>FastAPI → Railway backend</li>
+            <li>React + Leaflet → Vercel frontend</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank" rel="noopener">Live Map →</a><a href="https://github.com/RohithkumarReddipogula/bauwatcher" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>07</strong>agent</div>
-        <div>
-          <div class="p-title"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Multi-Agent Research Pipeline</a><span class="badge b-live">LIVE</span></div>
-          <div class="p-desc">Four specialised LangGraph agents — Search (DuckDuckGo), Summarise (temp 0.3), Fact-Check (temp 0.1), Writer (temp 0.4) — each tuned for one job in the pipeline with stateful graph orchestration.</div>
-          <div class="p-metric">4 agents · stateful LangGraph · 3 distinct temperatures</div>
-          <div class="p-stack"><span class="p-tag">LangGraph</span><span class="p-tag">Gemini</span><span class="p-tag">DuckDuckGo</span><span class="p-tag">Docker</span></div>
-          <div class="p-links"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank">Demo →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.95</div><div class="s-lbl">relevance</div></div>
-      </div>
+      <article class="card wide reveal" id="p-n8n" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank" rel="noopener">n8n-nodes-autobahn</a></h3><span class="badge b-oss">OPEN SOURCE</span></div>
+        <p class="desc">Custom n8n node in TypeScript that brings live German Autobahn data (roadworks, warnings, closures, EV charging, lorry parking, webcams) into any workflow. It queries many roads in one call and turns a messy API (booleans as strings, text arrays, a different key per event type) into clean, typed items. Works as a tool for the n8n AI Agent, and the compact output saves tokens.</p>
+        <div class="metric">612 live roadworks in one request · 10 unit tests · official n8n linter passing · CI on every push</div>
+        <ul class="stack"><li>TypeScript</li><li>Node.js</li><li>n8n</li><li>REST API</li><li>AI agent tool</li><li>GitHub Actions</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>n8n workflow or AI Agent calls the node</li>
+            <li>Several roads requested in one call</li>
+            <li>Autobahn API (6 event types)</li>
+            <li class="hl">Clean, typed items (Simplify)</li>
+            <li>Filters: blocked only, skip future events</li>
+            <li>10 unit tests + n8n linter in GitHub Actions CI</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank" rel="noopener">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn/blob/main/examples/autobahn-daily-briefing.json" target="_blank" rel="noopener">Example workflow →</a></div>
+      </article>
 
-      <div class="proj-item">
-        <div class="p-rank"><strong>08</strong>eval</div>
-        <div>
-          <div class="p-title"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">LLM Evaluation Dashboard</a><span class="badge b-live">LIVE</span></div>
-          <div class="p-desc">End-to-end RAGAS evaluation pipeline with Gemini-as-judge tracking Faithfulness, Answer Relevance, and Context Precision across ten NLP test questions. Live radar chart on HuggingFace Spaces.</div>
-          <div class="p-metric">Faithfulness 0.909 · Answer Relevance 0.882 · overall RAGAS 0.877</div>
-          <div class="p-stack"><span class="p-tag">RAGAS</span><span class="p-tag">Gemini</span><span class="p-tag">Plotly</span><span class="p-tag">Streamlit</span></div>
-          <div class="p-links"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank">Dashboard →</a><a href="https://github.com/RohithkumarReddipogula/llm-evaluation-project" target="_blank">GitHub →</a></div>
-        </div>
-        <div class="p-score"><div class="s-num">0.89</div><div class="s-lbl">relevance</div></div>
-      </div>
+    </div>
+
+    <h3 class="more-title" id="more">More projects</h3>
+    <div class="cards cards-sm">
+
+      <article class="card reveal" id="p-triage" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank" rel="noopener">AI Support Ticket Triage (n8n + Gemini)</a></h3></div>
+        <p class="desc">Workflow running on n8n Cloud. A webhook receives a ticket, Gemini extracts category, priority, sentiment, a summary and a draft reply as structured fields, and a Switch node routes it to Slack, email, my own RAG API or a queue. The model classifies, plain logic routes. Retries handle model overload, and if the knowledge base is down the reply falls back to the AI draft.</p>
+        <div class="metric">Structured extraction · deterministic routing · retries</div>
+        <ul class="stack"><li>n8n</li><li>Gemini</li><li>Webhooks</li><li>Slack</li><li>Gmail</li><li>RAG API</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>Webhook receives support ticket</li>
+            <li>Normalise fields</li>
+            <li class="hl">Gemini structured extraction (category, priority, sentiment)</li>
+            <li>Switch routes: Slack, email, RAG API, queue</li>
+            <li>Retries on model overload, fallback reply</li>
+            <li>JSON reply to the caller</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank" rel="noopener">Screenshots →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-qlora" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank" rel="noopener">QLoRA Fine-Tuning: TinyLlama 1.1B</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">4-bit quantisation with PEFT LoRA adapters on a free Colab T4 GPU. Trained 0.089% of parameters. Evaluated with RAGAS using Gemini-as-judge. Published on HuggingFace Hub.</p>
+        <div class="metric">Loss 2.47 → 0.89 · 64% reduction · 0.089% of parameters trained</div>
+        <ul class="stack"><li>PyTorch</li><li>QLoRA</li><li>PEFT</li><li>HuggingFace</li><li>RAGAS</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>TinyLlama 1.1B base model</li>
+            <li>4-bit quantisation (bitsandbytes)</li>
+            <li class="hl">PEFT LoRA adapters (0.089% params)</li>
+            <li>Training on Colab T4 GPU</li>
+            <li>Loss 2.47 → 0.89 (64% reduction)</li>
+            <li>RAGAS evaluation with Gemini-as-judge</li>
+            <li>Published on HuggingFace Hub</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://huggingface.co/Rohith2026/nlp-rag-expert" target="_blank" rel="noopener">Model →</a><a href="https://github.com/RohithkumarReddipogula/llm-finetune-project" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-multiagent" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank" rel="noopener">Multi-Agent Research Pipeline</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">Four specialised LangGraph agents: Search (DuckDuckGo), Summarise (temp 0.3), Fact-Check (temp 0.1), Writer (temp 0.4), each tuned for one job in the pipeline with stateful graph orchestration.</p>
+        <div class="metric">4 agents · stateful LangGraph · 3 distinct temperatures</div>
+        <ul class="stack"><li>LangGraph</li><li>Gemini</li><li>DuckDuckGo</li><li>Docker</li></ul>
+        <div class="links"><a href="https://huggingface.co/spaces/Rohith2026/multi-agent-research" target="_blank" rel="noopener">Demo →</a><a href="https://github.com/RohithkumarReddipogula/multi-agent-research" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-react" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://huggingface.co/spaces/Rohith2026/ai-agent-react" target="_blank" rel="noopener">ReAct AI Agent</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">ReAct agent with LangGraph and Gemini using 3 tools: web search, calculator and RAG retrieval.</p>
+        <div class="metric">ReAct loop · 3 tools · tool use with RAG retrieval</div>
+        <ul class="stack"><li>LangGraph</li><li>Gemini</li><li>Tool use</li><li>RAG</li></ul>
+        <div class="links"><a href="https://huggingface.co/spaces/Rohith2026/ai-agent-react" target="_blank" rel="noopener">Demo →</a><a href="https://github.com/RohithkumarReddipogula/ai-agent-project" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-llmeval" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank" rel="noopener">LLM Evaluation Dashboard</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">End-to-end RAGAS evaluation pipeline with Gemini-as-judge tracking Faithfulness, Answer Relevance, and Context Precision across ten NLP test questions. Live radar chart on HuggingFace Spaces.</p>
+        <div class="metric">Faithfulness 0.909 on 10 test questions · Answer Relevance 0.882 · overall RAGAS 0.877</div>
+        <ul class="stack"><li>RAGAS</li><li>Gemini</li><li>Plotly</li><li>Streamlit</li></ul>
+        <div class="links"><a href="https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard" target="_blank" rel="noopener">Dashboard →</a><a href="https://github.com/RohithkumarReddipogula/llm-evaluation-project" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-k8s" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/k8s-rag-deployment" target="_blank" rel="noopener">RAG API on Kubernetes</a></h3></div>
+        <p class="desc">FastAPI RAG API deployed on Kubernetes with 2 replicas, rolling updates for zero-downtime rollouts, health checks and resource limits.</p>
+        <div class="metric">2 replicas · rolling updates · health checks · resource limits</div>
+        <ul class="stack"><li>Kubernetes</li><li>FastAPI</li><li>Docker</li><li>RAG</li></ul>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/k8s-rag-deployment" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-aws" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/aws-deployment-project" target="_blank" rel="noopener">RAG Inference API on AWS EC2</a></h3></div>
+        <p class="desc">Production FastAPI RAG inference API deployed on AWS EC2 t3.micro in Frankfurt, with systemd auto-restart and OpenAPI documentation.</p>
+        <div class="metric">AWS EC2 Frankfurt · systemd auto-restart · OpenAPI docs</div>
+        <ul class="stack"><li>AWS EC2</li><li>FastAPI</li><li>systemd</li><li>Linux</li></ul>
+        <div class="links"><a href="http://3.71.32.203:8000/docs" target="_blank" rel="noopener">API docs →</a><a href="https://github.com/RohithkumarReddipogula/aws-deployment-project" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
 
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- WORKFLOW -->
-<section id="workflow" style="padding:72px 0;">
+<!-- THESIS -->
+<section id="thesis" class="alt" data-kb data-kb-title="MSc thesis: the fusion weight">
   <div class="wrap">
-    <div class="sec-eyebrow">HOW I ENGINEER ML SYSTEMS</div>
-    <h2 class="sec-title">From problem to production</h2>
-    <div class="wf-grid">
-      <div class="wf-step"><div class="wf-num">01 — UNDERSTAND</div><div class="wf-title">Define the problem</div><div class="wf-desc">Translate the product or business problem into a concrete ML problem with measurable success criteria.</div></div>
-      <div class="wf-step"><div class="wf-num">02 — EVALUATE</div><div class="wf-title">Choose metrics first</div><div class="wf-desc">Define Recall@10, MRR, RAGAS Faithfulness before optimising — metrics chosen for the problem, not retrofitted.</div></div>
-      <div class="wf-step"><div class="wf-num">03 — BASELINE</div><div class="wf-title">Establish a baseline</div><div class="wf-desc">Understand whether the new approach improves anything. The naive alpha=0.50 was the baseline alpha=0.70 beat by +11.4%.</div></div>
-      <div class="wf-step"><div class="wf-num">04 — DATA</div><div class="wf-title">Prepare and validate</div><div class="wf-desc">Check data quality, distribution, edge cases, and leakage before training. Real-world document formats handled properly.</div></div>
-      <div class="wf-step"><div class="wf-num">05 — EXPERIMENT</div><div class="wf-title">Track systematically</div><div class="wf-desc">Every experiment tracked in MLflow: hyperparameters, metrics, artifacts. 11 runs to find alpha=0.70, paired t-test validated.</div></div>
-      <div class="wf-step"><div class="wf-num">06 — TRADE-OFFS</div><div class="wf-title">Analyze trade-offs</div><div class="wf-desc">Accuracy vs latency. The 710ms of hybrid retrieval must be justified by the +11.4% Recall@10 gain.</div></div>
-      <div class="wf-step"><div class="wf-num">07 — DEPLOY</div><div class="wf-title">Package reproducibly</div><div class="wf-desc">Docker, Kubernetes, systemd. Services that restart on crash, roll out with zero downtime, behave identically in dev and prod.</div></div>
-      <div class="wf-step"><div class="wf-num">08 — TEST & MONITOR</div><div class="wf-title">Test and monitor</div><div class="wf-desc">12 pytest regression tests. Prometheus /metrics and /health. GitHub Actions CI/CD that fails the build on regression.</div></div>
-      <div class="wf-step"><div class="wf-num">09 — ITERATE</div><div class="wf-title">Improve from evidence</div><div class="wf-desc">Use observed failures and evaluation results to drive the next experiment. Evidence from production, not intuition.</div></div>
+    <div class="eyebrow">MSC THESIS FINDING</div>
+    <h2>The fusion weight</h2>
+    <div class="thesis reveal">
+      <div>
+        <h3>Sparse and dense retrieval are not equal partners. Assuming they are costs you accuracy.</h3>
+        <p>Most hybrid RAG implementations split BM25 and dense embedding retrieval 50/50 by default. I ran eleven systematic experiments and found the best tested value at alpha=0.70, confirmed with a paired t-test (p=0.002). That calibration choice is worth +2.9 pts over alpha 0.5 (p = 0.002, 95% CI +1.1 to +4.7), +11.4 pts over BM25 only, on 8.84M passages.</p>
+        <p>The common assumption of alpha=0.50 was tested directly and found to be suboptimal.</p>
+      </div>
+      <div class="facts">
+        <div><span>Institution</span><strong>University of Europe for Applied Sciences, Potsdam</strong></div>
+        <div><span>Corpus size</span><strong>MS MARCO 8.84M passages</strong></div>
+        <div><span>Queries</span><strong>100 stratified MS MARCO dev queries</strong></div>
+        <div><span>Dense model</span><strong>Microsoft E5-base-v2</strong></div>
+        <div><span>Sparse method</span><strong>BM25</strong></div>
+        <div><span>Experiments</span><strong>11 experiments (results in RESULTS.md)</strong></div>
+        <div><span>Variable</span><strong>Fusion weight alpha (0.0 to 1.0)</strong></div>
+        <div><span>Statistical test</span><strong>Paired t-test, t(99) = 3.14, p = 0.002</strong></div>
+        <div><span>vs alpha 0.5</span><strong>+2.9 pts (95% CI +1.1 to +4.7)</strong></div>
+        <div class="best"><span>Best tested alpha</span><strong>0.70 gives 93% Recall@10</strong></div>
+      </div>
+    </div>
+
+    <div class="replay reveal" id="replay">
+      <div class="replay-head">
+        <h3>Replay the experiment</h3>
+        <p>Move alpha and see the measured Recall@10. 0 means BM25 only, 1 means E5 only.</p>
+      </div>
+      <div class="replay-grid">
+        <div class="chart-wrap"><svg class="chart" viewBox="0 0 600 260" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">Recall@10 by fusion weight alpha</title><desc id="chart-desc">Recall@10 rises from 81.6% with BM25 only (alpha 0.0) to a peak of 93.0% at alpha 0.7, then falls to 82.5% with E5 only (alpha 1.0). Alpha 0.1 and 0.2 are not shown.</desc><line class="grid" x1="48" x2="580" y1="220.0" y2="220.0"/><text class="ax" x="40" y="224.0" text-anchor="end">80%</text><line class="grid" x1="48" x2="580" y1="147.9" y2="147.9"/><text class="ax" x="40" y="151.9" text-anchor="end">85%</text><line class="grid" x1="48" x2="580" y1="75.7" y2="75.7"/><text class="ax" x="40" y="79.7" text-anchor="end">90%</text><text class="ax" x="48.0" y="240" text-anchor="middle">0.0</text><text class="ax" x="101.2" y="240" text-anchor="middle">0.1</text><text class="ax" x="154.4" y="240" text-anchor="middle">0.2</text><text class="ax" x="207.6" y="240" text-anchor="middle">0.3</text><text class="ax" x="260.8" y="240" text-anchor="middle">0.4</text><text class="ax" x="314.0" y="240" text-anchor="middle">0.5</text><text class="ax" x="367.2" y="240" text-anchor="middle">0.6</text><text class="ax" x="420.4" y="240" text-anchor="middle">0.7</text><text class="ax" x="473.6" y="240" text-anchor="middle">0.8</text><text class="ax" x="526.8" y="240" text-anchor="middle">0.9</text><text class="ax" x="580.0" y="240" text-anchor="middle">1.0</text><text class="ax ax-title" x="314.0" y="256" text-anchor="middle">alpha (0 = BM25 only, 1 = E5 only)</text><line class="ref" x1="314.0" x2="314.0" y1="18" y2="220"/><text class="ref-lbl" x="308.0" y="28" text-anchor="end">common default 0.5</text><line class="gap" x1="48.0" y1="196.9" x2="207.6" y2="116.1"/><polyline class="line" points="207.6,116.1 260.8,91.6 314.0,74.3 367.2,49.7 420.4,32.4 473.6,58.4 526.8,82.9 580.0,183.9"/><circle class="pt" cx="48.0" cy="196.9" r="4"/><circle class="pt" cx="207.6" cy="116.1" r="4"/><circle class="pt" cx="260.8" cy="91.6" r="4"/><circle class="pt" cx="314.0" cy="74.3" r="4"/><circle class="pt" cx="367.2" cy="49.7" r="4"/><circle class="pt best" cx="420.4" cy="32.4" r="6"/><circle class="pt" cx="473.6" cy="58.4" r="4"/><circle class="pt" cx="526.8" cy="82.9" r="4"/><circle class="pt" cx="580.0" cy="183.9" r="4"/><text class="best-lbl" x="420.4" y="20.4" text-anchor="middle">93.0% at 0.7</text><g id="cursor" class="cursor" transform="translate(314.0,0)"><line x1="0" x2="0" y1="18" y2="220"/><circle cx="0" cy="74.3" r="8"/></g></svg></div>
+        <div class="readout" aria-live="polite">
+          <div class="ro-alpha">alpha <strong id="ro-a">0.5</strong> <span id="ro-m">Hybrid</span></div>
+          <div class="ro-val" id="ro-r">90.1%</div>
+          <div class="ro-lbl">Recall@10</div>
+          <div class="ro-row"><span>vs BM25 only</span><strong id="ro-v">+10.4%</strong></div>
+          <p class="ro-note" id="ro-note">The common default. Try 0.7.</p>
+        </div>
+      </div>
+      <div class="slider-row">
+        <label for="alpha">alpha</label>
+        <input type="range" id="alpha" min="0" max="1" step="0.1" value="0.5" aria-valuetext="alpha 0.5, Recall@10 90.1%">
+      </div>
+      <p class="replay-src">Source: <a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System/blob/main/RESULTS.md" target="_blank" rel="noopener">RESULTS.md, alpha grid search</a>. 100 stratified MS MARCO dev queries. Alpha 0.1 and 0.2 are left out because two result files in the repo disagree on them. "vs BM25 only" is the relative change reported in RESULTS.md.</p>
+      <details class="how">
+        <summary>All numbers as a table</summary>
+        <div class="table-scroll" style="margin-top:12px">
+          <table>
+            <thead><tr><th>ALPHA</th><th>METHOD</th><th>RECALL@10</th><th>VS BM25 ONLY</th></tr></thead>
+            <tbody><tr><td>0.0</td><td>BM25 only</td><td>81.6%</td><td>baseline</td></tr><tr><td>0.3</td><td>Hybrid</td><td>87.2%</td><td>+6.8%</td></tr><tr><td>0.4</td><td>Hybrid</td><td>88.9%</td><td>+8.9%</td></tr><tr><td>0.5</td><td>Hybrid</td><td>90.1%</td><td>+10.4%</td></tr><tr><td>0.6</td><td>Hybrid</td><td>91.8%</td><td>+12.5%</td></tr><tr class="best"><td>0.7</td><td>Hybrid</td><td>93.0%</td><td>+13.9%</td></tr><tr><td>0.8</td><td>Hybrid</td><td>91.2%</td><td>+11.7%</td></tr><tr><td>0.9</td><td>Hybrid</td><td>89.5%</td><td>+9.7%</td></tr><tr><td>1.0</td><td>E5 only</td><td>82.5%</td><td>+1.1%</td></tr></tbody>
+          </table>
+        </div>
+      </details>
     </div>
   </div>
 </section>
+<script>window.ALPHA_DATA=[{a:0.0,m:"BM25 only",r:81.6,v:"baseline",y:196.9},{a:0.3,m:"Hybrid",r:87.2,v:"+6.8%",y:116.1},{a:0.4,m:"Hybrid",r:88.9,v:"+8.9%",y:91.6},{a:0.5,m:"Hybrid",r:90.1,v:"+10.4%",y:74.3},{a:0.6,m:"Hybrid",r:91.8,v:"+12.5%",y:49.7},{a:0.7,m:"Hybrid",r:93.0,v:"+13.9%",y:32.4},{a:0.8,m:"Hybrid",r:91.2,v:"+11.7%",y:58.4},{a:0.9,m:"Hybrid",r:89.5,v:"+9.7%",y:82.9},{a:1.0,m:"E5 only",r:82.5,v:"+1.1%",y:183.9}];window.ALPHA_X={l:48,w:532};</script>
 
-<div class="divider"></div>
+<!-- DIARY -->
+<section id="diary">
+  <div class="wrap">
+    <div class="eyebrow">ENGINEERING DIARY</div>
+    <h2>Decisions and failures, with receipts</h2>
+    <p class="lead">Real entries from the repos, newest first. Each one links to the commit or document it comes from.</p>
+    <ol class="diary">
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Judge prompt v2, a cannot-link rule and a pilot in both directions">
+        <div class="entry-meta"><time datetime="2026-10-08">2026-10-08</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">FIX</span></div>
+        <h3>Judge prompt v2, a cannot-link rule and a pilot in both directions</h3>
+        <p>Each side of a candidate pair now states its role ("the subject of its paragraph" or "mentioned in a paragraph about X"), and the judge decides on the named entity only. Union-find refuses a merge when any pair across the two clusters was judged "different", and merges run in a fixed order. The new pilot tests both directions: at least 22 of 24 known bridge links must be judged "same", and the bad merges from run 1 must be judged "different". It passed both gates. The full re-run is in progress.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/71d639d" target="_blank" rel="noopener">Commit 71d639d →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/71d639d/docs/NEXT.md#3-approved-next-steps-for-m3-steps-1-to-4-done-on-2026-10-08-step-5-waits-for-approval" target="_blank" rel="noopener">docs/NEXT.md, section 3 →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Entity resolution run 1 failed, and it stays on record">
+        <div class="entry-meta"><time datetime="2026-10-08">2026-10-08</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fail">FAILURE</span></div>
+        <h3>Entity resolution run 1 failed, and it stays on record</h3>
+        <p>Run 1 judged all 17,309 candidate pairs for 0.59 USD. It merged the United States with the United Kingdom (117 mentions), and bridge link recall on the report split fell from 0.83 to 0.51. Two causes: the judge prompt confused a mention with the subject of its paragraph, and there was no cannot-link check, so 2,439 pairs judged "different" still ended up in one cluster. All outputs are kept in results/m3/run1_flawed.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/60e5c25" target="_blank" rel="noopener">Commit 60e5c25 →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/8e7cdf7" target="_blank" rel="noopener">Commit 8e7cdf7 →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/71d639d/docs/NEXT.md#2-m3-run-1-what-went-wrong-and-why" target="_blank" rel="noopener">docs/NEXT.md, section 2 →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Plan and quality bar written down before any code">
+        <div class="entry-meta"><time datetime="2026-10-08">2026-10-08</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind dec">DECISION</span></div>
+        <h3>Plan and quality bar written down before any code</h3>
+        <p>Before writing entity-resolution code, the plan and its quality bar went into docs/PLAN.md: at least 48 of 50 seeded-random merges correct on the report split. After the first pilot, auto-merge was turned off: dev gold triples give no same-name negatives, so the merge threshold cannot be tuned from gold.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/76f4fb8" target="_blank" rel="noopener">Commit 76f4fb8 →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/71d639d/docs/PLAN.md#m3-entity-resolution" target="_blank" rel="noopener">docs/PLAN.md, M3 →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Prompt v3 failed one bar, and a rule fixed in advance decided">
+        <div class="entry-meta"><time datetime="2026-10-04">2026-10-04</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind dec">DECISION</span></div>
+        <h3>Prompt v3 failed one bar, and a rule fixed in advance decided</h3>
+        <p>The extraction quality bar (recall of at least 0.75, slot precision of at least 0.90, at least 27 of 30 hand-checked triples correct) and the rule for a failed prompt v3 were both committed before the run. Prompt v3 passed recall (0.76) and failed slot precision (0.76). All 10 failures were classified by hand: 1 real miss, 0 wrong facts. The hand check found 28 of 30 triples correct. Under the rule, the full corpus was extracted with prompt v3 and the strict score is reported as it is.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/f780be6" target="_blank" rel="noopener">Commit f780be6 (bar) →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/e108983" target="_blank" rel="noopener">Commit e108983 (rule) →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/a41717a" target="_blank" rel="noopener">Commit a41717a (pilot) →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/9d891d0" target="_blank" rel="noopener">Commit 9d891d0 (full run) →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/71d639d/docs/PLAN.md#m2-extraction" target="_blank" rel="noopener">docs/PLAN.md, M2 →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Re-queue a failed email without rewriting its history">
+        <div class="entry-meta"><time datetime="2026-10-01">2026-10-01</time><span class="entry-proj">shipment-intake-ai</span><span class="entry-kind dec">DECISION</span></div>
+        <h3>Re-queue a failed email without rewriting its history</h3>
+        <p>After a quota or API outage, POST /review/{id}/retry re-queues a failed email. The attempts counter is not reset, because it is the lock token and the attempt number in the history; retry_base records where the new budget starts. After a requeue with MAX_ATTEMPTS=8, the log shows attempt=9/16.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/commit/12cf11c" target="_blank" rel="noopener">Commit 12cf11c →</a><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/blob/12cf11c/README.md#review-and-the-feedback-loop" target="_blank" rel="noopener">README, review and feedback loop →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Dangerous goods are never auto-accepted">
+        <div class="entry-meta"><time datetime="2026-10-01">2026-10-01</time><span class="entry-proj">shipment-intake-ai</span><span class="entry-kind dec">DECISION</span></div>
+        <h3>Dangerous goods are never auto-accepted</h3>
+        <p>Two independent checks send dangerous goods to review: the model's cargo class, and a plain-code marker check (ADR, Gefahrgut, UN numbers, hazmat, IMDG). Negated mentions such as "kein Gefahrgut" do not trigger it, and ADR is matched in capitals only, so "Adr." (Adresse) does not either. The check errs toward review: a false positive costs one review, a false negative auto-accepts dangerous goods.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/commit/1c97b8c" target="_blank" rel="noopener">Commit 1c97b8c →</a><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/blob/12cf11c/README.md#dangerous-goods-are-never-auto-accepted" target="_blank" rel="noopener">README, dangerous goods →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: The model extracts, the rules decide">
+        <div class="entry-meta"><time datetime="2026-10-01">2026-10-01</time><span class="entry-proj">shipment-intake-ai</span><span class="entry-kind dec">DECISION</span></div>
+        <h3>The model extracts, the rules decide</h3>
+        <p>The model only fills in fields and a confidence per field; the output schema has no decision field. Deterministic code accepts an email or sends it to review with stable reason codes such as missing:weight. The model's self-reported confidence is not well calibrated, so it is one check among several.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/commit/22c111a" target="_blank" rel="noopener">Commit 22c111a →</a><a href="https://github.com/RohithkumarReddipogula/shipment-intake-ai/blob/12cf11c/README.md#the-ai-extracts-the-rules-decide" target="_blank" rel="noopener">README, design decisions →</a></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ENGINEERING -->
+<section id="engineering" data-kb data-kb-title="How I engineer ML systems">
+  <div class="wrap">
+    <div class="eyebrow">HOW I ENGINEER AI SYSTEMS</div>
+    <h2>From problem to production</h2>
+    <p class="lead">I build, evaluate and deploy practical ML systems, from data preparation and experimentation to APIs, cloud deployment and monitoring.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01 · UNDERSTAND</div><h3>Define the problem</h3><p>Translate the product or business problem into a concrete ML problem with measurable success criteria.</p></div>
+      <div class="step reveal"><div class="step-num">02 · EVALUATE</div><h3>Choose metrics first</h3><p>Define Recall@10 and RAGAS Faithfulness before optimising. Metrics chosen for the problem, not retrofitted.</p></div>
+      <div class="step reveal"><div class="step-num">03 · BASELINE</div><h3>Establish a baseline</h3><p>Understand whether the new approach improves anything. alpha=0.70 gave +2.9 pts over the default alpha 0.5 (p = 0.002).</p></div>
+      <div class="step reveal"><div class="step-num">04 · DATA</div><h3>Prepare and validate</h3><p>Check data quality, distribution, edge cases, and leakage before training. Real-world document formats handled properly.</p></div>
+      <div class="step reveal"><div class="step-num">05 · EXPERIMENT</div><h3>Track systematically</h3><p>Every experiment recorded with its settings and results; 11 alpha experiments, results in RESULTS.md, validated with a paired t-test.</p></div>
+      <div class="step reveal"><div class="step-num">06 · TRADE-OFFS</div><h3>Analyze trade-offs</h3><p>Accuracy vs latency. The extra cost of running two retrievers must be justified by the Recall@10 gain.</p></div>
+      <div class="step reveal"><div class="step-num">07 · DEPLOY</div><h3>Package reproducibly</h3><p>Docker, Kubernetes, systemd. Services that restart on crash, roll out with zero downtime, behave identically in dev and prod.</p></div>
+      <div class="step reveal"><div class="step-num">08 · TEST AND MONITOR</div><h3>Test and monitor</h3><p>12 pytest regression tests. Prometheus /metrics and /health. GitHub Actions CI/CD that fails the build on regression.</p></div>
+      <div class="step reveal"><div class="step-num">09 · ITERATE</div><h3>Improve from evidence</h3><p>Use observed failures and evaluation results to drive the next experiment. Evidence from production, not intuition.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- SKILLS -->
-<section id="skills" style="padding:72px 0; background: var(--paper2);">
+<section id="skills" class="alt">
   <div class="wrap">
-    <div class="sec-eyebrow">TECHNICAL SKILLS</div>
-    <h2 class="sec-title">By category</h2>
-    <div class="sk-grid">
-      <div class="sk-group"><div class="sk-title">MACHINE LEARNING</div><div class="sk-chips"><span class="chip">Python 3.11</span><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">Model evaluation</span><span class="chip">Experimentation</span><span class="chip">Error analysis</span></div></div>
-      <div class="sk-group"><div class="sk-title">NLP & LLM</div><div class="sk-chips"><span class="chip">RAG</span><span class="chip">Hybrid retrieval</span><span class="chip">BM25</span><span class="chip">Dense embeddings</span><span class="chip">E5-base-v2</span><span class="chip">FAISS</span><span class="chip">LLM APIs</span><span class="chip">QLoRA</span><span class="chip">PEFT</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAGAS</span><span class="chip">Prompt engineering</span></div></div>
-      <div class="sk-group"><div class="sk-title">DATA</div><div class="sk-chips"><span class="chip">SQL</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">Document ingestion</span><span class="chip">Data validation</span></div></div>
-      <div class="sk-group"><div class="sk-title">BACKEND ENGINEERING</div><div class="sk-chips"><span class="chip">FastAPI</span><span class="chip">asyncio</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">JWT auth</span><span class="chip">SSE streaming</span><span class="chip">Webhooks</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">React</span></div></div>
-      <div class="sk-group"><div class="sk-title">MLOPS & CLOUD</div><div class="sk-chips"><span class="chip">MLflow</span><span class="chip">DagsHub</span><span class="chip">AWS EC2</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">Prometheus</span><span class="chip">CI/CD</span><span class="chip">systemd</span></div></div>
-      <div class="sk-group"><div class="sk-title">TOOLS & PLATFORMS</div><div class="sk-chips"><span class="chip">n8n</span><span class="chip">Workflow automation</span><span class="chip">Git</span><span class="chip">Linux/CLI</span><span class="chip">HuggingFace Spaces</span><span class="chip">Railway</span><span class="chip">Vercel</span><span class="chip">Gemini</span><span class="chip">Groq</span></div></div>
+    <div class="eyebrow">TECHNICAL SKILLS</div>
+    <h2>By category</h2>
+    <div class="skills" style="margin-top:32px">
+      <div class="sk reveal" data-kb data-kb-title="Skills: Machine learning"><h3>MACHINE LEARNING</h3><ul><li>Python 3.11</li><li>PyTorch</li><li>HuggingFace</li><li>Model evaluation</li><li>Experimentation</li><li>Error analysis</li></ul></div>
+      <div class="sk reveal" data-kb data-kb-title="Skills: NLP and LLM"><h3>NLP AND LLM</h3><ul><li>RAG</li><li>GraphRAG</li><li>Knowledge graphs</li><li>Hybrid retrieval</li><li>BM25</li><li>Dense embeddings</li><li>E5-base-v2</li><li>FAISS</li><li>Rerankers</li><li>LLM APIs</li><li>QLoRA</li><li>PEFT</li><li>LangChain</li><li>LangGraph</li><li>RAGAS</li><li>Prompt engineering</li></ul></div>
+      <div class="sk reveal" data-kb data-kb-title="Skills: Data"><h3>DATA</h3><ul><li>SQL</li><li>PostgreSQL</li><li>pgvector</li><li>Neo4j</li><li>SQLite</li><li>Redis</li><li>SQLAlchemy</li><li>Document ingestion</li><li>Data validation</li></ul></div>
+      <div class="sk reveal" data-kb data-kb-title="Skills: Backend engineering"><h3>BACKEND ENGINEERING</h3><ul><li>FastAPI</li><li>asyncio</li><li>REST APIs</li><li>pytest</li><li>Pydantic</li><li>JWT auth</li><li>SSE streaming</li><li>Webhooks</li><li>TypeScript</li><li>Node.js</li><li>React</li></ul></div>
+      <div class="sk reveal" data-kb data-kb-title="Skills: MLOps and cloud"><h3>MLOPS AND CLOUD</h3><ul><li>MLflow</li><li>AWS EC2</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li><li>Prometheus</li><li>CI/CD</li><li>systemd</li></ul></div>
+      <div class="sk reveal" data-kb data-kb-title="Skills: Tools and platforms"><h3>TOOLS AND PLATFORMS</h3><ul><li>n8n</li><li>Workflow automation</li><li>Git</li><li>Linux/CLI</li><li>HuggingFace Spaces</li><li>Railway</li><li>Vercel</li><li>Gemini</li><li>Groq</li></ul></div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
-
-<!-- EXPERIMENTS -->
-<section id="experiments" style="padding:72px 0;">
-  <div class="wrap">
-    <div class="sec-eyebrow">EXPERIMENTS</div>
-    <h2 class="sec-title">Evidence-driven ML research</h2>
-    <div class="exp-box">
-      <div class="exp-top">
-        <div>
-          <div class="exp-tit">Hybrid Retrieval Fusion Weight Search</div>
-          <div class="exp-sub">11 systematic experiments to find the optimal BM25-to-dense weighting on 8.84M MS MARCO passages. The common assumption of alpha=0.50 was tested directly and found to be suboptimal.</div>
-        </div>
-        <div class="em-grid">
-          <div class="em-row"><span class="em-lbl">Dataset</span><span class="em-val">MS MARCO 8.84M passages</span></div>
-          <div class="em-row"><span class="em-lbl">Experiments</span><span class="em-val">11 runs (MLflow tracked)</span></div>
-          <div class="em-row"><span class="em-lbl">Variable</span><span class="em-val">Fusion weight alpha (0.0 to 1.0)</span></div>
-          <div class="em-row"><span class="em-lbl">Statistical test</span><span class="em-val">Paired t-test, p=0.002</span></div>
-          <div class="em-row"><span class="em-lbl">Result</span><span class="em-val">alpha=0.70 gives 93% Recall@10</span></div>
-        </div>
-      </div>
-      <table class="etable">
-        <thead><tr><th>Alpha</th><th>Recall@10</th><th>MRR</th><th>Latency</th><th>Note</th></tr></thead>
-        <tbody>
-          <tr><td>0.0 (BM25 only)</td><td>81.6%</td><td>0.82</td><td>~180ms</td><td>Sparse baseline</td></tr>
-          <tr><td>0.20</td><td>85.2%</td><td>0.88</td><td>~480ms</td><td></td></tr>
-          <tr><td>0.40</td><td>89.0%</td><td>0.94</td><td>~560ms</td><td></td></tr>
-          <tr><td>0.50 (naive 50/50)</td><td>90.1%</td><td>0.96</td><td>~620ms</td><td>Common assumption</td></tr>
-          <tr><td>0.60</td><td>91.5%</td><td>0.98</td><td>~660ms</td><td></td></tr>
-          <tr class="best"><td>0.70 — OPTIMAL</td><td>93.0%</td><td>1.0</td><td>710ms</td><td>Best configuration</td></tr>
-          <tr><td>0.80</td><td>92.1%</td><td>0.99</td><td>~720ms</td><td>Performance drops</td></tr>
-          <tr><td>1.0 (dense only)</td><td>88.7%</td><td>0.93</td><td>~740ms</td><td>Dense baseline</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ARCHITECTURE -->
-<section id="architecture" style="padding:72px 0; background: var(--paper2);">
-  <div class="wrap">
-    <div class="sec-eyebrow">SYSTEM ARCHITECTURE</div>
-    <h2 class="sec-title">From data to deployment</h2>
-    <div class="arch-grid">
-      <div class="arch-card">
-        <div class="arch-title">Hybrid RAG System</div>
-        <div class="arch-flow">
-          <div class="arch-node">MS MARCO 8.84M passages</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Preprocessing + chunking</div><div class="arch-arr">↓</div>
-          <div class="arch-node">BM25 index + E5-base-v2 FAISS</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">Score fusion (alpha=0.70)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">FastAPI inference API</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Docker → AWS EC2 + HF Spaces</div><div class="arch-arr">↓</div>
-          <div class="arch-node">MLflow tracking on DagsHub</div>
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-title">AI Customer Support Platform</div>
-        <div class="arch-flow">
-          <div class="arch-node">Document upload (PDF, TXT, DOCX)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Ingestion + chunking pipeline</div><div class="arch-arr">↓</div>
-          <div class="arch-node">PostgreSQL + pgvector embeddings</div><div class="arch-arr">↓</div>
-          <div class="arch-node">RAG retrieval + LLM response</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">SSE streaming → JS widget</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Docker Compose → Railway</div><div class="arch-arr">↓</div>
-          <div class="arch-node">12 pytest + Prometheus + CI/CD</div>
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-title">QLoRA Fine-Tuning</div>
-        <div class="arch-flow">
-          <div class="arch-node">TinyLlama 1.1B base model</div><div class="arch-arr">↓</div>
-          <div class="arch-node">4-bit quantisation (bitsandbytes)</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">PEFT LoRA adapters (0.089% params)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Training on Colab T4 GPU</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Loss 2.47 → 0.89 (64% reduction)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">RAGAS evaluation (Faithfulness 0.909)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Published on HuggingFace Hub</div>
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-title">BauWatcher</div>
-        <div class="arch-flow">
-          <div class="arch-node">German Autobahn API (100+ endpoints)</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">Parallel async fetch (asyncio)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">3,197 roadworks in 5 seconds</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Groq LLM impact summaries</div><div class="arch-arr">↓</div>
-          <div class="arch-node">FastAPI → Railway backend</div><div class="arch-arr">↓</div>
-          <div class="arch-node">React + Leaflet → Vercel frontend</div>
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-title">n8n Community Node: Autobahn</div>
-        <div class="arch-flow">
-          <div class="arch-node">n8n workflow or AI Agent calls the node</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Several roads requested in one call</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Autobahn API (6 event types)</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">Clean, typed items (Simplify)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Filters: blocked only, skip future events</div><div class="arch-arr">↓</div>
-          <div class="arch-node">10 unit tests + n8n linter in GitHub Actions CI</div>
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-title">AI Support Ticket Triage (n8n Cloud)</div>
-        <div class="arch-flow">
-          <div class="arch-node">Webhook receives support ticket</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Normalise fields</div><div class="arch-arr">↓</div>
-          <div class="arch-node hl">Gemini structured extraction (category, priority, sentiment)</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Switch routes: Slack, email, RAG API, queue</div><div class="arch-arr">↓</div>
-          <div class="arch-node">Retries on model overload, fallback reply</div><div class="arch-arr">↓</div>
-          <div class="arch-node">JSON reply to the caller</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- RESEARCH -->
-<section id="research" style="padding:72px 0;">
-  <div class="wrap">
-    <div class="sec-eyebrow">MSC THESIS FINDING</div>
-    <h2 class="sec-title">The fusion weight</h2>
-    <div class="research-box">
-      <div>
-        <div class="r-eyebrow">University of Europe for Applied Sciences · Potsdam · 2026</div>
-        <h3>Sparse and dense retrieval are not equal partners — assuming they are costs you accuracy.</h3>
-        <p style="margin-top:14px;">Most hybrid RAG implementations split BM25 and dense embedding retrieval 50/50 by default. I ran eleven systematic experiments and found the true optimum at alpha=0.70 — confirmed with a paired t-test (p=0.002). That calibration choice is worth +11.4% Recall@10 over the naive split, on 8.84M passages.</p>
-      </div>
-      <div class="r-table">
-        <div class="r-row"><span>Corpus size</span><strong>8.84M passages</strong></div>
-        <div class="r-row"><span>Dense model</span><strong>Microsoft E5-base-v2</strong></div>
-        <div class="r-row"><span>Sparse method</span><strong>BM25</strong></div>
-        <div class="r-row"><span>Experiments</span><strong>11 tracked (MLflow)</strong></div>
-        <div class="r-row"><span>Statistical test</span><strong>Paired t-test</strong></div>
-        <div class="r-row"><span>MRR</span><strong>1.0</strong></div>
-        <div class="r-row"><span>Latency</span><strong>710ms</strong></div>
-        <div class="r-row best"><span>Optimal alpha</span><strong>0.70 (p=0.002)</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
 
 <!-- BACKGROUND -->
-<section id="background" style="padding:72px 0; background: var(--paper2);">
+<section id="background">
   <div class="wrap">
-    <div class="sec-eyebrow">BACKGROUND</div>
-    <h2 class="sec-title">Education and experience</h2>
+    <div class="eyebrow">BACKGROUND</div>
+    <h2>Experience and education</h2>
+    <div class="glance reveal" style="margin-top:32px" data-kb data-kb-title="At a glance: role, location, work authorization, languages">
+      <div><span>TARGET ROLE</span>AI Engineer, LLM Engineer, NLP Engineer, ML Engineer</div>
+      <div><span>LOCATION</span>Berlin, Germany · Open to relocate across Germany</div>
+      <div><span>WORK AUTH</span>Job Seeker Visa · Active German work authorization · No sponsorship needed</div>
+      <div><span>AVAILABILITY</span>Available immediately</div>
+      <div><span>LANGUAGES</span>German B1 · English C1</div>
+      <div><span>PROGRAMMING</span>Python · SQL · TypeScript</div>
+    </div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-date">2026 — Present</div>
+      <div class="tl reveal" data-kb data-kb-title="Experience: AI Engineer, Independent Projects">
+        <div class="tl-date">April 2026 to Present</div>
         <div>
-          <div class="tl-role">Independent ML Engineer</div>
-          <div class="tl-org">Berlin, Germany — Job Seeker Visa</div>
-          <div class="tl-desc">Built twelve AI/ML projects covering hybrid RAG retrieval, LLM fine-tuning with QLoRA, multi-agent LangGraph pipelines, LLM evaluation, multi-tenant SaaS development, AWS EC2, Kubernetes, and MLflow experiment tracking. Latest work: an open-source n8n community node in TypeScript (10 unit tests, CI) and an AI support ticket triage workflow on n8n Cloud with Gemini structured extraction, routing, retries and fallbacks.</div>
+          <h3>AI Engineer</h3>
+          <div class="tl-org">Independent Projects · Berlin, Germany</div>
+          <p>Building and shipping production-style AI systems end to end, with a focus on retrieval, agents, reliable LLM pipelines and honest evaluation.</p>
+          <ul>
+            <li>Built a GraphRAG engine on Neo4j with LLM extraction, entity resolution and a benchmark against a hybrid baseline</li>
+            <li>Built an LLM email intake service with a job queue, retries, guardrails, a human review queue and 175 tests</li>
+            <li>Shipped a multi-tenant AI SaaS in 7 days with auth, streaming, CI tests and monitoring</li>
+            <li>Released an open-source n8n community node in TypeScript (10 unit tests, CI) that gives AI agents clean, typed data, and an AI support ticket triage workflow on n8n Cloud</li>
+          </ul>
         </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-date">Mar 2024 — Mar 2026</div>
+      <div class="tl reveal" data-kb data-kb-title="Education: MSc Data Science">
+        <div class="tl-date">Mar 2024 to Mar 2026</div>
         <div>
-          <div class="tl-role">MSc Data Science</div>
-          <div class="tl-org">University of Europe for Applied Sciences — Potsdam, Germany</div>
-          <div class="tl-desc">Thesis: hybrid RAG combining BM25 sparse retrieval with Microsoft E5-base-v2 dense embeddings. 11 MLflow experiments. 93% Recall@10 on 8.84M MS MARCO passages. Optimal fusion weight alpha=0.70, validated with a paired t-test, p=0.002. RAGAS: Faithfulness 0.909, overall 0.877.</div>
+          <h3>MSc Data Science</h3>
+          <div class="tl-org">University of Europe for Applied Sciences · Potsdam, Germany</div>
+          <p>Thesis: AI-Powered Retrieval-Augmented Assistant for Evidence-Based Question Answering. Hybrid RAG combining BM25 sparse retrieval with Microsoft E5-base-v2 dense embeddings. 11 experiments (results in RESULTS.md). 93% Recall@10 on 8.84M MS MARCO passages. Best tested fusion weight alpha=0.70, validated with a paired t-test, p=0.002. QLoRA fine-tuning and deployment on AWS EC2 and Kubernetes.</p>
         </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-date">Jun 2019 — Aug 2023</div>
+      <div class="tl reveal" data-kb data-kb-title="Education: B.Tech Computer Science and Engineering">
+        <div class="tl-date">June 2019 to August 2023</div>
         <div>
-          <div class="tl-role">B.Tech Computer Science and Engineering</div>
-          <div class="tl-org">GITAM University (Deemed) — Visakhapatnam, Andhra Pradesh, India</div>
-          <div class="tl-desc">Key modules: Machine Learning, Artificial Intelligence, Data Structures, Database Management Systems, Web Application Development, Computer Networks, Operating Systems.</div>
+          <h3>B.Tech Computer Science and Engineering</h3>
+          <div class="tl-org">GITAM University (Deemed) · Visakhapatnam, Andhra Pradesh, India</div>
+          <p>Key modules: Machine Learning, Artificial Intelligence, Data Structures, Database Management Systems, Web Application Development, Computer Networks, Operating Systems.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- CONTACT -->
-<section id="contact" style="padding:72px 0;">
+<section id="contact" style="padding-top:0">
   <div class="wrap">
-    <div class="contact-box">
-      <div class="sec-eyebrow" style="justify-content:center;">AVAILABLE NOW — OPEN TO WORK ACROSS GERMANY</div>
+    <div class="contact reveal">
+      <div class="eyebrow">AVAILABLE NOW · OPEN TO WORK ACROSS GERMANY</div>
       <h2>Let's build something worth measuring.</h2>
-      <p>Seeking Junior ML Engineer, NLP Engineer, and AI Engineer roles across Germany. Job Seeker Visa holder, no sponsorship needed. Twelve projects, including new n8n and AI workflow automation work, and a systematic approach to building ML systems that actually work.</p>
-      <div class="ctas" style="justify-content:center;">
+      <p>Seeking AI Engineer, LLM Engineer, NLP Engineer and ML Engineer roles across Germany. Job Seeker Visa holder, no sponsorship needed. Available immediately, open to relocation.</p>
+      <div class="ctas">
         <a class="btn btn-primary" href="mailto:rohithkumar336699@gmail.com">Email me →</a>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank">LinkedIn</a>
-        <a class="btn btn-ghost" href="https://github.com/RohithkumarReddipogula" target="_blank">GitHub</a>
-        <a class="btn btn-ghost" href="https://huggingface.co/Rohith2026" target="_blank">HuggingFace</a>
+        <a class="btn" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/RohithkumarReddipogula" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://huggingface.co/Rohith2026" target="_blank" rel="noopener">HuggingFace</a>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
-    <div class="foot-txt">Rohith Kumar Reddipogula · Junior ML Engineer · Germany 2026</div>
-    <div class="foot-txt">+49 17665131866 · rohithkumar336699@gmail.com</div>
+    <p>Rohith Kumar Reddipogula · AI Engineer · Germany 2026</p>
+    <p>+49 17665131866 · rohithkumar336699@gmail.com</p>
   </div>
 </footer>
 
-<!-- THREE.JS — LIGHT MODE PARTICLES -->
 <script>
-(function() {
-  const canvas = document.getElementById('bg-canvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+document.documentElement.classList.add('js');
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 6;
+/* Fade-ins: content stays visible without JS or IntersectionObserver */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+  els.forEach(function (el) { io.observe(el); });
+})();
 
-  const count = 1400;
-  const positions = new Float32Array(count * 3);
-  const colors = new Float32Array(count * 3);
+/* Developer terminal (assets/terminal.js loads on first open): button or the ~ key */
+(function () {
+  var btn = document.getElementById('term-btn'), loading = null;
+  function open(from) {
+    if (!loading) loading = new Promise(function (res, rej) {
+      var sc = document.createElement('script');
+      sc.src = 'assets/terminal.js'; sc.onload = res; sc.onerror = rej;
+      document.head.appendChild(sc);
+    });
+    loading.then(function () { window.TERMINAL.open(from); });
+  }
+  btn.addEventListener('click', function () { open(btn); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== '~' || e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+    var t = e.target, tag = t && t.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+    if (window.TERMINAL && window.TERMINAL.isOpen()) return;
+    e.preventDefault();
+    open(document.activeElement && document.activeElement !== document.body ? document.activeElement : btn);
+  });
+})();
 
-  // Light-mode particles: deep indigo, slate blue, violet
-  const palettes = [
-    new THREE.Color(0x1D4ED8), // deep blue
-    new THREE.Color(0x4338CA), // indigo
-    new THREE.Color(0x7C3AED), // violet
-    new THREE.Color(0x0284C7), // sky
-    new THREE.Color(0x059669), // emerald (rare)
+/* Tabs, and the job description fit check (assets/jdfit.js loads on first use) */
+(function () {
+  var tabs = [document.getElementById('tab-ask'), document.getElementById('tab-jd')];
+  function select(t, focus) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) t.focus();
+    if (t.id === 'tab-jd') load();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t); });
+    t.addEventListener('keydown', function (e) {
+      var n = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (e.key === 'Home') n = -i; else if (e.key === 'End') n = tabs.length - 1 - i;
+      if (n) { e.preventDefault(); select(tabs[(i + n + tabs.length) % tabs.length], true); }
+    });
+  });
+
+  var loading = null;
+  function load() {
+    if (!loading) loading = new Promise(function (res, rej) {
+      var sc = document.createElement('script');
+      sc.src = 'assets/jdfit.js'; sc.onload = res; sc.onerror = rej;
+      document.head.appendChild(sc);
+    });
+    return loading;
+  }
+  var input = document.getElementById('jd-input'), out = document.getElementById('jd-out');
+  input.addEventListener('focus', load, { once: true });
+  document.getElementById('jd-run').addEventListener('click', function () {
+    if (!input.value.trim()) { input.focus(); return; }
+    load().then(function () { window.JDFIT.render(window.JDFIT.analyse(input.value), out); })
+      .catch(function () { out.textContent = 'The fit checker could not load. Please reload the page.'; });
+  });
+  document.getElementById('jd-clear').addEventListener('click', function () { input.value = ''; out.textContent = ''; input.focus(); });
+})();
+
+/* Thesis replay: moves a cursor over the static chart, numbers from window.ALPHA_DATA (RESULTS.md) */
+(function () {
+  var input = document.getElementById('alpha'), data = window.ALPHA_DATA, X = window.ALPHA_X;
+  if (!input || !data) return;
+  var cursor = document.getElementById('cursor'), dot = cursor.querySelector('circle');
+  var el = function (id) { return document.getElementById(id); };
+  var NOTES = {
+    '0.0': 'BM25 only, the sparse baseline.',
+    '0.5': 'The common default. Try 0.7.',
+    '0.7': 'Best tested value: +2.9 pts over alpha 0.5 (p = 0.002, 95% CI +1.1 to +4.7).',
+    '1.0': 'E5 only, the dense baseline.'
+  };
+  function update() {
+    var a = Math.round(parseFloat(input.value) * 10) / 10, key = a.toFixed(1);
+    var d = data.filter(function (p) { return Math.abs(p.a - a) < 1e-9; })[0];
+    cursor.setAttribute('transform', 'translate(' + (X.l + a * X.w).toFixed(1) + ',0)');
+    el('ro-a').textContent = key;
+    if (d) {
+      dot.style.display = '';
+      dot.setAttribute('cy', d.y);
+      el('ro-m').textContent = d.m;
+      el('ro-r').textContent = d.r.toFixed(1) + '%';
+      el('ro-v').textContent = d.v;
+      el('ro-note').textContent = NOTES[key] || '';
+      input.setAttribute('aria-valuetext', 'alpha ' + key + ', Recall@10 ' + d.r.toFixed(1) + '%');
+    } else {
+      dot.style.display = 'none';
+      el('ro-m').textContent = 'Hybrid';
+      el('ro-r').textContent = 'n/a';
+      el('ro-v').textContent = 'n/a';
+      el('ro-note').textContent = 'Not shown: two result files in the repo disagree on this point.';
+      input.setAttribute('aria-valuetext', 'alpha ' + key + ', not shown, the source files disagree');
+    }
+  }
+  input.addEventListener('input', update);
+  update();
+})();
+
+/* Ask my portfolio: BM25 over this page's own content plus a few curated answers */
+(function () {
+  var STOP = new Set(('a an the is are was were be been being do does did done he his him himself rohith rohiths kumar reddipogula ' +
+    'has have had having what which who whom how why when where can could would should will shall may might ' +
+    'of in on at to for with by from and or but about any some there this that these those it its me my i you your ' +
+    'know knows tell show give us our ever yet also much many very really something anything please').split(' '));
+
+  /* Generic words that should not outrank a specific term like "Kubernetes" */
+  var LOW = new Set(['experience', 'work', 'project', 'use', 'used', 'built', 'build', 'skill', 'good', 'familiar', 'worked']);
+
+  function stem(t) {
+    if (t.length > 5 && /ing$/.test(t)) return t.slice(0, -3);
+    if (t.length > 4 && /ed$/.test(t)) return t.slice(0, -2);
+    if (t.length > 4 && /ies$/.test(t)) return t.slice(0, -3) + 'y';
+    if (t.length > 3 && /s$/.test(t) && !/ss$/.test(t)) return t.slice(0, -1);
+    return t;
+  }
+  function tokens(s) {
+    return (s.toLowerCase().replace(/[^a-z0-9@.+]+/g, ' ').match(/[a-z0-9@+]+(?:\.[0-9]+)?/g) || [])
+      .filter(function (t) { return !STOP.has(t); }).map(stem);
+  }
+
+  var SYN = {
+    rag: ['retrieval', 'augment'], retrieval: ['rag', 'bm25', 'search'], search: ['retrieval'],
+    graph: ['graphrag', 'neo4j', 'knowledge'], kg: ['graphrag', 'neo4j', 'knowledge', 'graph'], knowledge: ['graph', 'graphrag'],
+    agent: ['langgraph', 'react', 'n8n', 'tool'], agentic: ['agent', 'langgraph'], multiagent: ['agent', 'langgraph'],
+    llm: ['gemini', 'language', 'model'], gpt: ['llm'], openai: ['llm'],
+    finetun: ['qlora', 'lora', 'peft'], fine: ['qlora', 'peft'], tun: ['qlora', 'peft'], train: ['qlora', 'peft'],
+    eval: ['evaluation', 'ragas', 'faithfulness'], evaluation: ['ragas', 'faithfulness', 'metric'], metric: ['evaluation', 'recall'],
+    test: ['pytest', 'evaluation'], testing: ['pytest'],
+    deploy: ['deployment', 'docker', 'kubernetes', 'aws'], deployment: ['docker', 'kubernetes', 'aws'], production: ['deploy', 'monitor'],
+    cloud: ['aws', 'railway', 'vercel'], k8: ['kubernetes'], mlop: ['mlflow', 'docker', 'kubernetes'],
+    visa: ['sponsorship', 'authorization'], sponsor: ['sponsorship', 'visa'], permit: ['visa', 'authorization'],
+    german: ['language', 'germany'], english: ['language'], speak: ['language'],
+    degree: ['msc', 'education', 'b.tech'], study: ['education', 'msc'], university: ['education'],
+    hire: ['contact', 'email'], reach: ['contact', 'email'], cv: ['resume'],
+    vector: ['pgvector', 'faiss', 'embedding'], embedding: ['dense', 'e5'],
+    automation: ['n8n', 'workflow'], workflow: ['n8n'], typescript: ['node.js', 'n8n'],
+    best: ['featured'], top: ['featured', 'best'], strongest: ['featured', 'best'], impressive: ['featured', 'best'],
+    fast: ['day', 'ship'], quick: ['day', 'ship'], ship: ['day', 'production'],
+    guardrail: ['validation', 'injection', 'review'], safety: ['guardrail', 'review'], injection: ['guardrail']
+  };
+
+  /* Curated answers, written only from the content on this page */
+  var FAQ = [
+    { title: 'Best project', target: 'p-graphrag', related: ['p-hybrid', 'p-shipment'],
+      keys: 'best featured top strongest favourite favorite flagship main proudest project',
+      answer: 'The featured project is GraphRAG Engine: a GraphRAG system on Neo4j benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA (in progress, +20 pts EM retrieval vs model memory). The most complete finished system is the Hybrid RAG thesis: 93% Recall@10 on 8.84M passages, p = 0.002.' },
+    { title: 'RAG', target: 'p-hybrid', related: ['p-graphrag', 'p-saas'],
+      keys: 'rag retrieval augmented generation retrieval-augmented hybrid bm25 dense',
+      answer: 'Yes, RAG is the core of his work: an MSc thesis on hybrid BM25 + E5 retrieval (93% Recall@10 on 8.84M passages, alpha 0.70 validated with p = 0.002), a multi-tenant RAG support SaaS with pgvector, and a GraphRAG engine on Neo4j.' },
+    { title: 'Knowledge graphs', target: 'p-graphrag', related: ['p-hybrid'],
+      keys: 'knowledge graph graphs graphrag neo4j entity relation extraction kg',
+      answer: 'Yes. GraphRAG Engine builds a knowledge graph on Neo4j: 12,547 relations extracted from 2,049 documents for 0.35 USD, extraction recall 0.75 and precision 0.89, with entity resolution and a benchmark against a hybrid retrieval baseline. It is in progress.' },
+    { title: 'LLM agents', target: 'p-multiagent', related: ['p-react', 'p-n8n', 'p-triage'],
+      keys: 'agent agents agentic langgraph react tool tools multi-agent orchestration',
+      answer: 'Yes. A 4-agent LangGraph research pipeline (search, summarise, fact-check, write), a ReAct agent with web search, calculator and RAG retrieval tools, an open-source n8n node that works as a tool for the n8n AI Agent, and an AI ticket triage workflow with Gemini on n8n Cloud.' },
+    { title: 'Evaluation', target: 'results', related: ['p-llmeval', 'p-graphrag', 'thesis'],
+      keys: 'evaluation evaluate eval metrics ragas faithfulness benchmark measure statistical confidence',
+      answer: 'Evaluation is a focus: RAGAS evaluation with Gemini as judge, EM and F1 with 95% bootstrap confidence intervals in GraphRAG Engine, and 11 experiments (results in RESULTS.md) with a paired t-test (p = 0.002) in the thesis.' },
+    { title: 'Reliable LLM pipelines', target: 'p-shipment', related: ['p-triage', 'p-saas'],
+      keys: 'production reliable reliability guardrails guardrail human review queue retries validation injection extraction structured',
+      answer: 'shipment-intake-ai is an LLM extraction service with a job queue, retries with backoff, validation rules, prompt injection defence and a human review queue, with 175 tests. The model extracts, plain rules decide, so the model never makes the business decision.' },
+    { title: 'Fine-tuning', target: 'p-qlora', related: ['p-llmeval'],
+      keys: 'fine-tuning finetuning fine tune tuning qlora lora peft train training tinyllama',
+      answer: 'Yes. He fine-tuned TinyLlama 1.1B with QLoRA (4-bit, PEFT LoRA, 0.089% of parameters trained) on a free Colab T4 GPU. Loss went from 2.47 to 0.89, a 64% reduction, and the model is published on HuggingFace Hub.' },
+    { title: 'Deployment and MLOps', target: 'p-k8s', related: ['p-aws', 'p-saas'],
+      keys: 'deployment deploy mlops docker kubernetes k8s aws ec2 cloud ci cd monitoring prometheus',
+      answer: 'Docker, Kubernetes (2 replicas, rolling updates, health checks), AWS EC2 with systemd auto-restart, Railway and Vercel, GitHub Actions CI/CD and Prometheus monitoring.' },
+    { title: 'Visa and location', target: 'background', related: ['contact'],
+      keys: 'visa sponsorship sponsor work authorization permit location relocate relocation berlin germany available availability start',
+      answer: 'He is in Berlin on a Job Seeker Visa with active German work authorization. No sponsorship needed. Available immediately and open to relocation across Germany.' },
+    { title: 'Languages', target: 'background', related: [],
+      keys: 'language languages german english speak fluent deutsch',
+      answer: 'German B1, English C1. Programming: Python, SQL and TypeScript.' },
+    { title: 'Education', target: 'background', related: ['thesis'],
+      keys: 'education degree msc master bachelor b.tech university study studied thesis',
+      answer: 'MSc Data Science, University of Europe for Applied Sciences, Potsdam (Mar 2024 to Mar 2026), with a thesis on hybrid retrieval. B.Tech Computer Science and Engineering, GITAM University (June 2019 to August 2023).' },
+    { title: 'Experience', target: 'background', related: ['projects'],
+      keys: 'experience job role work history career current currently',
+      answer: 'AI Engineer, Independent Projects, Berlin (April 2026 to Present): GraphRAG on Neo4j, an LLM email intake service with 175 tests, a multi-tenant AI SaaS in 7 days and open-source tooling for AI agents. Before that, an MSc in Data Science with a hybrid RAG thesis.' },
+    { title: 'Shipping speed', target: 'p-saas', related: ['p-bauwatcher'],
+      keys: 'fast quickly speed ship shipped deliver days build',
+      answer: 'He ships quickly: a multi-tenant AI SaaS from idea to production in 7 days, and BauWatcher built and deployed in 6 days.' },
+    { title: 'Failures and decisions', target: 'diary', related: ['p-graphrag', 'p-shipment'],
+      keys: 'failure fail failed mistake mistakes wrong learned lesson lessons bug setback diary decision decisions tradeoff',
+      answer: 'The engineering diary lists real decisions and failures from the repos. The biggest failure: entity resolution run 1 in GraphRAG Engine merged the United States with the United Kingdom and dropped bridge link recall from 0.83 to 0.51. The cause was found, the run kept on record, and the fix (judge prompt v2 with a cannot-link rule) passed a two-direction pilot.' },
+    { title: 'Contact', target: 'contact', related: [],
+      keys: 'contact email reach hire resume cv phone linkedin interview',
+      answer: 'Email rohithkumar336699@gmail.com or connect on LinkedIn.' }
   ];
 
-  for (let i = 0; i < count; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 22;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 22;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
-    const c = palettes[Math.floor(Math.random() * palettes.length)];
-    colors[i * 3]     = c.r;
-    colors[i * 3 + 1] = c.g;
-    colors[i * 3 + 2] = c.b;
-  }
+  function textOf(el) { return (el.textContent || '').replace(/\s+/g, ' ').trim(); }
+  function firstSentence(s, n) { var m = s.match(new RegExp('^(.*?[.!?](\\s|$)){1,' + (n || 1) + '}')); return m ? m[0].trim() : s; }
 
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
-
-  const mat = new THREE.PointsMaterial({
-    size: 0.028,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.45,
-    sizeAttenuation: true,
+  var docs = [];
+  FAQ.forEach(function (f) {
+    var keys = tokens(f.keys), title = tokens(f.title);
+    docs.push({ faq: true, title: f.title, target: f.target, related: f.related, answer: f.answer,
+      toks: keys.concat(keys, keys, title, title, tokens(f.answer)) });
+  });
+  document.querySelectorAll('[data-kb]').forEach(function (el) {
+    var t = el.querySelector('.card-title'), title, answer;
+    var target = el.getAttribute('data-kb-target') || el.id || (el.closest('section') || {}).id;
+    if (t) {
+      title = textOf(t);
+      var desc = el.querySelector('.desc'), metric = el.querySelector('.metric');
+      answer = (desc ? firstSentence(textOf(desc), 2) : '') + (metric ? ' Key result: ' + textOf(metric) + '.' : '');
+    } else if (el.classList.contains('tile')) {
+      title = textOf(el.querySelector('.tile-src')).replace(/\s*→$/, '');
+      answer = textOf(el.querySelector('.tile-val')) + ' ' + textOf(el.querySelector('.tile-lbl')) + ' (' + title + ').';
+      title = title.split(' · ')[0];
+    } else {
+      title = el.getAttribute('data-kb-title');
+      var p = el.querySelector('p, li');
+      answer = p ? firstSentence(textOf(p)) : textOf(el).slice(0, 220);
+    }
+    var tt = tokens(title);
+    docs.push({ title: title, target: target, related: [], answer: answer, toks: tt.concat(tt, tt, tokens(textOf(el))) });
   });
 
-  const particles = new THREE.Points(geo, mat);
-  scene.add(particles);
-
-  // Soft connection lines
-  const lc = 60;
-  const lp = new Float32Array(lc * 6);
-  for (let i = 0; i < lc; i++) {
-    const ax = (Math.random() - 0.5) * 18;
-    const ay = (Math.random() - 0.5) * 18;
-    const az = (Math.random() - 0.5) * 6;
-    lp[i*6]   = ax; lp[i*6+1] = ay; lp[i*6+2] = az;
-    lp[i*6+3] = ax+(Math.random()-0.5)*3;
-    lp[i*6+4] = ay+(Math.random()-0.5)*3;
-    lp[i*6+5] = az;
-  }
-  const lg = new THREE.BufferGeometry();
-  lg.setAttribute('position', new THREE.BufferAttribute(lp, 3));
-  const lm = new THREE.LineBasicMaterial({ color: 0x4338CA, transparent: true, opacity: 0.055 });
-  scene.add(new THREE.LineSegments(lg, lm));
-
-  let mx = 0, my = 0, scrollY = 0;
-  document.addEventListener('mousemove', e => {
-    mx = (e.clientX / window.innerWidth - 0.5) * 0.25;
-    my = (e.clientY / window.innerHeight - 0.5) * 0.25;
+  /* BM25 index */
+  var N = docs.length, df = {}, avgdl = 0;
+  docs.forEach(function (d) {
+    d.tf = {}; d.len = d.toks.length; avgdl += d.len;
+    d.toks.forEach(function (t) { d.tf[t] = (d.tf[t] || 0) + 1; });
+    Object.keys(d.tf).forEach(function (t) { df[t] = (df[t] || 0) + 1; });
   });
-  window.addEventListener('scroll', () => { scrollY = window.scrollY; });
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  avgdl /= N;
+  var K1 = 1.2, B = 0.75;
+  function idf(t) { var n = df[t] || 0; return Math.log(1 + (N - n + 0.5) / (n + 0.5)); }
 
-  let t = 0;
-  function animate() {
-    requestAnimationFrame(animate);
-    t += 0.00025;
-    particles.rotation.y = t * 0.25 + mx * 0.4;
-    particles.rotation.x = t * 0.08 + my * 0.25;
-    camera.position.y = -scrollY * 0.0006;
-    renderer.render(scene, camera);
+  function search(q) {
+    var qt = {};
+    var qs = tokens(q), specific = qs.some(function (t) { return !LOW.has(t); });
+    qs.forEach(function (t) {
+      qt[t] = Math.max(qt[t] || 0, specific && LOW.has(t) ? 0.2 : 1);
+      (SYN[t] || []).forEach(function (s) { s = stem(s); qt[s] = Math.max(qt[s] || 0, 0.5); });
+    });
+    var terms = Object.keys(qt).filter(function (t) { return df[t]; });
+    if (!terms.length) return [];
+    return docs.map(function (d) {
+      var s = 0;
+      terms.forEach(function (t) {
+        var f = d.tf[t]; if (!f) return;
+        s += qt[t] * idf(t) * (f * (K1 + 1)) / (f + K1 * (1 - B + B * d.len / avgdl));
+      });
+      return { d: d, s: s };
+    }).filter(function (r) { return r.s > 0; }).sort(function (a, b) { return b.s - a.s; });
   }
-  animate();
+
+  var LABELS = {};
+  document.querySelectorAll('article[id^="p-"]').forEach(function (el) { LABELS[el.id] = textOf(el.querySelector('.card-title')); });
+  Object.assign(LABELS, { results: 'Results', background: 'Background', contact: 'Contact', thesis: 'MSc thesis', diary: 'Engineering diary', projects: 'Projects', engineering: 'How I engineer', skills: 'Skills' });
+  function label(id) { return LABELS[id] || id; }
+
+  var form = document.getElementById('ask-form'), input = document.getElementById('ask-input');
+  var box = document.getElementById('answer'), qEl = document.getElementById('answer-q');
+  var aEl = document.getElementById('answer-text'), lEl = document.getElementById('answer-links');
+
+  function goTo(id) {
+    var el = document.getElementById(id); if (!el) return false;
+    el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    if (el.tagName === 'ARTICLE') { el.classList.add('in', 'flash'); setTimeout(function () { el.classList.remove('flash'); }, 2000); }
+    history.replaceState(null, '', '#' + id);
+    return el;
+  }
+
+  function linkTo(id) {
+    var a = document.createElement('a');
+    a.href = '#' + id; a.textContent = label(id) + ' →';
+    a.addEventListener('click', function (e) { if (goTo(id)) e.preventDefault(); });
+    return a;
+  }
+
+  var NO_MATCH = 'I can only answer from Rohith\'s projects and background on this page, and I did not find a good match. Try asking about RAG, knowledge graphs, agents, evaluation, deployment, visa or education.';
+
+  /* Shared by the Ask box and the terminal: { ok, text, links: [section or card ids] } */
+  function answer(q) {
+    var res = search(q);
+    if (!res.length || res[0].s < 1.5) return { ok: false, text: NO_MATCH, links: [] };
+    var top = res[0].d, seen = {}, links = [];
+    [top.target].concat(top.related).forEach(function (id) { if (id && !seen[id]) { seen[id] = 1; links.push(id); } });
+    for (var i = 1; i < res.length && links.length < 4; i++) {
+      var id = res[i].d.target;
+      if (res[i].s < res[0].s * 0.45) break;
+      if (id && !seen[id] && id.indexOf('p-') === 0) { seen[id] = 1; links.push(id); }
+    }
+    return { ok: true, text: top.answer, links: links };
+  }
+
+  function ask(q) {
+    q = q.trim(); if (!q) return;
+    var r = answer(q);
+    qEl.textContent = 'Q: ' + q;
+    aEl.textContent = r.text;
+    lEl.textContent = '';
+    r.links.forEach(function (id) { lEl.appendChild(linkTo(id)); });
+    box.hidden = false;
+  }
+
+  window.PORTFOLIO = { answer: answer, label: label, goTo: goTo };
+
+  form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
+  document.querySelectorAll('.chip-q').forEach(function (b) {
+    b.addEventListener('click', function () { input.value = b.textContent; ask(b.textContent); });
+  });
 })();
 </script>
 
