@@ -385,6 +385,48 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
   .btn:hover, .tile:hover, .card:hover { transform: none; }
 }
 
+/* KNOWLEDGE GRAPH (assets/kg.js) */
+.kg { margin-top: 40px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; min-width: 0; }
+.kg-head h3 { font-size: 19px; font-weight: 600; margin-bottom: 4px; }
+.kg-head p { color: var(--muted); font-size: 14px; margin-bottom: 18px; max-width: 720px; }
+.kg-controls { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; min-width: 0; }
+.kg-controls label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lavender); }
+.kg-controls select { width: 100%; max-width: 100%; min-width: 0; font: 14px var(--sans); color: var(--text); background: var(--bg2); border: 1px solid var(--border-strong); border-radius: 8px; padding: 9px 10px; text-overflow: ellipsis; }
+.kg-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.kg-stage { position: relative; min-width: 0; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; aspect-ratio: 4 / 3; }
+.kg-stage svg { display: block; width: 100%; height: 100%; touch-action: manipulation; }
+.kg-link { stroke: #9AA0BC; stroke-width: 1; opacity: 0.07; vector-effect: non-scaling-stroke; transition: opacity 0.3s; }
+.kg-link.on { stroke: var(--lavender); stroke-width: 2; opacity: 0.95; }
+.kg-node { opacity: 0.1; cursor: pointer; transition: opacity 0.3s; }
+.kg-node.on { opacity: 1; }
+.kg-node.twin { stroke: var(--text); stroke-width: 2.5; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+.kg-label { font-family: var(--sans); font-size: var(--kg-font, 12px); font-weight: 500; fill: var(--text); paint-order: stroke; stroke: var(--bg); stroke-width: calc(var(--kg-font, 12px) * 0.3); stroke-linejoin: round; pointer-events: none; }
+.kg-leader { stroke: var(--muted); stroke-width: 1; opacity: 0.7; vector-effect: non-scaling-stroke; }
+.kg-tip { position: absolute; max-width: 80%; padding: 5px 9px; font: 12px var(--mono); color: var(--text); background: var(--card-hover); border: 1px solid var(--border-strong); border-radius: 6px; pointer-events: none; overflow-wrap: anywhere; }
+.kg-legend { position: absolute; left: 10px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px 12px; font: 11px var(--mono); color: var(--muted); pointer-events: none; }
+.kg-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.kg-panel { min-width: 0; font-size: 14px; overflow-wrap: anywhere; }
+.kg-status { display: inline-block; font: 500 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; margin-bottom: 12px; }
+.kg-status.ok { background: rgba(52,211,153,0.14); color: var(--green); }
+.kg-status.na { background: rgba(251,191,36,0.14); color: var(--amber); }
+.kg-status.bad { background: rgba(248,113,113,0.16); color: #FCA5A5; }
+.kg-qtext { font-weight: 600; font-size: 16px; line-height: 1.4; margin-bottom: 14px; }
+.kg-ans { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.kg-ans div { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.kg-ans dt { font: 11px var(--mono); color: var(--muted); margin-bottom: 3px; }
+.kg-ans dd { margin: 0; font-weight: 500; }
+.kg-note { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.kg-twin-note { border-left: 3px solid var(--amber); padding-left: 10px; }
+.kg-twin-note strong { color: var(--amber); font-weight: 600; }
+.kg-facts-h { font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lavender); margin: 4px 0 8px; }
+.kg-facts { padding-left: 20px; font: 12px/1.5 var(--mono); color: var(--muted); max-height: 300px; overflow-y: auto; }
+.kg-facts li { margin-bottom: 6px; }
+.kg-src { font-size: 12.5px; color: var(--muted); margin-top: 16px; }
+.kg-src a { color: var(--lavender); }
+@media (prefers-reduced-motion: reduce) { .kg-link, .kg-node { transition: none; } }
+@media (max-width: 960px) { .kg-grid { grid-template-columns: minmax(0, 1fr); } .kg-facts { max-height: none; } }
+@media (max-width: 760px) { .kg { padding: 18px 14px; } .kg-stage { aspect-ratio: 1 / 1; } .kg-ans { grid-template-columns: minmax(0, 1fr); } }
+
 /* RESPONSIVE */
 @media (max-width: 960px) {
   .tiles, .cards-sm, .skills, .steps { grid-template-columns: repeat(2, 1fr); }
@@ -748,6 +790,25 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         <div class="links"><a href="http://3.71.32.203:8000/docs" target="_blank" rel="noopener">API docs →</a><a href="https://github.com/RohithkumarReddipogula/aws-deployment-project" target="_blank" rel="noopener">GitHub →</a></div>
       </article>
 
+    </div>
+    <div class="kg reveal" id="graph" data-kb data-kb-title="GraphRAG Engine: the knowledge graph behind 20 answers">
+      <div class="kg-head">
+        <h3>The graph behind the answers</h3>
+        <p>For 20 dev questions of 2WikiMultiHopQA (5 of each multi-hop type), the knowledge-graph paths the GraphRAG system used as facts. Pick a question: the view zooms to its path and dims the rest. Hover or tap a node for its name.</p>
+      </div>
+      <div class="kg-controls">
+        <label for="kg-q">Question</label>
+        <select id="kg-q"></select>
+      </div>
+      <div class="kg-grid">
+        <div class="kg-stage">
+          <svg id="kg-svg" role="img" aria-label="Knowledge-graph paths used to answer the selected question; the same facts are listed as text next to the graph"></svg>
+          <div id="kg-tip" class="kg-tip" hidden></div>
+          <div class="kg-legend" aria-hidden="true"><span><i style="background:#A78BFA"></i>person</span><span><i style="background:#60A5FA"></i>film</span><span><i style="background:#FBBF24"></i>work</span><span><i style="background:#34D399"></i>place</span><span><i style="background:#F472B6"></i>org</span></div>
+        </div>
+        <div id="kg-panel" class="kg-panel" aria-live="polite"><p class="kg-note">The graph loads when this part of the page comes into view.</p></div>
+      </div>
+      <p class="kg-src">Answers from the committed dev run; "correct" is an exact match, other wordings were checked by the evaluation judge. Data and the script that builds it: <a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/main/scripts/build_portfolio_graph.py" target="_blank" rel="noopener">graphrag-engine</a>. Names and relations derived from Wikipedia and Wikidata via 2WikiMultiHopQA.</p>
     </div>
   </div>
 </section>
@@ -1297,5 +1358,6 @@ document.documentElement.classList.add('js');
 })();
 </script>
 
+<script src="assets/kg.js" defer></script>
 </body>
 </html>
