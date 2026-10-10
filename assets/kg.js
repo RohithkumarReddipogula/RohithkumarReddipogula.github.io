@@ -63,7 +63,7 @@
     data.questions.forEach(function (q, i) {
       var o = document.createElement("option");
       o.value = i;
-      o.textContent = STATUS[q.status].text + " · " + q.question;
+      o.textContent = STATUS[q.status].text + " · " + tidy(q.question);
       select.appendChild(o);
     });
     select.addEventListener("change", function () { show(+select.value); });
@@ -195,10 +195,35 @@
     renderPanel(q);
   }
 
+  /* Display only (the data file keeps the dataset's text): the dataset title-cases every word. */
+  function tidy(text) {
+    return text.replace(/\b(Ii|Iii|Iv|Vi|Vii|Viii|Ix)\b/g, function (m) { return m.toUpperCase(); })
+      .replace(/(\w)'S(?=[\s?,.]|$)/g, "$1's")
+      .replace(/ Of /g, " of ")
+      .replace(/\bFilm\)/g, "film)");
+  }
+
+  /* Display only: a fact is "main part; attribute; attribute". Facts that are just an entity name are left
+     out, and an attribute (such as a date of birth) is shown the first time only. */
+  function shownFacts(facts) {
+    var seen = {}, out = [], hidden = 0;
+    facts.forEach(function (f) {
+      var keep = f.split("; ").filter(function (seg) {
+        if (seg.indexOf("->") !== -1) return true;
+        if (!/^.+: .+/.test(seg)) return false;                 // bare entity name, no relation
+        if (seen[seg]) return false;
+        seen[seg] = true;
+        return true;
+      });
+      if (keep.length) out.push(keep.join("; ")); else hidden++;
+    });
+    return { facts: out, hidden: hidden };
+  }
+
   function renderPanel(q) {
     var st = STATUS[q.status];
     var html = '<span class="kg-status ' + st.cls + '">' + st.text + "</span>" +
-      '<p class="kg-qtext">' + esc(q.question) + "</p>" +
+      '<p class="kg-qtext">' + esc(tidy(q.question)) + "</p>" +
       '<dl class="kg-ans"><div><dt>System answer</dt><dd>' + esc(q.answer) + "</dd></div>" +
       "<div><dt>Gold answer</dt><dd>" + esc(q.gold) + "</dd></div></dl>";
     if (q.status === "correct, different wording") {
@@ -210,8 +235,13 @@
         t.nodes.map(function (n) { return data.nodes[n].type.toLowerCase(); }).join(" and ") +
         "). Entity resolution kept them apart; both are outlined in the graph.</p>";
     });
+    var sf = shownFacts(q.facts);
     html += '<p class="kg-facts-h">Facts the system cited from the graph</p><ol class="kg-facts" tabindex="0" aria-label="Cited facts">' +
-      q.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ol>";
+      sf.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ol>";
+    if (sf.hidden) {
+      html += '<p class="kg-note kg-hidden">' + sf.hidden + (sf.hidden === 1 ? " cited fact" : " cited facts") +
+        " not listed: only an entity name, or only details already shown above.</p>";
+    }
     panel.innerHTML = html;
   }
 
