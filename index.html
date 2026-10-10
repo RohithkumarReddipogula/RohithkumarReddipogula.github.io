@@ -562,9 +562,9 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         <span class="tile-src">Hybrid RAG thesis · MS MARCO · p = 0.002 →</span>
       </a>
       <a class="tile reveal" href="#p-graphrag" data-kb data-kb-target="p-graphrag">
-        <span class="tile-val">+20 pts EM</span>
-        <span class="tile-lbl">retrieval vs model memory (95% CI 9 to 31)</span>
-        <span class="tile-src">GraphRAG Engine · in progress →</span>
+        <span class="tile-val">+22 pts EM</span>
+        <span class="tile-lbl">GraphRAG vs hybrid RAG on 375 test questions (95% CI 17 to 27)</span>
+        <span class="tile-src">GraphRAG Engine · test split run once →</span>
       </a>
       <a class="tile reveal" href="#p-graphrag" data-kb data-kb-target="p-graphrag">
         <span class="tile-val">12,547</span>
@@ -600,9 +600,9 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <div class="cards">
 
       <article class="card wide reveal" id="p-graphrag" data-kb>
-        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GraphRAG Engine</a></h3><span class="badge b-wip">IN PROGRESS</span></div>
-        <p class="desc">A GraphRAG system on Neo4j, benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA. The goal is a fair answer to one question: when does a knowledge graph actually help multi-hop question answering, and when does it not? It showed that hybrid retrieval never finds the bridge entities that multi-hop questions need, which is what the graph is built to fix.</p>
-        <div class="metric">+20 pts EM, retrieval vs model memory (95% CI 9 to 31) · 12,547 relations from 2,049 documents · extraction recall 0.75, slot precision 0.89 (strict, full run, 247 dev triples)</div>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GraphRAG Engine</a></h3><span class="badge b-live">DONE</span></div>
+        <p class="desc">A GraphRAG system on Neo4j, benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA. The goal is a fair answer to one question: when does a knowledge graph actually help multi-hop question answering, and when does it not? The hypothesis was pre-registered and the held-out test split was run once: GraphRAG answered 0.79 of 375 test questions exactly, the hybrid baseline 0.57.</p>
+        <div class="metric">Exact match 0.57 (hybrid RAG) to 0.79 (GraphRAG) on 375 held-out test questions: +0.22 (95% CI +0.17 to +0.27) · hypothesis pre-registered, test split run once · total LLM cost 1.82 USD · 12,547 relations from 2,049 documents · extraction recall 0.75, slot precision 0.89 (strict, full run, 247 dev triples)</div>
         <ul class="stack"><li>Python</li><li>Neo4j</li><li>Knowledge graph</li><li>E5</li><li>BM25</li><li>Cross-encoder reranker</li><li>gpt-oss-120b</li><li>Docker</li></ul>
         <details class="how"><summary>How it works</summary>
           <ol class="flow">
@@ -612,9 +612,10 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
             <li>Hybrid baseline: BM25 + E5 dense + bge reranker, the retriever from the MSc thesis</li>
             <li>Short answers from gpt-oss-120b, pinned provider, every LLM call cached and logged with cost</li>
             <li>EM and F1 with 95% bootstrap confidence intervals, quality bars fixed before results</li>
+            <li class="hl">Test split run once with frozen settings: paired EM difference +0.22 (95% CI +0.17 to +0.27), pre-registered expectation met</li>
           </ol>
         </details>
-        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GitHub →</a></div>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/main/BENCHMARK.md" target="_blank" rel="noopener">Benchmark →</a></div>
       </article>
 
       <article class="card reveal" id="p-shipment" data-kb>
@@ -879,6 +880,24 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <h2>Decisions and failures, with receipts</h2>
     <p class="lead">Real entries from the repos, newest first. Each one links to the commit or document it comes from.</p>
     <ol class="diary">
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: The test split, run once: pre-registered expectation met">
+        <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">RESULT</span></div>
+        <h3>The test split, run once: pre-registered expectation met</h3>
+        <p>One primary result was fixed before the run: the paired exact-match difference, GraphRAG minus the hybrid baseline, over all 375 test questions, expected to have a 95% CI above 0. The settings were frozen and tagged, and a lock lets the test script run only once. Result: 0.57 for hybrid, 0.79 for GraphRAG, a difference of +0.22 (95% CI +0.17 to +0.27). The expectation was met.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/12fe3eb" target="_blank" rel="noopener">Commit 12fe3eb →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/main/results/m5/test_summary.json" target="_blank" rel="noopener">results/m5/test_summary.json →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Graph retrieval passes its dev quality bar">
+        <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">RESULT</span></div>
+        <h3>Graph retrieval passes its dev quality bar</h3>
+        <p>Three criteria were fixed in the plan before any result, and all three passed on the 125 dev questions. Multi-hop questions with all gold paragraphs in context: +0.15 over hybrid (bar: at least +0.10). Paired exact-match difference: 0.18 (95% CI 0.10 to 0.26; bar: CI low at least -0.05). Exact match on the 50 bridge-comparison and compositional questions: 0.60 against 0.12 for hybrid.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/d91b851" target="_blank" rel="noopener">Commit d91b851 →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/main/results/m4/graph_report.md" target="_blank" rel="noopener">results/m4/graph_report.md →</a></div>
+      </li>
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Entity resolution re-run passes: 49 of 50 merges correct">
+        <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">RESULT</span></div>
+        <h3>Entity resolution re-run passes: 49 of 50 merges correct</h3>
+        <p>After the failed run 1, the re-run with judge prompt v2 and the cannot-link rule was checked on 50 sampled merges: 49 were correct, against a bar of 48 fixed beforehand. The first pass of the labels was drafted by a second model, then reviewed and corrected by me.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/commit/3c348b9" target="_blank" rel="noopener">Commit 3c348b9 →</a><a href="https://github.com/RohithkumarReddipogula/graphrag-engine/blob/main/results/m3/handcheck_scores.json" target="_blank" rel="noopener">results/m3/handcheck_scores.json →</a></div>
+      </li>
       <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Judge prompt v2, a cannot-link rule and a pilot in both directions">
         <div class="entry-meta"><time datetime="2026-10-08">2026-10-08</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">FIX</span></div>
         <h3>Judge prompt v2, a cannot-link rule and a pilot in both directions</h3>
@@ -982,7 +1001,7 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
           <div class="tl-org">Independent Projects · Berlin, Germany</div>
           <p>Building and shipping production-style AI systems end to end, with a focus on retrieval, agents, reliable LLM pipelines and honest evaluation.</p>
           <ul>
-            <li>Built a GraphRAG engine on Neo4j with LLM extraction, entity resolution and a benchmark against a hybrid baseline</li>
+            <li>Built a GraphRAG engine on Neo4j with LLM extraction and entity resolution; on 375 held-out test questions it raised exact match from 0.57 (hybrid RAG) to 0.79, +0.22 (95% CI +0.17 to +0.27), with the hypothesis pre-registered and the test split run once</li>
             <li>Built an LLM email intake service with a job queue, retries, guardrails, a human review queue and 175 tests</li>
             <li>Shipped a multi-tenant AI SaaS in 7 days with auth, streaming, CI tests and monitoring</li>
             <li>Released an open-source n8n community node in TypeScript (10 unit tests, CI) that gives AI agents clean, typed data, and an AI support ticket triage workflow on n8n Cloud</li>
@@ -1195,19 +1214,19 @@ document.documentElement.classList.add('js');
   var FAQ = [
     { title: 'Best project', target: 'p-graphrag', related: ['p-hybrid', 'p-shipment'],
       keys: 'best featured top strongest favourite favorite flagship main proudest project',
-      answer: 'The featured project is GraphRAG Engine: a GraphRAG system on Neo4j benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA (in progress, +20 pts EM retrieval vs model memory). The most complete finished system is the Hybrid RAG thesis: 93% Recall@10 on 8.84M passages, p = 0.002.' },
+      answer: 'The featured project is GraphRAG Engine: a GraphRAG system on Neo4j benchmarked against a strong hybrid retrieval baseline on 2WikiMultiHopQA. On 375 held-out test questions, exact match went from 0.57 (hybrid RAG) to 0.79 (GraphRAG), +0.22 (95% CI +0.17 to +0.27), with the hypothesis pre-registered and the test split run once. The most complete finished system is the Hybrid RAG thesis: 93% Recall@10 on 8.84M passages, p = 0.002.' },
     { title: 'RAG', target: 'p-hybrid', related: ['p-graphrag', 'p-saas'],
       keys: 'rag retrieval augmented generation retrieval-augmented hybrid bm25 dense',
       answer: 'Yes, RAG is the core of his work: an MSc thesis on hybrid BM25 + E5 retrieval (93% Recall@10 on 8.84M passages, alpha 0.70 validated with p = 0.002), a multi-tenant RAG support SaaS with pgvector, and a GraphRAG engine on Neo4j.' },
     { title: 'Knowledge graphs', target: 'p-graphrag', related: ['p-hybrid'],
       keys: 'knowledge graph graphs graphrag neo4j entity relation extraction kg',
-      answer: 'Yes. GraphRAG Engine builds a knowledge graph on Neo4j: 12,547 relations extracted from 2,049 documents for 0.35 USD, extraction recall 0.75 and slot precision 0.89 (strict, on 247 dev triples), with entity resolution and a benchmark against a hybrid retrieval baseline. It is in progress.' },
+      answer: 'Yes. GraphRAG Engine builds a knowledge graph on Neo4j: 12,547 relations extracted from 2,049 documents for 0.35 USD, extraction recall 0.75 and slot precision 0.89 (strict, on 247 dev triples), with entity resolution (49 of 50 checked merges correct). On 375 held-out test questions it beat the hybrid retrieval baseline by +0.22 exact match (95% CI +0.17 to +0.27).' },
     { title: 'LLM agents', target: 'p-multiagent', related: ['p-react', 'p-n8n', 'p-triage'],
       keys: 'agent agents agentic langgraph react tool tools multi-agent orchestration',
       answer: 'Yes. A 4-agent LangGraph research pipeline (search, summarise, fact-check, write), a ReAct agent with web search, calculator and RAG retrieval tools, an open-source n8n node that works as a tool for the n8n AI Agent, and an AI ticket triage workflow with Gemini on n8n Cloud.' },
     { title: 'Evaluation', target: 'results', related: ['p-llmeval', 'p-graphrag', 'thesis'],
       keys: 'evaluation evaluate eval metrics ragas faithfulness benchmark measure statistical confidence',
-      answer: 'Evaluation is a focus: RAGAS evaluation with Gemini as judge, EM and F1 with 95% bootstrap confidence intervals in GraphRAG Engine, and 11 experiments (results in RESULTS.md) with a paired t-test (p = 0.002) in the thesis.' },
+      answer: 'Evaluation is a focus: RAGAS evaluation with Gemini as judge, EM and F1 with 95% bootstrap confidence intervals in GraphRAG Engine (hypothesis pre-registered, test split run once: +0.22 EM over hybrid RAG, 95% CI +0.17 to +0.27), and 11 experiments (results in RESULTS.md) with a paired t-test (p = 0.002) in the thesis.' },
     { title: 'Reliable LLM pipelines', target: 'p-shipment', related: ['p-triage', 'p-saas'],
       keys: 'production reliable reliability guardrails guardrail human review queue retries validation injection extraction structured',
       answer: 'shipment-intake-ai is an LLM extraction service with a job queue, retries with backoff, validation rules, prompt injection defence and a human review queue, with 175 tests. The model extracts, plain rules decide, so the model never makes the business decision.' },
@@ -1228,13 +1247,13 @@ document.documentElement.classList.add('js');
       answer: 'MSc Data Science, University of Europe for Applied Sciences, Potsdam (Mar 2024 to Mar 2026), with a thesis on hybrid retrieval. B.Tech Computer Science and Engineering, GITAM University (June 2019 to August 2023).' },
     { title: 'Experience', target: 'background', related: ['projects'],
       keys: 'experience job role work history career current currently',
-      answer: 'AI Engineer, Independent Projects, Berlin (April 2026 to Present): GraphRAG on Neo4j, an LLM email intake service with 175 tests, a multi-tenant AI SaaS in 7 days and open-source tooling for AI agents. Before that, an MSc in Data Science with a hybrid RAG thesis.' },
+      answer: 'AI Engineer, Independent Projects, Berlin (April 2026 to Present): GraphRAG on Neo4j (exact match 0.57 to 0.79 against hybrid RAG on 375 test questions), an LLM email intake service with 175 tests, a multi-tenant AI SaaS in 7 days and open-source tooling for AI agents. Before that, an MSc in Data Science with a hybrid RAG thesis.' },
     { title: 'Shipping speed', target: 'p-saas', related: ['p-bauwatcher'],
       keys: 'fast quickly speed ship shipped deliver days build',
       answer: 'He ships quickly: a multi-tenant AI SaaS from idea to production in 7 days, and BauWatcher built and deployed in 6 days.' },
     { title: 'Failures and decisions', target: 'diary', related: ['p-graphrag', 'p-shipment'],
       keys: 'failure fail failed mistake mistakes wrong learned lesson lessons bug setback diary decision decisions tradeoff',
-      answer: 'The engineering diary lists real decisions and failures from the repos. The biggest failure: entity resolution run 1 in GraphRAG Engine merged the United States with the United Kingdom and dropped bridge link recall from 0.83 to 0.51. The cause was found, the run kept on record, and the fix (judge prompt v2 with a cannot-link rule) passed a two-direction pilot.' },
+      answer: 'The engineering diary lists real decisions and failures from the repos. The biggest failure: entity resolution run 1 in GraphRAG Engine merged the United States with the United Kingdom and dropped bridge link recall from 0.83 to 0.51. The cause was found, the run kept on record, and the fix (judge prompt v2 with a cannot-link rule) passed a two-direction pilot; in the re-run, 49 of 50 checked merges were correct.' },
     { title: 'Contact', target: 'contact', related: [],
       keys: 'contact email reach hire resume cv phone linkedin interview',
       answer: 'Email rohithkumar336699@gmail.com or connect on LinkedIn.' }

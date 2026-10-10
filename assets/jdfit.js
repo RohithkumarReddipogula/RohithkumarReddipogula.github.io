@@ -13,7 +13,7 @@
   var SHOWN = [
     { label: 'Python', aliases: ['python'], proof: [{ card: 'p-hybrid', fact: '93% Recall@10' }, { card: 'p-shipment', fact: '175 tests' }] },
     { label: 'RAG', aliases: ['rag', 'retrieval-augmented generation', 'retrieval augmented generation'], proof: [{ card: 'p-hybrid', fact: '93% Recall@10' }, { card: 'p-saas', fact: 'pgvector semantic search' }] },
-    { label: 'GraphRAG', aliases: ['graphrag', 'graph rag', 'graph-based retrieval'], proof: [{ card: 'p-graphrag', fact: '+20 pts EM, retrieval vs model memory (95% CI 9 to 31)' }] },
+    { label: 'GraphRAG', aliases: ['graphrag', 'graph rag', 'graph-based retrieval'], proof: [{ card: 'p-graphrag', fact: '+0.22 (95% CI +0.17 to +0.27)', say: '+0.22 EM over hybrid RAG on 375 test questions (95% CI +0.17 to +0.27)' }] },
     { label: 'Knowledge graphs', aliases: ['knowledge graph', 'knowledge-graph', 'graph database'], proof: [{ card: 'p-graphrag', fact: '12,547 relations from 2,049 documents' }] },
     { label: 'Neo4j', aliases: ['neo4j'], proof: [{ card: 'p-graphrag', fact: '12,547 relations from 2,049 documents' }] },
     { label: 'Information retrieval and search', aliases: ['information retrieval', 'semantic search', 'hybrid search', 'hybrid retrieval', 'retrieval', 'search systems', 'search engine'], proof: [{ card: 'p-hybrid', fact: '93% Recall@10' }] },
@@ -30,7 +30,7 @@
     { label: 'Structured output and extraction', aliases: ['structured output', 'information extraction', 'entity extraction', 'relation extraction', 'json schema', 'data extraction', 'document extraction'], proof: [{ card: 'p-graphrag', fact: 'strict JSON schema output' }, { card: 'p-shipment', fact: '175 tests' }] },
     { label: 'Prompt engineering', aliases: ['prompt engineering', 'prompting', 'prompt design'], proof: [{ card: 'p-graphrag', fact: 'extraction recall 0.75, slot precision 0.89' }] },
     { label: 'Guardrails and human review', aliases: ['guardrail', 'prompt injection', 'human-in-the-loop', 'human in the loop', 'human review', 'ai safety'], proof: [{ card: 'p-shipment', fact: 'dangerous goods always go to a human' }] },
-    { label: 'LLM evaluation', aliases: ['evaluation', 'evals', 'llm evaluation', 'model evaluation', 'benchmarking', 'benchmark'], proof: [{ card: 'p-llmeval', fact: 'Faithfulness 0.909 on 10 test questions' }, { card: 'p-graphrag', fact: '95% CI 9 to 31' }] },
+    { label: 'LLM evaluation', aliases: ['evaluation', 'evals', 'llm evaluation', 'model evaluation', 'benchmarking', 'benchmark'], proof: [{ card: 'p-llmeval', fact: 'Faithfulness 0.909 on 10 test questions' }, { card: 'p-graphrag', fact: 'hypothesis pre-registered, test split run once' }] },
     { label: 'RAGAS', aliases: ['ragas'], proof: [{ card: 'p-llmeval', fact: 'Faithfulness 0.909 on 10 test questions' }] },
     { label: 'Statistics', aliases: ['statistics', 'statistical', 'hypothesis testing', 'significance testing'], proof: [{ card: 'p-hybrid', fact: 'p = 0.002' }] },
     { label: 'Fine-tuning', aliases: ['fine-tuning', 'fine tuning', 'finetuning', 'lora', 'qlora', 'peft'], proof: [{ card: 'p-qlora', fact: 'Loss 2.47 → 0.89' }] },
