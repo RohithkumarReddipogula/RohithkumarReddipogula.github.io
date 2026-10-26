@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohith Kumar Reddipogula | AI Engineer | RAG, LLM Agents, Knowledge Graphs</title>
+<title>Rohith Kumar Reddipogula | AI Engineer | NLP, RAG, LLM Agents, Knowledge Graphs</title>
 <meta name="description" content="AI Engineer in Berlin, Germany. RAG, LLM agents, knowledge graphs and honest evaluation. MSc Data Science. Available immediately. No employer sponsorship needed.">
 <meta name="theme-color" content="#0B1020">
 <meta property="og:title" content="Rohith Kumar Reddipogula | AI Engineer">
-<meta property="og:description" content="RAG, LLM Agents, Knowledge Graphs. 93% Recall@10 on 8.84M passages.">
+<meta property="og:description" content="NLP, RAG, LLM Agents, Knowledge Graphs. 93% Recall@10 on 8.84M passages.">
 <meta property="og:image" content="https://github.com/RohithkumarReddipogula.png?size=400">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -490,7 +490,7 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <div>
       <div class="status"><span class="dot"></span>Open to work across Germany · Based in Berlin</div>
       <h1>Rohith Kumar<br><span>Reddipogula</span></h1>
-      <p class="hero-role">AI Engineer | RAG, LLM Agents, Knowledge Graphs</p>
+      <p class="hero-role">AI Engineer | NLP, RAG, LLM Agents, Knowledge Graphs</p>
       <p class="hero-line">I build production AI systems end to end: retrieval, LLM agents and the evaluation that proves they work.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="https://linkedin.com/in/rohith-kumar-reddipogula-a6692030b" target="_blank" rel="noopener" hidden>Resume →</a>
@@ -557,6 +557,16 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <h2>Measured, not claimed</h2>
     <p class="lead">Every number links to the project it comes from.</p>
     <div class="tiles">
+      <a class="tile reveal" href="#p-entsent" data-kb data-kb-target="p-entsent">
+        <span class="tile-val">37% less CPU</span>
+        <span class="tile-lbl">same accuracy: test macro-F1 0.882 vs 0.883 on 1,611 headlines</span>
+        <span class="tile-src">entity-sentiment-at-scale · test split run once →</span>
+      </a>
+      <a class="tile reveal" href="#p-einvoice" data-kb data-kb-target="p-einvoice">
+        <span class="tile-val">0 escaped errors</span>
+        <span class="tile-lbl">on 75 held-out test invoices, 70.7% auto-approved</span>
+        <span class="tile-src">e-invoice-intake-agent · test split run once →</span>
+      </a>
       <a class="tile reveal" href="#p-hybrid" data-kb data-kb-target="p-hybrid">
         <span class="tile-val">93%</span>
         <span class="tile-lbl">Recall@10 on 8.84M passages</span>
@@ -599,6 +609,44 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <p class="lead">Retrieval, knowledge graphs, LLM pipelines with guardrails, and agents, each with its stack, key result and links.</p>
 
     <div class="cards">
+
+      <article class="card reveal" id="p-entsent" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://entity-sentiment-at-scale-production.up.railway.app" target="_blank" rel="noopener">entity-sentiment-at-scale</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">Entity-level sentiment for financial news headlines: for each company in a headline, is the news positive, negative or neutral for it? I fine-tuned distilroberta-base two ways, one forward pass per entity and one pass per headline with mention pooling, and compared both with a zero-shot LLM. The decision rule and the test protocol were written down before any result, and the test split was run once.</p>
+        <div class="metric">Test macro-F1 0.882 (95% CI 0.867 to 0.896) for one pass per headline vs 0.883 for one pass per entity, no significant difference · 37% less CPU per headline (2.40 vs 3.78 CPU seconds per 1,000) · zero-shot LLM 0.837 · 1,611 test headlines</div>
+        <ul class="stack"><li>Python</li><li>PyTorch</li><li>Transformers</li><li>distilroberta-base</li><li>FastAPI</li><li>Docker</li><li>Railway</li><li>pytest</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>SEntFiN 1.0: 10,753 headlines, 14,405 entity labels, fixed 70/15/15 split</li>
+            <li>Zero-shot LLM baseline (Claude Haiku 5.5): 0.081 USD per 1,000 headlines</li>
+            <li class="hl">Per-entity model with entity markers vs single-pass model that pools each entity's mention tokens</li>
+            <li>3 seeds each, same settings, deterministic training on CPU</li>
+            <li>Test split run once: single-pass minus per-entity -0.0009 (95% CI -0.0085 to +0.0065)</li>
+            <li class="hl">CPU benchmark: 2.40 vs 3.78 CPU seconds per 1,000 headlines, so the single-pass model is served</li>
+            <li>Docker on Railway, weights from a GitHub Release, checked by SHA-256</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://entity-sentiment-at-scale-production.up.railway.app" target="_blank" rel="noopener">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/entity-sentiment-at-scale" target="_blank" rel="noopener">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/entity-sentiment-at-scale/blob/main/RESULTS.md" target="_blank" rel="noopener">Results →</a></div>
+      </article>
+
+      <article class="card reveal" id="p-einvoice" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://e-invoice-intake-agent-production.up.railway.app" target="_blank" rel="noopener">e-invoice-intake-agent</a></h3><span class="badge b-live">LIVE</span></div>
+        <p class="desc">Reads incoming German invoices (XRechnung XML, ZUGFeRD PDF and plain PDF), checks them, and auto-approves only those where every field is confident and every check passes. Everything else goes to a person with the reason. Structured invoices are read from the XML and checked with the official KoSIT validator. For plain PDFs an LLM extracts the fields, and a value only counts as confident if it appears in the PDF text.</p>
+        <div class="metric">0 escaped errors on 75 held-out test invoices (at most 3.9%, one-sided 95% bound) · 70.7% auto-approved (95% CI 60 to 81%) · all 19 planted problems held for review · LLM cost 0.029 USD for the test run</div>
+        <ul class="stack"><li>Python</li><li>FastAPI</li><li>Pydantic</li><li>Claude Haiku 5.5</li><li>OpenRouter</li><li>KoSIT validator</li><li>MCP</li><li>Docker</li><li>Railway</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li>Upload an XRechnung XML, ZUGFeRD PDF or plain PDF</li>
+            <li>XML fields are read directly and validated with KoSIT</li>
+            <li class="hl">Plain PDFs: LLM with a strict JSON schema, confidence capped by grounding in the PDF text</li>
+            <li>Rules check sums, VAT ID, IBAN, dates and duplicates</li>
+            <li>Auto-approve only if every field is confident and every check passes, otherwise review with the reason</li>
+            <li>Review page or MCP tool, audit trail, idempotent export to a mock ERP</li>
+            <li class="hl">Test split run once at a threshold fixed on dev: 0 escaped errors</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://e-invoice-intake-agent-production.up.railway.app" target="_blank" rel="noopener">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/e-invoice-intake-agent" target="_blank" rel="noopener">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/e-invoice-intake-agent#evaluation" target="_blank" rel="noopener">Evaluation →</a></div>
+      </article>
 
       <article class="card wide reveal" id="p-graphrag" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/graphrag-engine" target="_blank" rel="noopener">GraphRAG Engine</a></h3><span class="badge b-live">DONE</span></div>
@@ -655,7 +703,7 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         <div class="links"><a href="https://rohith2026-hybrid-rag-demo.hf.space" target="_blank" rel="noopener">Live Demo →</a><a href="https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System" target="_blank" rel="noopener">GitHub →</a></div>
       </article>
 
-      <article class="card reveal" id="p-saas" data-kb>
+      <article class="card wide reveal" id="p-saas" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank" rel="noopener">AI Customer Support Platform</a></h3><span class="badge b-live">LIVE</span></div>
         <p class="desc">Multi-tenant SaaS built solo in 7 days. Document ingestion pipeline, pgvector semantic search, JWT auth with per-tenant data isolation, React dashboard, ChatGPT-like SSE streaming, embeddable JS widget. 12 pytest regression tests. Prometheus /metrics and /health endpoints.</p>
         <div class="metric">Idea to production in 7 days · 12 pytest tests · Prometheus monitoring · GitHub Actions CI/CD</div>
@@ -673,6 +721,11 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         </details>
         <div class="links"><a href="https://ai-support-platform-production-07ac.up.railway.app/static/demo.html" target="_blank" rel="noopener">Demo →</a><a href="https://ai-support-platform-production-07ac.up.railway.app/docs" target="_blank" rel="noopener">API →</a><a href="https://github.com/RohithkumarReddipogula/ai-support-platform" target="_blank" rel="noopener">GitHub →</a></div>
       </article>
+
+    </div>
+
+    <h3 class="more-title" id="more">More projects</h3>
+    <div class="cards cards-sm">
 
       <article class="card reveal" id="p-bauwatcher" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank" rel="noopener">BauWatcher: Germany Construction Radar</a></h3><span class="badge b-live">LIVE</span></div>
@@ -692,7 +745,7 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         <div class="links"><a href="https://frontend-jet-kappa-25.vercel.app" target="_blank" rel="noopener">Live Map →</a><a href="https://github.com/RohithkumarReddipogula/bauwatcher" target="_blank" rel="noopener">GitHub →</a></div>
       </article>
 
-      <article class="card wide reveal" id="p-n8n" data-kb>
+      <article class="card reveal" id="p-n8n" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank" rel="noopener">n8n-nodes-autobahn</a></h3><span class="badge b-oss">OPEN SOURCE</span></div>
         <p class="desc">Custom n8n node in TypeScript that brings live German Autobahn data (roadworks, warnings, closures, EV charging, lorry parking, webcams) into any workflow. It queries many roads in one call and turns a messy API (booleans as strings, text arrays, a different key per event type) into clean, typed items. Works as a tool for the n8n AI Agent, and the compact output saves tokens.</p>
         <div class="metric">612 live roadworks in one request · 10 unit tests · official n8n linter passing · CI on every push</div>
@@ -709,11 +762,6 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
         </details>
         <div class="links"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn" target="_blank" rel="noopener">GitHub →</a><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn/blob/main/examples/autobahn-daily-briefing.json" target="_blank" rel="noopener">Example workflow →</a></div>
       </article>
-
-    </div>
-
-    <h3 class="more-title" id="more">More projects</h3>
-    <div class="cards cards-sm">
 
       <article class="card reveal" id="p-triage" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/n8n-nodes-autobahn#10-related-work" target="_blank" rel="noopener">AI Support Ticket Triage (n8n + Gemini)</a></h3></div>
@@ -881,6 +929,12 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
     <h2>Decisions and failures, with receipts</h2>
     <p class="lead">Real entries from the repos, newest first. Each one links to the commit or document it comes from.</p>
     <ol class="diary">
+      <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: Deployed to Railway, with the weights checked twice">
+        <div class="entry-meta"><time datetime="2026-10-26">2026-10-26</time><span class="entry-proj">entity-sentiment-at-scale</span><span class="entry-kind fix">RESULT</span></div>
+        <h3>Deployed to Railway, with the weights checked twice</h3>
+        <p>The 317 MB model is not in git. The Docker build downloads it from a GitHub Release and checks two SHA-256 hashes, and the server checks the weights again at startup. Before deploying I measured memory: about 0.7 GB at rest and a peak near 1.05 GB while the model loads. A 1 GB limit worked but left no headroom, so the service got 2 GB. On Railway, 200 dev headlines got exactly the labels from the recorded run. Serverless sleep is on, but the app did not go to sleep: an idle check showed it sends no traffic of its own, so outside visits, likely bots, probably keep it awake. I did not measure the cold start.</p>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/entity-sentiment-at-scale/commit/b681677" target="_blank" rel="noopener">Commit b681677 →</a><a href="https://github.com/RohithkumarReddipogula/entity-sentiment-at-scale/blob/main/LOG.md" target="_blank" rel="noopener">LOG.md →</a></div>
+      </li>
       <li class="entry reveal" data-kb data-kb-target="diary" data-kb-title="Diary: The test split, run once: pre-registered expectation met">
         <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="entry-proj">GraphRAG Engine</span><span class="entry-kind fix">RESULT</span></div>
         <h3>The test split, run once: pre-registered expectation met</h3>
