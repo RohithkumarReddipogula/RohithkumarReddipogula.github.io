@@ -610,6 +610,22 @@ footer p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
 
     <div class="cards">
 
+      <article class="card wide reveal" id="p-praxis" data-kb>
+        <div class="card-head"><h3 class="card-title"><a href="https://github.com/RohithkumarReddipogula/praxis-telefon" target="_blank" rel="noopener">Praxis-Telefon: German AI Phone Receptionist</a></h3></div>
+        <p class="desc">A German-first voice agent that answers calls for a doctor's practice. It books, moves and cancels appointments, answers practice questions and takes messages, and switches to English when the caller does. It runs on LiveKit Cloud in Frankfurt.</p>
+        <div class="metric">Response time 9.5 s to 1.6 s · 229/230 passed across 46 call scenarios</div>
+        <ul class="stack"><li>Python</li><li>LiveKit Agents</li><li>Deepgram nova-3</li><li>ElevenLabs</li><li>Claude (OpenRouter)</li><li>Silero VAD</li><li>Docker</li><li>LiveKit Cloud</li></ul>
+        <details class="how"><summary>How it works</summary>
+          <ol class="flow">
+            <li class="hl">Cut response time from 9.5 s to 1.6 s through streaming, prompt caching and model tuning</li>
+            <li>Safety checks in code: no booking without a clear yes, a claim gate against false statements, and privacy rules for third-party callers</li>
+            <li class="hl">My own evaluation harness: 46 call scenarios, 229/230 passed, with confidence intervals and a cost cap</li>
+            <li>The language switch (German to English) is decided in code and voice-tested</li>
+          </ol>
+        </details>
+        <div class="links"><a href="https://github.com/RohithkumarReddipogula/praxis-telefon" target="_blank" rel="noopener">GitHub →</a></div>
+      </article>
+
       <article class="card reveal" id="p-entsent" data-kb>
         <div class="card-head"><h3 class="card-title"><a href="https://entity-sentiment-at-scale-production.up.railway.app" target="_blank" rel="noopener">entity-sentiment-at-scale</a></h3><span class="badge b-live">LIVE</span></div>
         <p class="desc">Entity-level sentiment for financial news headlines: for each company in a headline, is the news positive, negative or neutral for it? I fine-tuned distilroberta-base two ways, one forward pass per entity and one pass per headline with mention pooling, and compared both with a zero-shot LLM. The decision rule and the test protocol were written down before any result, and the test split was run once.</p>
